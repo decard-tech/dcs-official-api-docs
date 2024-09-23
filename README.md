@@ -8,6 +8,13 @@ This API package is meant to provide you, the developer, with a set of tools to 
 - Card
 - Wallet
 
+You can access the relevant features through the following domain names
+
+| Mainnet | https://api.thedecard.com         |
+|---------|-----------------------------------|
+| Testnet | https://api.testnet.thedecard.com |
+
+
 ## Documentation
 Please refer to our extensive for more information.
 ### [Account](./account/readme.md)
@@ -17,10 +24,6 @@ Please refer to our extensive for more information.
 
 
 
-# 交互
-| 测试 | https://uat.thedecard.com/dapi/ |
-|----| ----------- |
-| 生产 | https://thedecard.com/dapi/  |
 
 # AKSK
 `ApiKey` 作为一种全局唯一的标识符，其作用主要在于方便用户身份识别以及数据分析等方面。为了防止其他用户通过恶意使用别人的`ApiKey`来发起请求，一般都会采用配对 `SecretKey` 的方式，类似于一种密码。
