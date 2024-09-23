@@ -1,8 +1,23 @@
+![](/images/deCard.jpeg)
+
+This API package is meant to provide you, the developer, with a set of tools to help you easily and quickly tap into the core capabilities of DeCard, achieving PayFi
+- Account
+- Card
+- Wallet
+
+## Documentation
+Please refer to our extensive for more information.
+### [Account](./account/readme.md)
+### [Card](./card/readme.md)
+### [Wallet](./wallet/readme.md)
+### [Crypto](./crypto/readme.md)
+
+
+
 # 交互
 | 测试 | https://uat.thedecard.com/dapi/ |
 |----| ----------- |
 | 生产 | https://thedecard.com/dapi/  |
-
 
 # AKSK
 `ApiKey` 作为一种全局唯一的标识符，其作用主要在于方便用户身份识别以及数据分析等方面。为了防止其他用户通过恶意使用别人的`ApiKey`来发起请求，一般都会采用配对 `SecretKey` 的方式，类似于一种密码。
@@ -36,10 +51,7 @@ sign(API-KEY + TIMESTAMP + NONCE + payload)
 
 
 
-# [Account](./account/readme.md)
-# [Card](./card/readme.md)
-# [Wallet](./wallet/readme.md)
-# [Crypto](./crypto/readme.md)
+
 
 
 
