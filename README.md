@@ -1,7 +1,7 @@
 
 ## Overview
 
-![](/images/deCard.jpeg)
+![](./images/deCard.jpeg)
 
 This API package is meant to provide you, the developer, with a set of tools to help you easily and quickly tap into the core capabilities of DeCard, achieving PayFi
 - Account
@@ -19,8 +19,9 @@ You can access the relevant features through the following domain names
 Please refer to our extensive for more information.
 ### [Account](./account/readme.md)
 ### [Card](./card/readme.md)
+### [Asset](./asset/readme.md)
 ### [Wallet](./wallet/readme.md)
-### [Crypto](./crypto/readme.md)
+### [ErrorCode](./error-code/readme.md)
 
 
 
@@ -54,7 +55,6 @@ sign(API-KEY + TIMESTAMP + NONCE + payload)
 - NONCE
 
   该值是一个由接口请求方生成的随机数，在有需要的场景中，可以用它来实现请求一次性有效，也就是说同样的请求参数只能使用一次，这样可以避免接口重放攻击。
-
 
 
 
