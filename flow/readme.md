@@ -19,9 +19,9 @@ sign(API-KEY + TIMESTAMP + NONCE + payload)
 
 - **payload**
 ```
-    GET
+    if method is GET : 
         payload = original.url().encodedQuery();
-    ELSE
+    else :
         payload = Body;
 ```
 
