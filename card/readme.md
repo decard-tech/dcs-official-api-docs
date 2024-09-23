@@ -8,13 +8,13 @@
 
 - **响应:**
 
-| 名称                  | 类型    | 描述                                 |
-| --------------------- | ------- |------------------------------------|
-| type | string | 卡类型 <br>- `VIP` <br>- `NORMAL`  |
-| name | string | 卡名称                                |
-| badge | string | 卡徽章                                |
-| image | string | 卡图片链接                              |
-| tags | list | 卡功能标签字符串列表                         |
+| 名称                  | 类型    | 描述                                      |
+| --------------------- | ------- |-----------------------------------------|
+| type | string | 卡类型 <br>- `VIP`：VIP卡  <br>- `NORMAL`：普通卡 |
+| name | string | 卡名称                                     |
+| badge | string | 卡徽章                                     |
+| image | string | 卡图片链接                                   |
+| tags | list | 卡功能标签字符串列表                              |
 
 - **响应示例:**
 ```json
@@ -49,13 +49,13 @@
 }
 ```
 - 失败响应
-  ```json
+```json
   {
       "code": "ERROR-CODE",
       "message": "simple describe, see error-code list",
       "success": false
   }
-  ```
+```
 ---
 
 ### 2. 卡详情(状态)查询
@@ -75,7 +75,7 @@
 
 | 名称  | 类型   | 描述                 |
 | ----- | ------ | -------------------- |
-| cardType | string | 卡类型 <br>- `VIP` <br>- `NORMAL` |
+| cardType | string | 卡类型 <br>- `VIP`：VIP卡  <br>- `NORMAL`：普通卡 |
 | cardNo | string | 卡号，只展示后4位 |
 | cardHolder | string | 持卡人姓名 |
 | cardImage | string | 卡背景图片 |
@@ -113,13 +113,13 @@
 ```
 
 - 失败响应
-  ```json
+```json
   {
       "code": "ERROR-CODE",
       "message": "simple describe, see error-code list",
       "success": false
   }
-  ```
+```
 
 ---
 
@@ -156,13 +156,13 @@
 ```
 
 - 失败响应
-  ```json
+```json
   {
       "code": "ERROR-CODE",
       "message": "simple describe, see error-code list",
       "success": false
   }
-  ```
+```
 
 ---
 
@@ -200,8 +200,6 @@
 
 
 - **响应示例:**
-
-
 ```json
 {
         "code": "SYS_SUCCESS",
@@ -225,13 +223,13 @@
 }
 ```
 - 失败响应
-  ```json
+```json
   {
       "code": "ERROR-CODE",
       "message": "simple describe, see error-code list",
       "success": false
   }
-  ```
+```
 
 
 
