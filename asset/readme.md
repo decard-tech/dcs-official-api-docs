@@ -6,19 +6,19 @@
 - **方法:** `GET`
 - **请求参数:**
 
-| 名称           | 类型   | 是否必须 | 描述         |
-| -------------- | ------ | -------- | ------------ |
-| externalUserId | String | Y        | DeCard用户ID |
+| 名称           | 类型     | 是否必须 | 描述         |
+| -------------- |--------| -------- | ------------ |
+| externalUserId | string | Y        | DeCard用户ID |
 
 - **响应参数:**
 
-| 名称 | 类型   | 描述 |
-| ---- | ------ | ---- |
+| 名称 | 类型   | 描述   |
+| ---- | ------ |------|
 | asset | string | 资产币种 |
 | free | string | 可用数量 |
 | freeze | string | 冻结数量 |
-| total | string | 总数量 |
-| network | string | 链 |
+| total | string | 总数量  |
+| network | string | 网络   |
 
 **响应示例:**
 
@@ -43,10 +43,15 @@
         "success": true
 }
 ```
-
+- 失败响应
+```json
+  {
+      "code": "ERROR-CODE",
+      "message": "simple describe, see error-code list",
+      "success": false
+  }
+```
 ---
-
-
 
 ### 2. 资金历史查询
 
@@ -56,14 +61,14 @@
 - **方法:** `POST`
 - **请求参数:**
 
-| 名称             | 类型  | 是否必须 | 描述                                                                                         |
-|----------------| ------------ |------|--------------------------------------------------------------------------------------------|
-| externalUserId | String  | Y  | DeCard用户ID                                                                                 |
-| type           | String  | N  | 交易类型<br />DEPOSIT、WITHDRAW、CARD_PRINTING_FEE、CARD_POSTAL_FEE、CARD_VIP_FROZEN_FEE、CONVERSION |
-| page           | Integer       | N   | 默认1 ； 页码[1,……]                                                                    |
-| size           | Integer       | N    | 默认100； 每页条数[1,100]                                                          |
-| startTime      | LocalDateTime | N   | 开始时间戳;  默认Now()-7D                                                               |
-| endTime        | LocalDateTime | N   | 截止时间戳;  默认Now()                                                                                    |
+| 名称             | 类型            | 是否必须 | 描述                                                                                                                                                                       |
+|----------------|---------------|------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| externalUserId | string        | Y  | DeCard用户ID                                                                                                                                                               |
+| type           | string        | N  | 交易类型 <br>- `DEPOSIT`：充值  <br>- `WITHDRAW`：提现 <br>- `CARD_PRINTING_FEE`：制卡费  <br>- `CARD_POSTAL_FEE`：邮寄费  <br>- `CARD_VIP_FROZEN_FEE`：VIP冻结费  <br>- `CONVERSION`：convert费 |
+| page           | int           | N   | 默认1                                                                                                                                                                      |
+| size           | int       | N    | 默认100； 每页条数[1,100]                                                                                                                                                       |
+| startTime      | LocalDateTime | N   | 开始时间戳;  默认Now()-7D                                                                                                                                                       |
+| endTime        | LocalDateTime | N   | 截止时间戳;  默认Now()                                                                                                                                                          |
 
 - **响应参数:**
 
@@ -94,10 +99,15 @@
         "success": true
 }
 ```
-
+- 失败响应
+```json
+  {
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
 ---
-
-
 
 ### 3. 查询资产变动详情
 
@@ -109,10 +119,10 @@
 
 | 名称            | 类型     | 是否必须 | 描述                                                                                         |
 |---------------|--------|------|--------------------------------------------------------------------------------------------|
-| externalUserId | String | Y  | DeCard用户ID                                                                                 |
-| tranId        | Long   | Y  | 交易单号                                                                                          |
-| externalTranId| String | Y  | 外部交易ID                                                                                          |
-| type          | String | Y  | 交易类型<br />DEPOSIT、WITHDRAW、CARD_PRINTING_FEE、CARD_POSTAL_FEE、CARD_VIP_FROZEN_FEE、CONVERSION |
+| externalUserId | string | Y  | DeCard用户ID                                                                                 |
+| tranId        | long   | Y  | 交易单号                                                                                          |
+| externalTranId| string | Y  | 外部交易ID                                                                                          |
+| type          | string | Y  | 交易类型<br>- `DEPOSIT`：充值  <br>- `WITHDRAW`：提现 <br>- `CARD_PRINTING_FEE`：制卡费  <br>- `CARD_POSTAL_FEE`：邮寄费  <br>- `CARD_VIP_FROZEN_FEE`：VIP冻结费  <br>- `CONVERSION`：convert费 |
 
 
 - **响应参数:**
@@ -158,8 +168,6 @@
 | feeAmount | string | 费用金额 |
 | receivedAddress | string | 接收地址 |
 
-
-
 **响应示例:**
 
 ```json
@@ -181,13 +189,13 @@
 
                 "network": "TRON",
                 "networkName": "TRON",
-                "transactionHash": "4edc1eb2d9d6b6a153629f65909bdcfced9d00d50988a5f1b57049fa1cb34126",
+                "transactionHash": "4edc1eb2d9d6b6a153*****5f1b57049fa1cb34126",
                 "networkTxUrl": "https://tronscan.org/#/transaction/",
                 "sendAddress": "TErLvDQXaDciLR8RPH45BfM3z7Hxua4sVt",
 
                 "network": "TRON",
                 "networkName": "TRON",
-                "transactionHash": "2c80428268edd5cc5436e6fadf175503167f982644924985d68a1deefbcacbd6",
+                "transactionHash": "4edc1eb2d9d6b6a153*****5f1b57049fa1cb34126",
                 "networkTxUrl": "https://tronscan.org/#/transaction/",
                 "actualReceived": "990",
                 "feeAmount": "10",
@@ -195,6 +203,14 @@
         },
         "success": true
 }
+```
+- 失败响应
+```json
+  {
+      "code": "ERROR-CODE",
+      "message": "simple describe, see error-code list",
+      "success": false
+  }
 ```
 
 
