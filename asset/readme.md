@@ -1,26 +1,38 @@
-# balance查询
+### 1. 资产查询
 
-`GET:   /user-asset/v1/balance`
+**描述：** 查询用户资产
 
-**参数:**
+- **URL:** `/user-asset/v1/balance`
+- **方法:** `GET`
+- **请求参数:**
 
-| 名称  | 类型  | 是否必须 | 描述 |
-| ------------ | ------------ |------|----|
-|  externalUserId | String  | YES  | DeCard用户ID  |
+| 名称           | 类型   | 是否必须 | 描述         |
+| -------------- | ------ | -------- | ------------ |
+| externalUserId | String | Y        | DeCard用户ID |
 
+- **响应参数:**
 
-**响应:**
+| 名称 | 类型   | 描述 |
+| ---- | ------ | ---- |
+| asset | string | 资产币种 |
+| free | string | 可用数量 |
+| freeze | string | 冻结数量 |
+| total | string | 总数量 |
+| network | string | 链 |
+
+**响应示例:**
+
 ```json
 {
         "code": "SYS_SUCCESS",
         "message": null,
         "messageDetail": null,
         "data": [{
-                "asset": "USDT", // 资产币种
-                "free": "5.512075", // 可用数量
-                "freeze": "0", // 冻结数量
-                "total": "5.512075", // 总数量
-                "network": "TRON" // 链
+                "asset": "USDT", 
+                "free": "5.512075", 
+                "freeze": "0",
+                "total": "5.512075",
+                "network": "TRON"
         }, {
                 "asset": "USDC",
                 "free": "16173335.08009343",
@@ -32,82 +44,147 @@
 }
 ```
 
+---
 
 
-# 查询crypto资金历史
 
-`POST:   /user-asset/v1/transactions`
+### 2. 资金历史查询
 
-**参数:**
+**描述：**  查询用户资产历史
+
+- **URL:** `/user-asset/v1/transactions`
+- **方法:** `POST`
+- **请求参数:**
 
 | 名称             | 类型  | 是否必须 | 描述                                                                                         |
 |----------------| ------------ |------|--------------------------------------------------------------------------------------------|
-| externalUserId | String  | YES  | DeCard用户ID                                                                                 |
-| type           | String  | NO  | 交易类型 <br>DEPOSIT、WITHDRAW、CARD_PRINTING_FEE、CARD_POSTAL_FEE、CARD_VIP_FROZEN_FEE、CONVERSION |
-| page           | Integer       | NO   | 页码[1,……]；默认1                                                                               |
-| size           | Integer       | NO    | 每页条数[1,100] ； 默认100                                                                        |
-| startTime      | LocalDateTime | NO   | 开始时间戳;默认Now()-7D                                                                           |
-| endTime        | LocalDateTime | NO   | 截止时间戳;  默认Now()                                                                                    |
+| externalUserId | String  | Y  | DeCard用户ID                                                                                 |
+| type           | String  | N  | 交易类型<br />DEPOSIT、WITHDRAW、CARD_PRINTING_FEE、CARD_POSTAL_FEE、CARD_VIP_FROZEN_FEE、CONVERSION |
+| page           | Integer       | N   | 默认1 ； 页码[1,……]                                                                    |
+| size           | Integer       | N    | 默认100； 每页条数[1,100]                                                          |
+| startTime      | LocalDateTime | N   | 开始时间戳;  默认Now()-7D                                                               |
+| endTime        | LocalDateTime | N   | 截止时间戳;  默认Now()                                                                                    |
 
+- **响应参数:**
 
-**响应:**
+| 名称       | 类型   | 描述       |
+| ---------- | ------ | ---------- |
+| tranId     | string | 交易单号   |
+| externalId | string | 外部交易ID |
+| type       | string | 交易类型   |
+| freeDelta  | string | 交易数量   |
+| time       | string | 交易时间   |
+| asset      | string | 交易币种   |
+
+**响应示例:**
+
 ```json
 {
         "code": "SYS_SUCCESS",
         "message": null,
         "messageDetail": null,
         "data": [{
-                "tranId": "1041201345182711808", // 交易单号
-                "externalId": "1041201333329608704", // 外部交易ID
-                "type": "CONVERSION", // 交易类型
-                "freeDelta": "-3.66208981", // 交易数量
-                "time": "1726200144966", // 交易时间
-                "asset": "USDT" // 交易币种
+                "tranId": "1041201345182711808",
+                "externalId": "1041201333329608704",
+                "type": "CONVERSION",
+                "freeDelta": "-3.66208981",
+                "time": "1726200144966",
+                "asset": "USDT"
         }],
         "success": true
 }
 ```
 
+---
 
-# 查询crypto资金变动详情
 
-`POST:   /user-asset/v1/transaction-detail`
 
-**参数:**
+### 3. 查询资产变动详情
+
+**描述：**  查询用户资产变动详情
+
+- **URL:** `/user-asset/v1/transaction-detail`
+- **方法:** `POST`
+- **请求参数:**
 
 | 名称            | 类型     | 是否必须 | 描述                                                                                         |
 |---------------|--------|------|--------------------------------------------------------------------------------------------|
-| externalUserId | String | YES  | DeCard用户ID                                                                                 |
-| tranId        | Long   | YES  | 交易单号                                                                                          |
-| externalTranId| String | YES  | 外部交易ID                                                                                          |
-| type          | String | YES  | 交易类型<br>DEPOSIT、WITHDRAW、CARD_PRINTING_FEE、CARD_POSTAL_FEE、CARD_VIP_FROZEN_FEE、CONVERSION|
+| externalUserId | String | Y  | DeCard用户ID                                                                                 |
+| tranId        | Long   | Y  | 交易单号                                                                                          |
+| externalTranId| String | Y  | 外部交易ID                                                                                          |
+| type          | String | Y  | 交易类型<br />DEPOSIT、WITHDRAW、CARD_PRINTING_FEE、CARD_POSTAL_FEE、CARD_VIP_FROZEN_FEE、CONVERSION |
 
 
-**响应:**
+- **响应参数:**
+
+| 名称       | 类型   | 描述       |
+| ---------- | ------ | ---------- |
+| type | string | 交易类型 |
+| time | string | 交易时间 |
+| freeDelta | string | 资产变动数量 |
+| asset | string | 资产 |
+| orderId | string | 单号 |
+| status | string | 状态 [SUCCESS, FAIL, PENDING] |
+
+以下部分根据交易类型追加返回
+
+**CONVERSION**
+
+| 名称       | 类型   | 描述       |
+| ---------- | ------ | ---------- |
+| baseAsset | string | 基础资产 |
+| quoteAsset | string | 目标资产 |
+| price | string | 报价 |
+
+**DEPOSIT**
+
+| 名称            | 类型   | 描述     |
+| --------------- | ------ | -------- |
+| network         | string | 网络 |
+| networkName     | string | 网络名称 |
+| transactionHash | string | 交易哈希 |
+| networkTxUrl | string | 地址URL |
+| sendAddress | string | 地址 |
+
+**WITHDRAW**
+
+| 名称            | 类型   | 描述     |
+| --------------- | ------ | -------- |
+| network         | string | 网络     |
+| networkName     | string | 网络名称 |
+| transactionHash | string | 交易哈希 |
+| networkTxUrl    | string | 地址URL  |
+| actualReceived  | string | 接收数量 |
+| feeAmount | string | 费用金额 |
+| receivedAddress | string | 接收地址 |
+
+
+
+**响应示例:**
+
 ```json
 {
         "code": "SYS_SUCCESS",
         "message": null,
         "messageDetail": null,
         "data": {
-                "type": "CONVERSION", // 交易类型
-                "time": "1726216153194", // 交易时间
-                "freeDelta": "5.50768677", // 资产变动数量
-                "asset": "USDT", // 资产
-                "orderId": "1041268486317686785", // 单号
-                "status": "SUCCESS" // 状态 [SUCCESS, FAIL, PENDING]
-                // 以下部分根据交易类型返回不同
-                // CONVERSION
-                "baseAsset": "USDT", // 基础资产 
-                "quoteAsset": "USD", // 目标资产
-                "price": "1.00042", // 报价
-                // DEPOSIT
+                "type": "CONVERSION",
+                "time": "1726216153194",
+                "freeDelta": "5.50768677",
+                "asset": "USDT",
+                "orderId": "1041268486317686785",
+                "status": "SUCCESS",
+
+                "baseAsset": "USDT",
+                "quoteAsset": "USD",
+                "price": "1.00042",
+
                 "network": "TRON",
                 "networkName": "TRON",
                 "transactionHash": "4edc1eb2d9d6b6a153629f65909bdcfced9d00d50988a5f1b57049fa1cb34126",
                 "networkTxUrl": "https://tronscan.org/#/transaction/",
                 "sendAddress": "TErLvDQXaDciLR8RPH45BfM3z7Hxua4sVt",
-                // WITHDRAW
+
                 "network": "TRON",
                 "networkName": "TRON",
                 "transactionHash": "2c80428268edd5cc5436e6fadf175503167f982644924985d68a1deefbcacbd6",
@@ -119,14 +196,6 @@
         "success": true
 }
 ```
-
-
-
-
-
-
-
-
 
 
 

@@ -35,21 +35,11 @@
 }
 ```
 
-
-- **错误响应:**
-```json
-{
-    "code": "SYS_SUCCESS",
-    "message": null,
-    "messageDetail": null,
-    "data": "298fe06f-0066-4565-ae20-3697cd9d664e", // DeCard用户ID
-    "success": true
-}
-```
 ***
 
 ### 2. 获取引导页链接
 **描述：** 获取引导页链接
+
 - **URL:** `/redirect/v1/guidance-link`
 - **方法:** `POST`
 - **请求参数:**
@@ -80,14 +70,6 @@
 ```
 - 引导页链接有效期为5分钟；
 - 约定referer 、user-agent 等来自partners的信息，只接受约定referer和ua打开页面；
-
-- **错误响应:**
-```json
-{
-  "code": "SYS_Fail"
-}
-```
-
 ***
 
 ### 3. 查询用户状态
@@ -104,12 +86,8 @@
 
 | 名称  | 类型      | 描述       |
 | ------------ |---------|----------|
-|  isUserActive | boolean | 用户是否激活 |
-|  isUserDisabled |   boolean      | 用户是否禁用 |
-|  isUserLock |  boolean       | 用户是否锁定 |
-|  isUserSpecial | boolean | 用户是否有问题         |
-|  isUserForbidWithdraw | boolean  | 用户是否禁止提现 |
-|  isUserForbidCardTransaction | boolean  | 用户是否禁止卡交易 |
+|  forbidWithdraw | boolean  | 用户是否禁止提现 |
+|  forbidCardTransaction | boolean  | 用户是否禁止卡交易 |
 
 ```json
 {
@@ -117,28 +95,20 @@
         "message": null,
         "messageDetail": null,
         "data": {
-                "isUserActive": false, 
-                "isUserDisabled": false, 
-                "isUserLock": false, 
-                "isUserSpecial": false, 
-                "isUserForbidWithdraw": false, 
-                "isUserForbidCardTransaction": false
+                "forbidWithdraw": false, 
+                "forbidCardTransaction": false
         },
         "success": true
 }
 ```
 
-- **错误响应:**
-```json
-{
-  "code": "SYS_Fail"
-}
-```
+
 
 ***
 
 ### 4. 查看用户KYC状态
 **描述：** 获取引导页链接
+
 - **URL:** `/account/v1/kyc-status`
 - **方法:** `POST`
 - **请求参数:**
@@ -163,10 +133,3 @@
         "success": true
 }
 ```
-
-- **错误响应:**
-```json
-{
-  "code": "SYS_Fail"
-}
-
