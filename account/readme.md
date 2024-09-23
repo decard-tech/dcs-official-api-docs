@@ -1,8 +1,3 @@
-# 交互流程
-![](../images/flow.png)
----
-
-
 ### 1. 新建用户
 **描述：** 新建用户
 - **URL:** `/account/v1/register`
@@ -19,10 +14,6 @@
 
 | 名称  | 类型      | 描述               |
 | ------------ |---------|------------------|
-|  code | string  | SYS_SUCCESS，表示成功 |
-|  message |   |  |
-|  messageDetail |   |  |
-|  success | boolean | true             |
 |  data | string  | DeCard用户ID       |
 
 ```json
@@ -46,19 +37,15 @@
 
 | 名称           | 类型 | 是否必须 | 描述                              |                
 | ------------------ | -------- | ---------- |---------------------------------| 
-| action             | String   | Y          | 引导页类型<br>[*KYC_GUIDE, CARD_INFO*] |                                                                                          |
-| externalUserId     | String   | Y        | DeCard用户ID                      |    
-| successRedirectUrl | String   | Y        | 成功后的调整地址                        | 
-| errorRedirectUrl   | String   | Y        | 失败后的调整地址                        | 
+| action             | string   | Y          | 引导页类型<br>[*KYC_GUIDE, CARD_INFO*] |                                                                                          |
+| externalUserId     | string   | Y        | DeCard用户ID                      |    
+| successRedirectUrl | string   | Y        | 成功后的调整地址                        | 
+| errorRedirectUrl   | string   | Y        | 失败后的调整地址                        | 
 
 - **响应:**
 
 | 名称  | 类型      | 描述               |
 | ------------ |---------|------------------|
-|  code | string  | SYS_SUCCESS，表示成功 |
-|  message |   |  |
-|  messageDetail |   |  |
-|  success | boolean | true             |
 |  data | string  | 临时访问链接       |
 
 ```json
@@ -67,9 +54,22 @@
     "data": "https://{domain}/{zh|en}/card/{scheme|detail}?secret=qIHyX5xWBJ24PJIcOdmos1piblnglBNoTrw0Ejkqmso",
     "success": true
 }
+
+提醒：
+（1）引导页链接有效期为5分钟
+（2）约定referer 、user-agent 等来自partners的信息，只接受约定referer和ua打开页面
+
 ```
-- 引导页链接有效期为5分钟；
-- 约定referer 、user-agent 等来自partners的信息，只接受约定referer和ua打开页面；
+
+- 失败响应
+```json
+  {
+      "code": "ERROR-CODE",
+      "message": "simple describe, see error-code list",
+      "success": false
+  }
+```
+
 ***
 
 ### 3. 查询用户状态
@@ -82,7 +82,7 @@
 | ------------ |--------|----|----|
 |  externalUserId | string | Y  | DeCard用户ID  |
 
-- **响应:**
+- **成功响应:**
 
 | 名称  | 类型      | 描述       |
 | ------------ |---------|----------|
@@ -101,8 +101,14 @@
         "success": true
 }
 ```
-
-
+- 失败响应
+```json
+  {
+      "code": "ERROR-CODE",
+      "message": "simple describe, see error-code list",
+      "success": false
+  }
+```
 
 ***
 
@@ -113,17 +119,17 @@
 - **方法:** `POST`
 - **请求参数:**
 
-| 名称  | 类型  | 是否必须 | 描述 |
-| ------------ | ------------ |------|----|
-|  externalUserId | String  | YES  | DeCard用户ID  |
+| 名称  | 类型     | 是否必须 | 描述 |
+| ------------ |--------|----|----|
+|  externalUserId | string | Y  | DeCard用户ID  |
 
 - **成功响应:**
 
-| 名称  | 类型      | 描述       |
-| ------------ |---------|----------|
-|  data | string  | KYC状态 [INIT,REVIEW,PENDING,PASS,REFUSE] |
+| 名称  | 类型      | 描述                                                                                                  |
+| ------------ |---------|-----------------------------------------------------------------------------------------------------|
+|  data | string  | KYC状态 <br>- `INIT`：初始状态 <br>- `REVIEW`：提交申请 <br>- `PENDING`：审核中 <br>- `PASS`：审核通过 <br>- `REFUSE`：拒绝 |
 
-**响应:**
+**成功响应:**
 ```json
 {
         "code": "SYS_SUCCESS",
@@ -132,4 +138,12 @@
         "data": "PASS",
         "success": true
 }
+```
+- 失败响应
+```json
+  {
+      "code": "ERROR-CODE",
+      "message": "simple describe, see error-code list",
+      "success": false
+  }
 ```

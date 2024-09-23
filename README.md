@@ -17,6 +17,7 @@ You can access the relevant features through the following domain names
 
 ## Documentation
 Please refer to our extensive for more information.
+### [Interaction Flow:](./flow/readme.md)
 ### [Account](./account/readme.md)
 ### [Card](./card/readme.md)
 ### [Asset](./asset/readme.md)

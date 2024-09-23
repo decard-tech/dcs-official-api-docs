@@ -101,7 +101,7 @@
 ```
 - 失败响应
 ```json
-  {
+{
   "code": "ERROR-CODE",
   "message": "simple describe, see error-code list",
   "success": false
