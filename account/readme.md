@@ -25,6 +25,14 @@
     "success": true
 }
 ```
+- 失败响应
+```json
+  {
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
 
 ***
 
@@ -35,12 +43,12 @@
 - **方法:** `POST`
 - **请求参数:**
 
-| 名称           | 类型 | 是否必须 | 描述                              |                
-| ------------------ | -------- | ---------- |---------------------------------| 
-| action             | string   | Y          | 引导页类型<br>[*KYC_GUIDE, CARD_INFO*] |                                                                                          |
-| externalUserId     | string   | Y        | DeCard用户ID                      |    
-| successRedirectUrl | string   | Y        | 成功后的调整地址                        | 
-| errorRedirectUrl   | string   | Y        | 失败后的调整地址                        | 
+| 名称           | 类型 | 是否必须 | 描述                                                      |                
+| ------------------ | -------- | ---------- |---------------------------------------------------------| 
+| action             | string   | Y          | 引导页类型  <br>- `KYC_GUIDE`：KYC引导页  <br>- `CARD_INFO`：卡信息页 |                                                                                          |
+| externalUserId     | string   | Y        | DeCard用户ID                                              |    
+| successRedirectUrl | string   | Y        | 成功后的调整地址                                                | 
+| errorRedirectUrl   | string   | Y        | 失败后的调整地址                                                | 
 
 - **响应:**
 
