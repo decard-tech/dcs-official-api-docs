@@ -9,6 +9,7 @@
 |  mobileCode | string | Y    | 国家简码  |
 |  mobile | string | Y    | 手机号  |
 |  email | string | N    | 邮箱  |
+| smsCode | string | Y    | 短信验证码 |
 
 - **响应示例:**
 

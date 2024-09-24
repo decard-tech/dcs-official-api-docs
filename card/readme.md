@@ -136,6 +136,7 @@
 | externalUserId | string  | Y  | DeCard用户ID           |
 | block | boolean | Y  | true: 冻结卡；false: 解冻卡           |
 | cardMantissa   | string  | N   | 卡尾号4位<br />多卡区分，默认第一张卡 |
+| smsCode | string  | N   | 短信验证码；**解冻卡需传递** |
 
 - **响应:**
 
