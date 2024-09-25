@@ -136,9 +136,10 @@
 
 | 名称  | 类型      | 描述                                                                                                  |
 | ------------ |---------|-----------------------------------------------------------------------------------------------------|
-|  data | string  | KYC状态 <br>- `INIT`：初始状态 <br>- `REVIEW`：提交申请 <br>- `PENDING`：审核中 <br>- `PASS`：审核通过 <br>- `REFUSE`：拒绝 |
+|  data | string  | KYC状态 <br>- `UNDO`：未做KYC <br>- `INIT`：初始状态 <br>- `REVIEW`：提交申请 <br>- `PENDING`：审核中 <br>- `PASS`：审核通过 <br>- `REFUSE`：拒绝 |
 
 **成功响应:**
+
 ```json
 {
         "code": "SYS_SUCCESS",
