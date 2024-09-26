@@ -11,8 +11,8 @@ This API package is meant to provide you, the developer, with a set of tools to 
 You can access the relevant features through the following domain names
 
 | Mainnet | https://api.thedecard.com         |
-|---------|-----------------------------------|
-| Testnet | https://api.testnet.thedecard.com |
+| ------- | --------------------------------- |
+| Testnet | https://api-testnet.thedecard.com |
 
 
 ## Documentation
