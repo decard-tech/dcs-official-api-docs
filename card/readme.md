@@ -69,7 +69,7 @@
 | 名称             | 类型     | 是否必须 | 描述                |
 |----------------|--------|------|-------------------|
 | externalUserId | string | Y  | DeCard用户ID        |
-| cardMantissa   | string | N   | 卡尾号4位，多卡区分，默认第一张卡 |
+
 
 - **响应:**
 
@@ -95,19 +95,21 @@
     "code": "SYS_SUCCESS",
     "message": null,
     "messageDetail": null,
-    "data": {
-        "cardType": "NORMAL",
-        "cardNo": "************0643",
-        "cardHolder": "****HAO",
-        "cardImage": "https://xxx.xxx.com/card/main/normal-bg.webp",
-        "cardEmbossingName": "",
-        "cardStatus": "NORMAL",
-        "physicalCardStatus": "ACTIVE",
-        "walletBalance": "1.87",
-        "caBalance": "0",
-        "cardBalance": "1.87",
-        "points": 0
-    },
+    "data": [
+        {
+            "cardType": "NORMAL",
+            "cardNo": "************0643",
+            "cardHolder": "****HAO",
+            "cardImage": "https://xxx.xxx.com/card/main/normal-bg.webp",
+            "cardEmbossingName": "",
+            "cardStatus": "NORMAL",
+            "physicalCardStatus": "ACTIVE",
+            "walletBalance": "1.87",
+            "caBalance": "0",
+            "cardBalance": "1.87",
+            "points": 0
+        }
+    ],
     "success": true
 }
 ```
