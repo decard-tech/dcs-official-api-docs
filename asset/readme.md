@@ -19,28 +19,34 @@
 | freeze | string | 冻结数量 |
 | total | string | 总数量  |
 | network | string | 网络   |
+| logo | string | logo url   |
 
 **响应示例:**
 
 ```json
 {
-        "code": "SYS_SUCCESS",
-        "message": null,
-        "messageDetail": null,
-        "data": [{
-                "asset": "USDT", 
-                "free": "5.512075", 
-                "freeze": "0",
-                "total": "5.512075",
-                "network": "TRON"
-        }, {
-                "asset": "USDC",
-                "free": "16173335.08009343",
-                "freeze": "0",
-                "total": "16173335.08009343",
-                "network": "BASE"
-        }],
-        "success": true
+    "code": "SYS_SUCCESS",
+    "message": null,
+    "messageDetail": null,
+    "data": [
+        {
+            "asset": "USDT",
+            "logo": "https://static-dev.thedecard.com/20240813/1adaec74-05ec-40fc-930c-24932b2ca042.svg",
+            "network": "TRON",
+            "free": "134.18397879",
+            "freeze": "0",
+            "total": "134.18397879"
+        },
+        {
+            "asset": "USDC",
+            "logo": "https://static-dev.thedecard.com/20240813/30a1f898-f023-4f38-bbdf-5caf2c71f8f3.svg",
+            "network": "TRON",
+            "free": "1118.37430217",
+            "freeze": "0",
+            "total": "1118.37430217"
+        }
+    ],
+    "success": true
 }
 ```
 - 失败响应
