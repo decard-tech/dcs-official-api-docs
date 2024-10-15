@@ -102,18 +102,20 @@
 - **响应示例:**
 ```json
 {
-        "code": "SYS_SUCCESS",
-        "message": null,
-        "messageDetail": null,
-        "data": { 
-                "network": "TRON",
-                "coin": "USDT",
-                "address": "TJX8Xzj31Bf9XR63TwTn5ynjnD1qwrh",
-                "addressTips": "crypto_spec_tips",
-                "minDepositAmount": "0.00000001",
-                "minConfirmationNo": 15
-        },
-        "success": true
+    "code": "SYS_SUCCESS",
+    "message": null,
+    "messageDetail": null,
+    "data": {
+        "network": "TRON",
+        "networkName": "TRON",
+        "networkNativeAsset": "TRX",
+        "coin": "USDT",
+        "address": "TJX8Xzj3XzL1Bf9XR63TwTn5ynjnD1qwrh",
+        "addressTips": "crypto_spec_tips",
+        "minDepositAmount": "0.00000001",
+        "minConfirmationNo": 15
+    },
+    "success": true
 }
 ```
 - 失败响应

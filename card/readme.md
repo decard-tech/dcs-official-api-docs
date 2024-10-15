@@ -19,33 +19,36 @@
 - **响应示例:**
 ```json
 {
-        "code": "SYS_SUCCESS",
-        "message": null,
-        "messageDetail": null,
-        "data": [{
-                        "type": "VIP",
-                        "name": "高端卡",
-                        "badge": "VIP",
-                        "image": "https://xxx.xxx.com/card/apply/vip.webp",
-                        "tags": [ 
-                                "无限额度消费",
-                                "消费时自动兑换U",
-                                "专属尊享礼遇"
-                        ]
-                },
-                {
-                        "type": "NORMAL",
-                        "name": "普通卡",
-                        "badge": "",
-                        "image": "https://xxx.xxx.com/card/apply/normal.webp",
-                        "tags": [
-                                "轻触支付",
-                                "畅游无忧",
-                                "选择心仪卡面，彰显您的个性"
-                        ]
-                }
-        ],
-        "success": true
+    "code": "SYS_SUCCESS",
+    "message": null,
+    "messageDetail": null,
+    "data": [
+        {
+            "association": "MASTER_CARD",
+            "type": "VIP",
+            "name": "高端卡",
+            "badge": "VIP",
+            "image": "https://xxx.xxx.com/card/apply/vip.webp",
+            "tags": [
+                "无限额度消费",
+                "消费时自动兑换U",
+                "专属尊享礼遇"
+            ]
+        },
+        {
+            "association": "MASTER_CARD",
+            "type": "NORMAL",
+            "name": "普通卡",
+            "badge": "",
+            "image": "https://xxx.xxx.com/card/apply/normal.webp",
+            "tags": [
+                "轻触支付",
+                "畅游无忧",
+                "选择心仪卡面，彰显您的个性"
+            ]
+        }
+    ],
+    "success": true
 }
 ```
 - 失败响应
