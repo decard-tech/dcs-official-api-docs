@@ -100,6 +100,7 @@
     "messageDetail": null,
     "data": [
         {
+            "association":"MASTER_CARD",
             "cardType": "NORMAL",
             "cardNo": "************0643",
             "cardHolder": "****HAO",
