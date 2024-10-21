@@ -15,6 +15,7 @@
 | ----------------------- |---------| ------------------ |
 | network                 | string  | 网络               |
 | asset                   | string  | 币种               |
+| logo                   | string  | 币种logo               |
 | depositEnable           | boolean | 充值开关           |
 | withdrawEnable          | boolean | 提现开关           |
 | withdrawIsTag           | boolean | 提币是否需要tag    |
@@ -48,6 +49,7 @@
         "data": [{
                 "network": "TRON",
                 "asset": "USDT",
+			          "logo": "https://static-dev.thedecard.com/20240813/1adaec74-05ec-40fc-930c-24932b2ca042.svg",
                 "depositEnable": true,
                 "withdrawEnable": true,
                 "withdrawIsTag": true,
