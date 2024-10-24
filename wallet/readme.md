@@ -14,6 +14,7 @@
 | 名称                    | 类型      | 描述               |
 | ----------------------- |---------| ------------------ |
 | network                 | string  | 网络               |
+| networkNativeAsset     | string | 原生代币 |
 | asset                   | string  | 币种               |
 | logo                   | string  | 币种logo               |
 | depositEnable           | boolean | 充值开关           |

@@ -73,7 +73,7 @@
 | type           | string        | N  | 交易类型 <br>- `DEPOSIT`：充值  <br>- `WITHDRAW`：提现 <br>- `CARD_PRINTING_FEE`：制卡费  <br>- `CARD_POSTAL_FEE`：邮寄费  <br>- `CARD_VIP_FROZEN_FEE`：VIP冻结费  <br>- `CONVERSION`：convert费 |
 | page           | int           | N   | 默认1                                                                                                                                                                      |
 | size           | int       | N    | 默认100； 每页条数[1,100]                                                                                                                                                       |
-| startTime      | LocalDateTime | N   | 开始时间戳;  默认Now()-7D                                                                                                                                                       |
+| startTime      | LocalDateTime | N   | 开始时间戳;  默认MIN                                                                                                                                                     |
 | endTime        | LocalDateTime | N   | 截止时间戳;  默认Now()                                                                                                                                                          |
 
 - **响应参数:**
@@ -139,6 +139,7 @@
 | time | string | 交易时间 |
 | freeDelta | string | 资产变动数量 |
 | asset | string | 资产 |
+| logo | string | 资产logo |
 | orderId | string | 单号 |
 | status | string | 状态 [SUCCESS, FAIL, PENDING] |
 
@@ -158,6 +159,7 @@
 | --------------- | ------ | -------- |
 | network         | string | 网络 |
 | networkName     | string | 网络名称 |
+| networkNativeAsset     | string | 原生代币 |
 | transactionHash | string | 交易哈希 |
 | networkTxUrl | string | 地址URL |
 | sendAddress | string | 地址 |
@@ -168,6 +170,7 @@
 | --------------- | ------ | -------- |
 | network         | string | 网络     |
 | networkName     | string | 网络名称 |
+| networkNativeAsset     | string | 原生代币 |
 | transactionHash | string | 交易哈希 |
 | networkTxUrl    | string | 地址URL  |
 | actualReceived  | string | 接收数量 |
