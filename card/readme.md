@@ -188,7 +188,7 @@
 | cardMantissa   | string        | N   | 卡尾号4位，多卡区分，默认第一张卡                       |
 | page           | int           | N   | 默认1                                     |
 | size           | int       | N    | 默认100；每页条数[1,100]                       |
-| type           | string        | N   | 交易类型 <br>- `SPEND`：消费 <br>- `REFUND`：退款 <br>- `PARTIAL_REFUND`：部分退款|
+| type           | string        | N   | 交易类型 <br>- `SPEND`：消费 <br>- `REFUND`：退款 |
 | startTime      | LocalDateTime | N   | 开始时间戳                                   |
 | endTime        | LocalDateTime | N   | 截止时间戳                                   |
 
