@@ -249,7 +249,7 @@
 
 ### 5. 卡账单列表
 
-**描述：** 卡消费历史（USD）
+**描述：** 卡账单
 
 - **URL:** `/card/v1/statements`
 - **方法:**  `GET`
@@ -260,47 +260,131 @@
 | page           | int    | N    | 默认1               |
 | rows           | int    | N    | 默认100；每页条数[1,100] |
 | externalUserId | string | Y    | DeCard用户ID        |
+
 - **响应:**
 
-| 名称           | 类型      | 描述                                               |
-|--------------|---------|--------------------------------------------------|
-| type           | string  | 账单类型 <br>- `NOT_POSTED`：未出账单 <br>- `POSTED`：已出账单 |
-| statementDateStart       | long    | 账单开始时间                                           |
-| statementDateEnd         | long    | 账单结束时间、出账时间                                      |
-| paymentAmountInSgd        | decimal | 账单金额(SGD)                                        |
-| paymentAmountInUsd       | decimal | 账单金额(USD)                                        |
+| 名称                   | 类型      | 描述                                               |
+|----------------------|---------|--------------------------------------------------|
+| type                 | string  | 账单类型 <br>- `NOT_POSTED`：未出账单 <br>- `POSTED`：已出账单 |
+| statementDateStart   | long    | 账单开始时间                                           |
+| statementDateEnd     | long    | 账单结束时间、出账时间                                      |
+| paymentAmountInSgd   | decimal | 账单金额(SGD)                                        |
+| paymentAmountInUsd   | decimal | 账单金额(USD)                                        |
 | nonPostedAmountInSgd | decimal | 未入账金额(SGD)                                       |
 | nonPostedAmountInUsd | decimal | 未入账金额(USD)                                       |
-| statementId   | string  | 账单id                                             | 
+| statementId          | string  | 账单id                                             | 
+
+- **响应示例:**
+
+```json
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": [
+    {
+      "type": "NOT_POSTED",
+      "statementDateStart": "1801526400000",
+      "statementDateEnd": "1803859200000",
+      "paymentAmountInSgd": "100",
+      "paymentAmountInUsd": "0",
+      "nonPostedAmountInSgd": "0",
+      "nonPostedAmountInUsd": "0",
+      "statementId": "NO_POSTED"
+    },
+    {
+      "type": "POSTED",
+      "statementDateStart": "1798848000000",
+      "statementDateEnd": "1801440000000",
+      "paymentAmountInSgd": "11302.23",
+      "paymentAmountInUsd": "0",
+      "nonPostedAmountInSgd": null,
+      "nonPostedAmountInUsd": null,
+      "statementId": "172888972041194860325506"
+    }
+  ],
+  "success": true
+}
+```
+
+- 失败响应
+
+```json
+  {
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
+
+### 6. 卡账单详情
+
+**描述：** 卡账单详情
+
+- **URL:** `/card/v1/statements/detail`
+- **方法:**  `GET`
+- **请求参数:**
+
+| 名称             | 类型     | 是否必须 | 描述                |
+|----------------|--------|------|-------------------|
+| page           | int    | N    | 默认1               |
+| rows           | int    | N    | 默认100；每页条数[1,100] |
+| externalUserId | string | Y    | DeCard用户ID        |
+| statementId    | string | Y    | 账单id              |
+
+- **响应:**
+
+| 名称                   | 类型      | 描述                               |
+|----------------------|---------|----------------------------------|
+| merchantName                 | string  | 商户名称                             |
+| cardOrganizationLogo   | string  | 卡组(master card、UnionPay)的logo    |
+| postIndicator     | int     | 入账标识 <br>- `0`：未入账 <br>- `1`：已入账 |
+| transactionDateTime   | long    | 交易时间                             |
+| postingAmountInSgd   | decimal | 入账金额(USD)                        |
+| postingAmountInUsd | decimal | 入账金额(SGD)                        |
+| debitCreditIndcator | string  | 借贷记标识 <br>- `C`：退款 <br>- `D`：消费  |
+| transactionDescription          | string  | 交易描述                             | 
+| cardNumber          | string  | 卡号，后四位为未打码数字                     | 
+| postingDate          | long    | 入账日期                             | 
+| transactionAmount          | decimal | 交易金额                             | 
+| transactionCurrency          | string  | 交易币种                             | 
 - **响应示例:**
 ```json
 {
-    "code": "SYS_SUCCESS",
-    "message": null,
-    "messageDetail": null,
-    "data": [
-        {
-            "type": "NOT_POSTED",
-            "statementDateStart": "1801526400000",
-            "statementDateEnd": "1803859200000",
-            "paymentAmountInSgd": "100",
-            "paymentAmountInUsd": "0",
-            "nonPostedAmountInSgd": "0",
-            "nonPostedAmountInUsd": "0",
-            "statementId": "NO_POSTED"
-        },
-        {
-            "type": "POSTED",
-            "statementDateStart": "1798848000000",
-            "statementDateEnd": "1801440000000",
-            "paymentAmountInSgd": "11302.23",
-            "paymentAmountInUsd": "0",
-            "nonPostedAmountInSgd": null,
-            "nonPostedAmountInUsd": null,
-            "statementId": "172888972041194860325506"
-        }
-    ],
-    "success": true
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": [
+    {
+      "merchantName": null,
+      "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp",
+      "postIndicator": 1,
+      "transactionDateTime": "1801526399000",
+      "postingAmountInSgd": "114.04",
+      "postingAmountInUsd": "0",
+      "debitCreditIndcator": "D",
+      "transactionDescription": "Revolving Interest Charge",
+      "cardNumber": "5304 **** ****1759",
+      "postingDate": "1801440000000",
+      "transactionAmount": "114.04",
+      "transactionCurrency": "SGD"
+    },
+    {
+      "merchantName": null,
+      "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp",
+      "postIndicator": 1,
+      "transactionDateTime": "1801526399000",
+      "postingAmountInSgd": "2.55",
+      "postingAmountInUsd": "0",
+      "debitCreditIndcator": "D",
+      "transactionDescription": "Revolving Interest Charge",
+      "cardNumber": "5304 **** ****1759",
+      "postingDate": "1801440000000",
+      "transactionAmount": "2.55",
+      "transactionCurrency": "SGD"
+    }
+  ],
+  "success": true
 }
 ```
 - 失败响应
@@ -312,7 +396,6 @@
   "success": false
 }
 ```
-
 
 
 
