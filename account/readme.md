@@ -178,10 +178,11 @@
 - **方法:** `POST`
 - **请求参数:**
 
-| 名称                    | 类型     | 是否必须 | 描述           |
-|-----------------------|--------|------|--------------|
-| externalUserId        | string | Y    | DeCard用户ID   |
-| externalInviterUserId | string | Y    | DeCard推荐用户ID |
+| 名称                    | 类型     | 是否必须 | 描述              |
+|-----------------------|--------|------|-----------------|
+| externalUserId        | string | Y    | 被推荐人      |
+| externalInviterUserId | string | Y    | 推荐人 |
+
 
 - **成功响应:**
 

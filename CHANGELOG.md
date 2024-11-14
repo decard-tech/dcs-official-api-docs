@@ -1,9 +1,8 @@
 ## 2024-11-15
-[All Commits](https://github.com/traefik/traefik/compare/v3.1.3...v3.1.4)
 
 **account**
 - [新增接口用于传递邀请关系](account/readme.md#5-绑定推荐关系)
-- 
+
 
 **websocket**
 - [kyc状态](websocket/readme.md#kyc状态-kyc_status)
@@ -19,4 +18,5 @@
 - 资金池[充值](asset/readme.md#4-资金池充值)、[提现](asset/readme.md#5-资金池提现)、[操作结果查询](asset/readme.md#6-资金池操作查询)
 
 **card**
-- [新增卡交易历史接口v2](card/readme.md#5)
+- [新增卡交易历史接口v2-账单列表](card/readme.md#5-卡账单列表)
+- [新增卡交易历史接口v2-账单详情](card/readme.md#6-卡账单详情)
