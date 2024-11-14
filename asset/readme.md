@@ -223,6 +223,145 @@
 ```
 
 
+---
+### 4. 资金池充值
+
+**描述：** 从渠道系统账户划转资金给当前渠道用户
+
+- **URL:** `/user-asset/v1/credit`
+- **方法:** `POST`
+- **请求参数:**
+
+| 名称           | 类型     | 是否必须 | 描述                           |
+| -------------- |--------|------|------------------------------|
+| uniqueId | string | Y    | 唯一id，当前api用户维度全局唯一，如果重复，拒绝执行 |
+| asset | string | Y    | 币种，必须是decard支持的币种            |
+| amount | string | Y    | 转账金额，必须是正数，小数位数不得超过18位       |
+| externalUserId | string | Y    | DeCard用户ID                   |
+| remark | string | N    | 备注信息                         |
+
+- **响应参数:**
+
+| 名称 | 类型   | 描述   |
+| ---- | ------ |------|
+| data | boolean | 成功或失败 |
+
+
+**响应示例:**
+
+```json
+{
+    "code": "SYS_SUCCESS",
+    "message": null,
+    "messageDetail": null,
+    "data": true,
+    "success": true
+}
+```
+- 失败响应
+```json
+  {
+      "code": "ERROR-CODE",
+      "message": "simple describe, see error-code list",
+      "success": false
+  }
+```
+
+---
+### 5. 资金池提现
+
+**描述：** 从当前渠道用户划转资金给渠道系统账户
+
+- **URL:** `/user-asset/v1/debit`
+- **方法:** `POST`
+- **请求参数:**
+
+| 名称           | 类型     | 是否必须 | 描述         |
+| -------------- |--------|------|------------|
+| uniqueId | string | Y    | 唯一id,当前api用户维度全局唯一，如果重复，拒绝执行     |
+| asset | string | Y    | 币种，必须是decard支持的币种 |
+| amount | string | Y    | 转账金额，必须是正数，小数位数不得超过8位 |
+| externalUserId | string | Y    | DeCard用户ID |
+| remark | string | N    | 备注信息 |
+
+- **响应参数:**
+
+| 名称 | 类型   | 描述   |
+| ---- | ------ |------|
+| data | boolean | 成功或失败 |
+
+
+**响应示例:**
+
+```json
+{
+    "code": "SYS_SUCCESS",
+    "message": null,
+    "messageDetail": null,
+    "data": true,
+    "success": true
+}
+```
+- 失败响应
+```json
+  {
+      "code": "ERROR-CODE",
+      "message": "simple describe, see error-code list",
+      "success": false
+  }
+```
+
+
+---
+### 6. 资金池操作查询
+
+**描述：** 资金划转结果查询
+
+- **URL:** `/user-asset/v1/transfer-query`
+- **方法:** `GET`
+- **请求参数:**
+
+| 名称           | 类型     | 是否必须 | 描述                           |
+| -------------- |--------|------|------------------------------|
+| uniqueId | string | Y    | 唯一id，当前api用户维度全局唯一，如果重复，拒绝执行 |
+
+
+- **响应参数:**
+
+| 名称 | 类型   | 描述   |
+| ---- | ------ |------|
+| uniqueId | string | Y    | 唯一id,当前api用户维度全局唯一，如果重复，拒绝执行     |
+| asset | string | Y    | 币种，必须是decard支持的币种 |
+| amount | string | Y    | 转账金额，必须是正数，小数位数不得超过8位 |
+| externalUserId | string | Y    | DeCard用户ID |
+| remark | string | N    | 备注信息 |
+
+
+**响应示例:**
+
+```json
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": {
+    "uniqueId": "safd1-2341-243-1sfa",
+    "asset": "USDT",
+    "amount": "1.23",
+    "externalUserId": "xxxx-xxxx-xxxx",
+    "remark": "xxxxx"
+  },
+  "success": true
+}
+```
+- 失败响应
+```json
+  {
+      "code": "ERROR-CODE",
+      "message": "simple describe, see error-code list",
+      "success": false
+  }
+```
 
 
 
