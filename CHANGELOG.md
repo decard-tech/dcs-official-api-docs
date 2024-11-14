@@ -2,7 +2,7 @@
 [All Commits](https://github.com/traefik/traefik/compare/v3.1.3...v3.1.4)
 
 **account**
-- [新增接口用于传递邀请关系](account/readme.md#)
+- [新增接口用于传递邀请关系](account/readme.md#5-绑定推荐关系)
 - 
 
 **websocket**
