@@ -12,9 +12,9 @@
 **asset**
 - [balance会新增asset（rusd-奖励金）只可消费不可退款](asset/readme.md#1-资产查询)
 - [crypto历史会增加三种交易类型](asset/readme.md#2-资金历史查询)
-  - reward_pay:  奖励金支付
-  - reward_distribution: 退换奖励金
-  - reward_refund: 发放奖励金（可能来源消费挖矿和推荐返佣等活动）
+  - reward_pay: 奖励金支付
+  - reward_distribution: 奖励金发放（可能来源消费挖矿和推荐返佣等活动）
+  - reward_refund: 奖励金退还
 - 资金池[充值](asset/readme.md#4-资金池充值)、[提现](asset/readme.md#5-资金池提现)、[操作结果查询](asset/readme.md#6-资金池操作查询)
 
 **card**

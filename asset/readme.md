@@ -67,14 +67,14 @@
 - **方法:** `POST`
 - **请求参数:**
 
-| 名称             | 类型            | 是否必须 | 描述                                                                                                                                                                       |
-|----------------|---------------|------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| externalUserId | string        | Y  | DeCard用户ID                                                                                                                                                               |
-| type           | string        | N  | 交易类型 <br>- `DEPOSIT`：充值  <br>- `WITHDRAW`：提现 <br>- `CARD_PRINTING_FEE`：制卡费  <br>- `CARD_POSTAL_FEE`：邮寄费  <br>- `CARD_VIP_FROZEN_FEE`：VIP冻结费  <br>- `CONVERSION`：convert费 |
-| page           | int           | N   | 默认1                                                                                                                                                                      |
-| size           | int       | N    | 默认100； 每页条数[1,100]                                                                                                                                                       |
-| startTime      | LocalDateTime | N   | 开始时间戳;  默认MIN                                                                                                                                                     |
-| endTime        | LocalDateTime | N   | 截止时间戳;  默认Now()                                                                                                                                                          |
+| 名称             | 类型            | 是否必须 | 描述                                                                                                                                                                                                                                   |
+|----------------|---------------|------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| externalUserId | string        | Y  | DeCard用户ID                                                                                                                                                                                                                           |
+| type           | string        | N  | 交易类型 <br>- `DEPOSIT`：充值  <br>- `WITHDRAW`：提现 <br>- `CARD_PRINTING_FEE`：制卡费  <br>- `CARD_POSTAL_FEE`：邮寄费  <br>- `CARD_VIP_FROZEN_FEE`：VIP冻结费 <br>- `CONVERSION`：convert费  <br>- `REWARD_DISTRIBUTION`：奖励金发放 <br>- `REWARD_PAY`：奖励金支付 <br>- `REWARD_REFUND`：奖励金退还 |
+| page           | int           | N   | 默认1                                                                                                                                                                                                                                  |
+| size           | int       | N    | 默认100； 每页条数[1,100]                                                                                                                                                                                                                   |
+| startTime      | LocalDateTime | N   | 开始时间戳;  默认MIN                                                                                                                                                                                                                        |
+| endTime        | LocalDateTime | N   | 截止时间戳;  默认Now()                                                                                                                                                                                                                      |
 
 - **响应参数:**
 
@@ -128,7 +128,7 @@
 | externalUserId | string | Y  | DeCard用户ID                                                                                 |
 | tranId        | long   | Y  | 交易单号                                                                                          |
 | externalTranId| string | Y  | 外部交易ID                                                                                          |
-| type          | string | Y  | 交易类型<br>- `DEPOSIT`：充值  <br>- `WITHDRAW`：提现 <br>- `CARD_PRINTING_FEE`：制卡费  <br>- `CARD_POSTAL_FEE`：邮寄费  <br>- `CARD_VIP_FROZEN_FEE`：VIP冻结费  <br>- `CONVERSION`：convert费 |
+| type          | string | Y  | 交易类型<br>- `DEPOSIT`：充值  <br>- `WITHDRAW`：提现 <br>- `CARD_PRINTING_FEE`：制卡费  <br>- `CARD_POSTAL_FEE`：邮寄费  <br>- `CARD_VIP_FROZEN_FEE`：VIP冻结费  <br>- `CONVERSION`：convert费 <br>- `REWARD_DISTRIBUTION`：奖励金发放 <br>- `REWARD_PAY`：奖励金支付 <br>- `REWARD_REFUND`：奖励金退还 |
 
 
 - **响应参数:**
