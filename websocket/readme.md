@@ -36,9 +36,9 @@
 
 **URL:** `wss://{domain}/ws/{channel}`
 
-| Mainnet | stream.thedecard.com |
+| Mainnet | stream.thedecard.com      |
 | ------- |---------------------------|
-| Testnet | stream-uat.thedecard.com |
+| Testnet | stream-test.thedecard.com |
 
 **响应数据结构:**
 
