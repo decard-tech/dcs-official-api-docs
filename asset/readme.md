@@ -257,6 +257,7 @@
 | remark         | string | 备注                             |
 | status         | string | 状态 SUCCESS/FAIL 失败会通过接口报错的方式返回 |
 | direction      | string | 方向 CREDIT/DEBIT                |
+| tranId         | string | tranId                         |
 
 **响应示例:**
 
@@ -266,13 +267,14 @@
   "message": null,
   "messageDetail": null,
   "data": {
-    "uniqueId": "1111111114",
+    "uniqueId": "1111111115",
     "asset": "USDT",
     "amount": "10",
     "externalUserId": "2dc7cfae-6a2d-4609-b302-3cd412b9a9e6",
     "direction": "CREDIT",
     "remark": "测试的 嘿嘿嘿",
-    "status": "SUCCESS"
+    "status": "SUCCESS",
+    "tranId": "4258286593511522560"
   },
   "success": true
 }
@@ -316,6 +318,7 @@
 | externalUserId | string | 外部user id       |
 | remark         | string | 备注              |
 | direction      | string | 方向 CREDIT/DEBIT |
+| tranId         | string | tranId          |
 
 **响应示例:**
 
@@ -325,13 +328,14 @@
   "message": null,
   "messageDetail": null,
   "data": {
-    "uniqueId": "1111111114",
+    "uniqueId": "1111111115",
     "asset": "USDT",
     "amount": "10",
     "externalUserId": "2dc7cfae-6a2d-4609-b302-3cd412b9a9e6",
     "direction": "CREDIT",
     "remark": "测试的 嘿嘿嘿",
-    "status": "SUCCESS"
+    "status": "SUCCESS",
+    "tranId": "4258286593511522560"
   },
   "success": true
 }
@@ -363,15 +367,15 @@
 
 - **响应参数:**
 
-| 名称             | 类型     | 描述 |
-|----------------|--------|----|
-| uniqueId       | string | Y  | 唯一id,当前api用户维度全局唯一，如果重复，拒绝执行     |
-| asset          | string | Y  | 币种，必须是decard支持的币种 |
-| amount         | string | Y  | 转账金额，必须是正数，小数位数不得超过8位 |
-| externalUserId | string | Y  | DeCard用户ID |
-| remark         | string | N  | 备注信息 |
+| 名称             | 类型     | 描述              |
+|----------------|--------|-----------------|
+| uniqueId       | string | Y               | 唯一id,当前api用户维度全局唯一，如果重复，拒绝执行     |
+| asset          | string | Y               | 币种，必须是decard支持的币种 |
+| amount         | string | Y               | 转账金额，必须是正数，小数位数不得超过8位 |
+| externalUserId | string | Y               | DeCard用户ID |
+| remark         | string | N               | 备注信息 |
 | direction      | string | 方向 CREDIT/DEBIT |
-
+| tranId         | string | tranId          |
 
 **响应示例:**
 
@@ -382,22 +386,14 @@
   "messageDetail": null,
   "data": [
     {
-      "uniqueId": "1111111113",
+      "uniqueId": "1111111115",
       "asset": "USDT",
       "amount": "10.000000000000000000",
       "externalUserId": "2dc7cfae-6a2d-4609-b302-3cd412b9a9e6",
       "direction": "CREDIT",
       "remark": "测试的 嘿嘿嘿",
-      "status": "SUCCESS"
-    },
-    {
-      "uniqueId": "1111111114",
-      "asset": "USDT",
-      "amount": "10.000000000000000000",
-      "externalUserId": "2dc7cfae-6a2d-4609-b302-3cd412b9a9e6",
-      "direction": "CREDIT",
-      "remark": "测试的 嘿嘿嘿",
-      "status": "SUCCESS"
+      "status": "SUCCESS",
+      "tranId": "4258286593511522560"
     }
   ],
   "success": true
