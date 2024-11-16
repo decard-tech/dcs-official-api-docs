@@ -240,7 +240,7 @@
 
 | 名称             | 类型     | 是否必须 | 描述                           |
 |----------------|--------|------|------------------------------|
-| uniqueId       | string | Y    | 唯一id，当前api用户维度全局唯一，如果重复，拒绝执行 |
+| externalTranId | string | Y    | 唯一id，当前api用户维度全局唯一，如果重复，拒绝执行 |
 | asset          | string | Y    | 币种，必须是decard支持的币种            |
 | amount         | string | Y    | 转账金额，必须是正数，小数位数不得超过18位       |
 | externalUserId | string | Y    | DeCard用户ID                   |
@@ -250,7 +250,7 @@
 
 | 名称             | 类型     | 描述                             |
 |----------------|--------|--------------------------------|
-| uniqueId       | string | uniqueId                       |
+| externalTranId | string | externalTranId                 |
 | asset          | string | 币种                             |
 | amount         | string | 金额                             |
 | externalUserId | string | 外部user id                      |
@@ -267,14 +267,14 @@
   "message": null,
   "messageDetail": null,
   "data": {
-    "uniqueId": "1111111115",
+    "externalTranId": "1111111116",
     "asset": "USDT",
     "amount": "10",
     "externalUserId": "2dc7cfae-6a2d-4609-b302-3cd412b9a9e6",
     "direction": "CREDIT",
-    "remark": "测试的 嘿嘿嘿",
+    "remark": "hello world!!",
     "status": "SUCCESS",
-    "tranId": "4258286593511522560"
+    "tranId": "4258308122102202624"
   },
   "success": true
 }
@@ -302,7 +302,7 @@
 
 | 名称             | 类型     | 是否必须 | 描述                           |
 |----------------|--------|------|------------------------------|
-| uniqueId       | string | Y    | 唯一id,当前api用户维度全局唯一，如果重复，拒绝执行 |
+| externalTranId | string | Y    | 唯一id,当前api用户维度全局唯一，如果重复，拒绝执行 |
 | asset          | string | Y    | 币种，必须是decard支持的币种            |
 | amount         | string | Y    | 转账金额，必须是正数，小数位数不得超过8位        |
 | externalUserId | string | Y    | DeCard用户ID                   |
@@ -312,7 +312,7 @@
 
 | 名称             | 类型     | 描述              |
 |----------------|--------|-----------------|
-| uniqueId       | string | uniqueId        |
+| externalTranId | string | uniqueId        |
 | asset          | string | 币种              |
 | amount         | string | 金额              |
 | externalUserId | string | 外部user id       |
@@ -328,14 +328,14 @@
   "message": null,
   "messageDetail": null,
   "data": {
-    "uniqueId": "1111111115",
+    "externalTranId": "1111111116",
     "asset": "USDT",
     "amount": "10",
     "externalUserId": "2dc7cfae-6a2d-4609-b302-3cd412b9a9e6",
     "direction": "CREDIT",
-    "remark": "测试的 嘿嘿嘿",
+    "remark": "hello world!!",
     "status": "SUCCESS",
-    "tranId": "4258286593511522560"
+    "tranId": "4258308122102202624"
   },
   "success": true
 }
@@ -361,15 +361,17 @@
 - **方法:** `GET`
 - **请求参数:**
 
-| 名称       | 类型     | 是否必须 | 描述                           |
-|----------|--------|------|------------------------------|
-| uniqueId | string | Y    | 唯一id，当前api用户维度全局唯一，如果重复，拒绝执行 |
+| 名称              | 类型       | 是否必须 | 描述    |
+|-----------------|----------|------|-------|
+| externalTranIds | string[] | Y    | 唯一id  |
+| page            | int      | Y    | 默认1   |
+| rows            | int      | Y    | 默认100 |
 
 - **响应参数:**
 
 | 名称             | 类型     | 描述              |
 |----------------|--------|-----------------|
-| uniqueId       | string | Y               | 唯一id,当前api用户维度全局唯一，如果重复，拒绝执行     |
+| externalTranId | string | Y               | 唯一id,当前api用户维度全局唯一，如果重复，拒绝执行     |
 | asset          | string | Y               | 币种，必须是decard支持的币种 |
 | amount         | string | Y               | 转账金额，必须是正数，小数位数不得超过8位 |
 | externalUserId | string | Y               | DeCard用户ID |
@@ -386,14 +388,14 @@
   "messageDetail": null,
   "data": [
     {
-      "uniqueId": "1111111115",
+      "externalTranId": "1111111116",
       "asset": "USDT",
       "amount": "10.000000000000000000",
       "externalUserId": "2dc7cfae-6a2d-4609-b302-3cd412b9a9e6",
       "direction": "CREDIT",
-      "remark": "测试的 嘿嘿嘿",
+      "remark": "hello world!!",
       "status": "SUCCESS",
-      "tranId": "4258286593511522560"
+      "tranId": "4258308122102202624"
     }
   ],
   "success": true
