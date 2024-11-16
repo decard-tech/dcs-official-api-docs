@@ -246,6 +246,7 @@
 | externalUserId | string | Y    | DeCard用户ID                   |
 | remark         | string | N    | 备注信息                         |
 
+
 - **响应参数:**
 
 | 名称             | 类型     | 描述                             |
