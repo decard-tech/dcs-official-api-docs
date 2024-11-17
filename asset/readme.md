@@ -246,7 +246,6 @@
 | externalUserId | string | Y    | DeCard用户ID                                |
 | remark         | string | N    | 备注信息                                      |
 
-
 - **响应参数:**
 
 | 名称             | 类型     | 描述                             |
@@ -379,6 +378,7 @@
 | remark         | string | N               | 备注信息 |
 | direction      | string | 方向 CREDIT/DEBIT |
 | tranId         | string | tranId          |
+| status         | string | 状态 SUCCESS/FAIL |
 
 **响应示例:**
 
