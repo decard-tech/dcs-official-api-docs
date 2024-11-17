@@ -53,7 +53,9 @@
 | action             | string | Y    | 引导页类型  <br>- `KYC_GUIDE`：KYC引导页  <br>- `CARD_INFO`：卡信息页 |                                                                                          |
 | externalUserId     | string | Y    | DeCard用户ID                                              |    
 | successRedirectUrl | string | Y    | 成功后的调整地址                                                | 
-| errorRedirectUrl   | string | Y    | 失败后的调整地址                                                | 
+| errorRedirectUrl   | string | Y    | 失败后的调整地址                                                |
+| referer            | string | N    | 引用来源 (添加该参数后，打开返回的链接时会校验请求的引用来源)                        |
+| userAgent          | string | N    | 用户代理 (添加该参数后，打开返回的链接时会校验请求的用户代理)                        |
 
 - **响应:**
 
@@ -69,8 +71,8 @@
 }
 
 提醒：
-（1）引导页链接有效期为5分钟
-（2）约定referer 、user-agent 等来自partners的信息，只接受约定referer和ua打开页面
+（1）引导页链接有效期为5分钟，超时无法打开，打开后的链接会自动失效。
+（2）用户提供或约定referer、ua等来自partners的信息，只接受提供或约定的referer和ua打开页面
 
 ```
 

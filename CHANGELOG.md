@@ -2,7 +2,7 @@
 
 **account**
 - [新增接口用于传递邀请关系](account/readme.md#5-绑定推荐关系)
-
+- [引导页支持可传入referer和UA](account/readme.md#2-获取引导页链接)
 
 **websocket**
 - [kyc状态](websocket/readme.md#kyc状态-kyc_status)
