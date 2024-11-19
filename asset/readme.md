@@ -238,14 +238,13 @@
 - **方法:** `POST`
 - **请求参数:**
 
-| 名称             | 类型     | 是否必须 | 描述                           |
-|----------------|--------|------|------------------------------|
-| externalTranId | string | Y    | 唯一id，当前api用户维度全局唯一，如果重复，拒绝执行 |
-| asset          | string | Y    | 币种，必须是decard支持的币种            |
-| amount         | string | Y    | 转账金额，必须是正数，小数位数不得超过18位       |
-| externalUserId | string | Y    | DeCard用户ID                   |
-| remark         | string | N    | 备注信息                         |
-
+| 名称             | 类型     | 是否必须 | 描述                                        |
+|----------------|--------|------|-------------------------------------------|
+| externalTranId | string | Y    | 唯一id，当前api用户维度全局唯一，如果重复，拒绝执行。长度限制为10-20位。 |
+| asset          | string | Y    | 币种，必须是decard支持的币种                         |
+| amount         | string | Y    | 转账金额，必须是正数，小数位数不得超过18位                    |
+| externalUserId | string | Y    | DeCard用户ID                                |
+| remark         | string | N    | 备注信息                                      |
 
 - **响应参数:**
 
@@ -301,13 +300,13 @@
 - **方法:** `POST`
 - **请求参数:**
 
-| 名称             | 类型     | 是否必须 | 描述                           |
-|----------------|--------|------|------------------------------|
-| externalTranId | string | Y    | 唯一id,当前api用户维度全局唯一，如果重复，拒绝执行 |
-| asset          | string | Y    | 币种，必须是decard支持的币种            |
-| amount         | string | Y    | 转账金额，必须是正数，小数位数不得超过8位        |
-| externalUserId | string | Y    | DeCard用户ID                   |
-| remark         | string | N    | 备注信息                         |
+| 名称             | 类型     | 是否必须 | 描述                                        |
+|----------------|--------|------|-------------------------------------------|
+| externalTranId | string | Y    | 唯一id,当前api用户维度全局唯一，如果重复，拒绝执行。长度限制为10-20位。 |
+| asset          | string | Y    | 币种，必须是decard支持的币种                         |
+| amount         | string | Y    | 转账金额，必须是正数，小数位数不得超过8位                     |
+| externalUserId | string | Y    | DeCard用户ID                                |
+| remark         | string | N    | 备注信息                                      |
 
 - **响应参数:**
 
@@ -379,6 +378,7 @@
 | remark         | string | N               | 备注信息 |
 | direction      | string | 方向 CREDIT/DEBIT |
 | tranId         | string | tranId          |
+| status         | string | 状态 SUCCESS/FAIL |
 
 **响应示例:**
 
