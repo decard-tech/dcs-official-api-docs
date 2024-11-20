@@ -62,6 +62,7 @@
 
 ---
 <a id="transactions"></a>
+
 ### 2. 资金历史查询
 
 **描述：**  查询用户资产历史
@@ -131,24 +132,24 @@
 - **方法:** `POST`
 - **请求参数:**
 
-| 名称             | 类型     | 是否必须 | 描述                                                                                                                                                                                                                                                             |
-|----------------|--------|------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| externalUserId | string | Y    | DeCard用户ID                                                                                                                                                                                                                                                     |
-| tranId         | long   | Y    | 交易单号                                                                                                                                                                                                                                                           |
-| externalTranId | string | Y    | 外部交易ID                                                                                                                                                                                                                                                         |
-| type           | string | Y    | 交易类型<br>- `DEPOSIT`：充值  <br>- `WITHDRAW`：提现 <br>- `CARD_PRINTING_FEE`：制卡费  <br>- `CARD_POSTAL_FEE`：邮寄费  <br>- `CARD_VIP_FROZEN_FEE`：VIP冻结费  <br>- `CONVERSION`：convert费 <br>- `REWARD_DISTRIBUTION`：奖励金发放 <br>- `REWARD_PAY`：奖励金支付 <br>- `REWARD_REFUND`：奖励金退还 |
+| 名称             | 类型     | 是否必须 | 描述                                                                                                                                                                                                      |
+|----------------|--------|------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| externalUserId | string | Y    | DeCard用户ID                                                                                                                                                                                              |
+| tranId         | long   | Y    | 交易单号                                                                                                                                                                                                    |
+| externalTranId | string | Y    | 外部交易ID                                                                                                                                                                                                  |
+| type           | string | Y    | 交易类型  <br>- `DEPOSIT`：充值  <br>- `WITHDRAW`：提现 <br>- `CARD_PRINTING_FEE`：制卡费  <br>- `CARD_POSTAL_FEE`：邮寄费  <br>- `CARD_VIP_FROZEN_FEE`：VIP冻结费  <br>- `CONVERSION`：convert费   <br>- `REWARD_REFUND`：奖励金退还 |
 
 - **响应参数:**
 
-| 名称        | 类型     | 描述                          |
-|-----------|--------|-----------------------------|
-| type      | string | 交易类型                        |
-| time      | string | 交易时间                        |
-| freeDelta | string | 资产变动数量                      |
-| asset     | string | 资产                          |
-| logo      | string | 资产logo                      |
-| orderId   | string | 单号                          |
-| status    | string | 状态 [SUCCESS, FAIL, PENDING] |
+| 名称        | 类型     | 描述                                                                                                                                                                                                                                                              |
+|-----------|--------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| type      | string | 交易类型 <br>- `DEPOSIT`：充值  <br>- `WITHDRAW`：提现 <br>- `CARD_PRINTING_FEE`：制卡费  <br>- `CARD_POSTAL_FEE`：邮寄费  <br>- `CARD_VIP_FROZEN_FEE`：VIP冻结费  <br>- `CONVERSION`：convert费 <br>- `REWARD_DISTRIBUTION`：奖励金发放 <br>- `REWARD_PAY`：奖励金支付 <br>- `REWARD_REFUND`：奖励金退还 |
+| time      | string | 交易时间                                                                                                                                                                                                                                                            |
+| freeDelta | string | 资产变动数量                                                                                                                                                                                                                                                          |
+| asset     | string | 资产                                                                                                                                                                                                                                                              |
+| logo      | string | 资产logo                                                                                                                                                                                                                                                          |
+| orderId   | string | 单号                                                                                                                                                                                                                                                              |
+| status    | string | 状态 [SUCCESS, FAIL, PENDING]                                                                                                                                                                                                                                     |
 
 以下部分根据交易类型追加返回
 

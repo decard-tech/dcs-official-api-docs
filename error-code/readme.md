@@ -105,3 +105,4 @@
 | DAPI_TIMESTAMP_EXPIRED                                     | 请求时间戳已过期                                      |
 | DAPI_SIGNATURE_ERROR                                       | 签名错误                                          |
 | DAPI_PERMISSION_DENIED                                     | 权限限制                                          |
+| DAPI_OPERATION_UNSUPPORTED                                 | 不支持的操作                                        |
