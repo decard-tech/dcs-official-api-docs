@@ -31,7 +31,7 @@
 - websocket
   - timestamp 序列化成string类型
   - BALANCE_CHANGE 添加 ExternalTranId
-  - CARD_TRANSACTION 添加 
+  - CARD_TRANSACTION 添加 externalTranId 、 systemTraceAuditNumber 、requestAmountInUsd 
 
 - asset详情接口增加 `REWARD_DISTRIBUTION` 和 `REWARD_PAY` [类型查询](asset/readme.md#3-查询资产变动详情)
 - 引导页添加[语言入参](account/readme.md#2-获取引导页链接)
