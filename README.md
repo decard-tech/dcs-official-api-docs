@@ -12,7 +12,7 @@ You can access the relevant features through the following domain names
 
 | Mainnet | https://api.thedecard.com         |
 | ------- | --------------------------------- |
-| Testnet | https://api-testnet.thedecard.com |
+| Testnet | https://api.uatdcd.com |
 
 
 ## Documentation

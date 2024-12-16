@@ -35,9 +35,9 @@
 
 **URL:** `wss://{domain}/ws/{channel}`
 
-| Mainnet | stream.thedecard.com      |
-|---------|---------------------------|
-| Testnet | stream-test.thedecard.com |
+| Mainnet | stream.thedecard.com |
+|---------|----------------------|
+| Testnet | stream.uatdcd.com    |
 
 **响应数据结构:**
 
@@ -59,7 +59,7 @@
 ```json
 {
   "type": "KYC_STATUS",
-  "timestamp": 1731471194021,
+  "timestamp": "1731471194021",
   "externalUserId": "f1b718e0",
   "data": {
     "status": "PASS"
@@ -69,30 +69,35 @@
 
 #### 数字资产变动 (BALANCE_CHANGE)
 
-| 名称          | 类型     | 描述                                                          |
-|-------------|--------|-------------------------------------------------------------|
-| tranId      | string | 流水单号                                                        |
-| asset       | string | 资产币种                                                        |
-| freeDelta   | string | 资产变动数量                                                      |
-| freezeDelta | string | 资产冻结变动数量                                                    |
-| free        | string | 可用持仓                                                        |
-| freeze      | string | 冻结资产                                                        |
-| type        | string | 变动类型,与[transactions](../asset/readme.md#transactions)接口定义一致 |
+| 名称             | 类型     | 描述                                                          |
+|----------------|--------|-------------------------------------------------------------|
+| tranId         | string | 流水单号                                                        |
+| externalTranId | string | 外部交易ID                                                      |
+| asset          | string | 资产币种                                                        |
+| network        | string | 网络                                                          |
+| freeDelta      | string | 资产变动数量                                                      |
+| freezeDelta    | string | 资产冻结变动数量                                                    |
+| free           | string | 可用持仓                                                        |
+| freeze         | string | 冻结资产                                                        |
+| type           | string | 变动类型,与[transactions](../asset/readme.md#transactions)接口定义一致 |
 
 **响应示例:**
 
 ```json
 {
   "type": "BALANCE_CHANGE",
-  "timestamp": 1731471194021,
-  "externalUserId": "f1b718e0",
+  "timestamp": "1733980483134",
+  "externalUserId": "9f8b5f82",
   "data": {
-    "tranId": "1041268486317686785",
-    "asset": "USDT",
-    "freeDelta": "-1",
-    "freezeDelta": "1",
-    "free": "1000",
-    "freeze": "500"
+    "asset": "USD",
+    "network": "",
+    "freeDelta": "12.64",
+    "freezeDelta": "0",
+    "tranId": "4285261023005170688",
+    "externalTranId": "4285261022921284608",
+    "free": "12.64",
+    "freeze": "0",
+    "type": ""
   }
 }
 ```
@@ -108,22 +113,28 @@
 | localTransactionTime    | string | 交易时间                                |
 | response                | string | 交易结果 (A-accept/success，D-deny/fail) |
 | direction               | string | 交易方向 (C-资金增加/退款，D-资金扣减/消费)          |
+| externalTranId          | string | 外部交易ID                              |
+| systemTraceAuditNumber  | string | 系统跟踪号                               |
+| requestAmountInUsd      | string | 美元交易金额                              |
 
 **响应示例:**
 
 ```json
 {
   "type": "CARD_TRANSACTION",
-  "timestamp": 1731471194021,
-  "externalUserId": "f1b718e0",
+  "timestamp": "1733981368030",
+  "externalUserId": "9f8b5f82-610d-46e5-b006-3db6b2c8a395",
   "data": {
-    "cardNumber": "***1234",
+    "cardNumber": "**** **** **** 0617",
     "transactionCurrencyCode": "702",
-    "transactionAmount": "123.45",
-    "localTransactionDate": "1113",
-    "localTransactionTime": "154542",
-    "response": "A",
-    "direction": "C"
+    "transactionAmount": "20.2",
+    "localTransactionDate": "1211",
+    "localTransactionTime": "161420",
+    "response": "D",
+    "direction": "DEBIT",
+    "systemTraceAuditNumber": "G_4295180843619725568",
+    "requestAmountInUsd": "14.86",
+    "externalTranId": "4285261022921284608"
   }
 }
 ```

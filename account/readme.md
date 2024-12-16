@@ -56,6 +56,7 @@
 | errorRedirectUrl   | string | Y    | 失败后的调整地址                                                |
 | referer            | string | N    | 引用来源 (添加该参数后，打开返回的链接时会校验请求的引用来源)                        |
 | userAgent          | string | N    | 用户代理 (添加该参数后，打开返回的链接时会校验请求的用户代理)                        |
+| language           | string | N    | 语言(默认英文)                                                |
 
 - **响应:**
 
@@ -180,11 +181,10 @@
 - **方法:** `POST`
 - **请求参数:**
 
-| 名称                    | 类型     | 是否必须 | 描述              |
-|-----------------------|--------|------|-----------------|
-| externalUserId        | string | Y    | 被推荐人      |
-| externalInviterUserId | string | Y    | 推荐人 |
-
+| 名称                    | 类型     | 是否必须 | 描述   |
+|-----------------------|--------|------|------|
+| externalUserId        | string | Y    | 被推荐人 |
+| externalInviterUserId | string | Y    | 推荐人  |
 
 - **成功响应:**
 
