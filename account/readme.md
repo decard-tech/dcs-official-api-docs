@@ -38,6 +38,10 @@
 }
 ```
 
+备注：手机号已兼容支持[AES密文传输](../flow/readme.md#敏感信息加密算法)，接入方可按需使用
+
+
+
 ***
 
 ### 2. 获取引导页链接
@@ -52,11 +56,12 @@
 |--------------------|--------|------|---------------------------------------------------------| 
 | action             | string | Y    | 引导页类型  <br>- `KYC_GUIDE`：KYC引导页  <br>- `CARD_INFO`：卡信息页 |                                                                                          |
 | externalUserId     | string | Y    | DeCard用户ID                                              |    
-| successRedirectUrl | string | Y    | 成功后的调整地址                                                | 
-| errorRedirectUrl   | string | Y    | 失败后的调整地址                                                |
+| successRedirectUrl | string | Y    | 成功后的跳转地址                                                | 
+| errorRedirectUrl   | string | Y    | 失败后的跳转地址                                                |
 | referer            | string | N    | 引用来源 (添加该参数后，打开返回的链接时会校验请求的引用来源)                        |
-| userAgent          | string | N    | 用户代理 (添加该参数后，打开返回的链接时会校验请求的用户代理)                        |
+| userAgent          | string | Y    | 用户代理 (添加该参数后，打开返回的链接时会校验请求的用户代理),不填可能导致页面访问失败           |
 | language           | string | N    | 语言(默认英文)                                                |
+| cardMantissa       | string | Y    | 卡号后四位                                                   |
 
 - **响应:**
 

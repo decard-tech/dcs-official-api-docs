@@ -30,3 +30,29 @@ sign(API-KEY + TIMESTAMP + NONCE + payload)
 - **NONCE:** 由接口请求方生成的随机数，可实现请求一次性有效，避免接口重放攻击
 
 
+
+
+#### 敏感信息加密算法
+对于在传输过程有较高安全考量的团队，可以对用户的个人隐私信息采用AES加密算法进行传递。
+
+```java
+import cn.hutool.core.codec.Base64;
+import cn.hutool.crypto.SecureUtil;
+import org.junit.jupiter.api.Test;
+
+public class AES {
+
+    private static final String SECRET = "sjC951Crc3WxH3YXqnJ43v/miI8iCan2iQbK7Km0w1s=";
+    
+    public static void main(String[] args) {
+        String data = "13866668888";
+        System.out.println("ORIGIN: " + data);
+
+        String encryptData = SecureUtil.aes(Base64.decode(SECRET)).encryptBase64(data);
+        System.out.println("ENCRYPT: " + encryptData);
+
+        String decryptData = SecureUtil.aes(Base64.decode(SECRET)).decryptStr(encryptData);
+        System.out.println("DECRYPT: " + decryptData);
+    }
+}
+```

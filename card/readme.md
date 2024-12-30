@@ -351,6 +351,7 @@
 | transactionAmount      | string | 交易金额                             | 
 | transactionCurrency    | string | 交易币种                             | 
 | externalTranId         | string | external tran id                 |
+| postedTransactionId    | string | 已入账交易id                          |
 
 - **响应示例:**
 
