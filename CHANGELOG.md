@@ -1,3 +1,29 @@
+## 2024-12-30
+- [提现](/wallet/readme.md#提现)
+- 手机号支持[加密传输](flow/readme.md#敏感信息加密算法)
+- [引导页](account/readme.md#2-获取引导页链接) 请求参数增加卡后四位字段
+- [查询用户资产历史](asset/readme.md#2-资金历史查询) 返回增加唯一id字段
+- [卡账单详情](card/readme.md#6-卡账单详情) 返回增加postedTransactionId字段
+
+---
+
+## 2024-12-12
+
+- 测试域名变更*
+  - api-testnet.thedecard.com -> api.uatdcd.com
+  - stream-test.thedecard.com -> stream.uatdcd.com
+
+- websocket
+  - timestamp 序列化成string类型
+  - BALANCE_CHANGE 添加 ExternalTranId
+  - CARD_TRANSACTION 添加 externalTranId 、 systemTraceAuditNumber 、requestAmountInUsd
+
+- asset详情接口增加 `REWARD_DISTRIBUTION` 和 `REWARD_PAY` [类型查询](asset/readme.md#3-查询资产变动详情)
+- 引导页添加[语言入参](account/readme.md#2-获取引导页链接)
+
+---
+
+
 ## 2024-11-15
 
 **account**
@@ -20,18 +46,3 @@
 **card**
 - [新增卡交易历史接口v2-账单列表](card/readme.md#5-卡账单列表)
 - [新增卡交易历史接口v2-账单详情](card/readme.md#6-卡账单详情)
-
-
-## 2024-12-12
-
-- 测试域名变更*
-  - api-testnet.thedecard.com -> api.uatdcd.com
-  - stream-test.thedecard.com -> stream.uatdcd.com
-
-- websocket
-  - timestamp 序列化成string类型
-  - BALANCE_CHANGE 添加 ExternalTranId
-  - CARD_TRANSACTION 添加 
-
-- asset详情接口增加 `REWARD_DISTRIBUTION` 和 `REWARD_PAY` [类型查询](asset/readme.md#3-查询资产变动详情)
-- 引导页添加[语言入参](account/readme.md#2-获取引导页链接)

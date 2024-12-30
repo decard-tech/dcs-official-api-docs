@@ -44,6 +44,7 @@
   1. 该接口只能通过IP白名单访问；
   2. 短信验证码有效期5分钟；
   3. mobileCode + mobile 或 externalUserId ， 二者必填其一；同时存在以externalUserId为主；
+  4. 手机号已兼容支持[AES密文传输](../flow/readme.md#敏感信息加密算法)，接入方可按需使用
 
 
 
