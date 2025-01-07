@@ -1,4 +1,4 @@
-### 1. 查看卡申请列表
+### 1. ~~查看卡申请列表~~
 
 **描述：** 查看可申请的卡列表
 
@@ -262,6 +262,7 @@
 | page           | int    | N    | 默认1               |
 | rows           | int    | N    | 默认100；每页条数[1,100] |
 | externalUserId | string | Y    | DeCard用户ID        |
+| cardMantissa   | string | N    | 卡号后4位             |
 
 - **响应:**
 
@@ -333,6 +334,7 @@
 | rows           | int    | N    | 默认100；每页条数[1,100] |
 | externalUserId | string | Y    | DeCard用户ID        |
 | statementId    | string | Y    | 账单id              |
+| cardMantissa   | string | N    | 卡号后4位             |
 
 - **响应:**
 
