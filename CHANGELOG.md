@@ -1,3 +1,9 @@
+## 2025-01-15
+- [websocket 消息增加序列号](/websocket/readme.md#监听频道)
+- [websocket 消息查询](/websocket/readme.md#消息查询)
+
+---
+
 ## 2024-12-30
 - [提现](/wallet/readme.md#提现)
 - 手机号支持[加密传输](flow/readme.md#敏感信息加密算法)
