@@ -112,7 +112,7 @@
 | localTransactionDate    | string | 交易日期                                |
 | localTransactionTime    | string | 交易时间                                |
 | response                | string | 交易结果 (A-accept/success，D-deny/fail) |
-| direction               | string | 交易方向 (C-资金增加/退款，D-资金扣减/消费)          |
+| direction               | string | 交易方向 (CREDIT-资金增加/退款，DEBIT-资金扣减/消费) |
 | externalTranId          | string | 外部交易ID                              |
 | systemTraceAuditNumber  | string | 系统跟踪号                               |
 | requestAmountInUsd      | string | 美元交易金额                              |
