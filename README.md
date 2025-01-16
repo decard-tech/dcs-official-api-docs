@@ -18,8 +18,6 @@ You can access the relevant features through the following domain names
 ## Documentation
 Please refer to our extensive for more information.
 
-### [Web Doc](./web/README_ZH.md)
-
 ### [Interaction Flow](./flow/readme.md)
 
 ### [Captcha](./captcha/readme.md)
@@ -29,7 +27,7 @@ Please refer to our extensive for more information.
 ### [Asset](./asset/readme.md)
 ### [Wallet](./wallet/readme.md)
 ### [ErrorCode](./error-code/readme.md)
-
+### [H5 Integration Guide](./web/README_ZH.md)
 
 
 
