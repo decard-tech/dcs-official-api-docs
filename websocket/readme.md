@@ -60,6 +60,7 @@
 {
   "type": "KYC_STATUS",
   "timestamp": "1731471194021",
+  "version": "1",
   "externalUserId": "f1b718e0",
   "data": {
     "status": "PASS"
@@ -87,6 +88,7 @@
 {
   "type": "BALANCE_CHANGE",
   "timestamp": "1733980483134",
+  "version": "2",
   "externalUserId": "9f8b5f82",
   "data": {
     "asset": "USD",
@@ -123,6 +125,7 @@
 {
   "type": "CARD_TRANSACTION",
   "timestamp": "1733981368030",
+  "version": "3",
   "externalUserId": "9f8b5f82-610d-46e5-b006-3db6b2c8a395",
   "data": {
     "cardNumber": "**** **** **** 0617",
@@ -138,4 +141,37 @@
   }
 }
 ```
+
+* 为确保私有频道数据的安全性，每个私有频道的存活时间为24小时，监听方应在24小时内重新获取并创建监听；
+* 获取新的频道后旧的频道将不再推送数据；
+
+---
+
+### 消息查询
+
+**描述：** 根据消息 `version` 查询消息内容
+
+- **URL:** `/websocket/v1/search`
+- **方法:**  `GET`
+- **请求参数:** 无
+
+- **响应:**
+
+| 名称      | 类型   | 描述   |
+|---------|------|------|
+| version | Long | 消息版本 |
+
+- **响应示例:**
+
+```json
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": "{\"data\": {\"status\": \"PASS\"}, \"type\": \"KYC_STATUS\", \"version\": \"3\", \"timestamp\": \"1736838937744\", \"externalUserId\": \"2074fcdd-a2fe-a46b9b458b34\"}",
+  "success": true
+}
+```
+
+
 
