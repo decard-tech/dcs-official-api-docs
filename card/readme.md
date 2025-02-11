@@ -266,16 +266,18 @@
 
 - **响应:**
 
-| 名称                   | 类型     | 描述                                               |
-|----------------------|--------|--------------------------------------------------|
-| type                 | string | 账单类型 <br>- `NOT_POSTED`：未出账单 <br>- `POSTED`：已出账单 |
-| statementDateStart   | long   | 账单开始时间                                           |
-| statementDateEnd     | long   | 账单结束时间、出账时间                                      |
-| paymentAmountInSgd   | string | 账单金额(SGD)                                        |
-| paymentAmountInUsd   | string | 账单金额(USD)                                        |
-| nonPostedAmountInSgd | string | 未入账金额(SGD)                                       |
-| nonPostedAmountInUsd | string | 未入账金额(USD)                                       |
-| statementId          | string | 账单id                                             | 
+| 名称                   | 类型     | 描述                                                              |
+|----------------------|--------|-----------------------------------------------------------------|
+| type                 | string | 账单类型 <br>- `NOT_POSTED`：未出账单 <br>- `POSTED`：已出账单                |
+| statementDateStart   | long   | 账单开始时间                                                          |
+| statementDateEnd     | long   | 账单结束时间、出账时间                                                     |
+| paymentAmountInSgd   | string | 账单金额(SGD)                                                       |
+| paymentAmountInUsd   | string | 账单金额(USD)                                                       |
+| nonPostedAmountInSgd | string | 未入账金额(SGD)                                                      |
+| nonPostedAmountInUsd | string | 未入账金额(USD)                                                      |
+| statementId          | string | 账单id                                                            | 
+| cardOrganization     | string | 卡组        <br>- `MASTERCARD` <br>- `VISA`     <br>- `UNION_PAY` |
+| cardOrganizationLogo | string | 卡组logo                                                          |
 
 - **响应示例:**
 
@@ -293,7 +295,9 @@
       "paymentAmountInUsd": "0",
       "nonPostedAmountInSgd": "0",
       "nonPostedAmountInUsd": "0",
-      "statementId": "NO_POSTED"
+      "statementId": "NO_POSTED",
+      "cardOrganization": "MASTERCARD",
+      "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp"
     },
     {
       "type": "POSTED",
@@ -303,7 +307,9 @@
       "paymentAmountInUsd": "0",
       "nonPostedAmountInSgd": null,
       "nonPostedAmountInUsd": null,
-      "statementId": "172888972041194860325506"
+      "statementId": "172888972041194860325506",
+      "cardOrganization": "MASTERCARD",
+      "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp"
     }
   ],
   "success": true
