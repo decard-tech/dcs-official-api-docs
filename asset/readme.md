@@ -415,7 +415,119 @@
 }
 ```
 
+### 7.查询法币入金记录
 
+**描述：** 查询入账记录
+
+- **URL:** `/fiat/v1/transactions`
+- **方法:** `GET`
+- **请求参数:**
+
+| 名称           | 类型   | 是否必须 | 描述             |
+| -------------- | ------ | -------- | ---------------- |
+| externalUserId | String | Y        | decard用户id     |
+| page           | int    | N        | 页码 默认值 1    |
+| rows           | int    | N        | 每页条数 默认 20 |
+
+- **响应**：
+
+| 名称                | 类型          | 描述                       |
+| ------------------- | ------------- | -------------------------- |
+| debitCreditIndcator | String        | 借贷方向 C：贷记   D：借记 |
+| postingTransType    | String        | 交易类型                   |
+| transactionAmount   | BigDecimal    | 交易金额                   |
+| transactionCurrency | String        | 交易币种                   |
+| merchantName        | String        | 商户名称                   |
+| transactionDateTime | LocalDateTime | 交易时间                   |
+| postedTransactionId | String        | 入账流水id                 |
+
+**成功响应示例：**
+
+```
+
+```
+
+**失败响应示例：**
+
+```
+
+```
+
+
+
+### 8.用户资产查询
+
+**描述：** 查询用户资产
+
+- **URL:** `/fiat/v1/balance`
+- **方法:** `GET`
+- **请求参数:**
+
+| 名称           | 类型   | 是否必须 | 描述         |
+| -------------- | ------ | -------- | ------------ |
+| externalUserId | string | Y        | DeCard用户ID |
+
+- **响应参数:**
+
+| 名称          | 类型    | 描述     |
+| ------------- | ------- | -------- |
+| asset         | string  | 资产币种 |
+| free          | string  | 可用数量 |
+| freeze        | string  | 冻结数量 |
+| total         | string  | 总数量   |
+| network       | string  | 网络     |
+| logo          | string  | logo url |
+| topUpStatus   | Boolean | 充值开关 |
+| totalUsd      | String  | usd总额  |
+| logoUrl       | String  |          |
+| limitOverFlag | Boolean | 限额标识 |
+
+**响应示例:**
+
+```json
+{
+	"code": "SYS_SUCCESS",
+	"message": null,
+	"messageDetail": null,
+	"data": {
+		"freeUsd": "805.05",
+		"freezeUsd": "0",
+		"totalUsd": "805.05",
+		"userAssets": [
+			{
+				"asset": "SGD",
+				"free": "287.88",
+				"freeze": "0",
+				"freeUsd": "211.64",
+				"freezeUsd": "0",
+				"assetName": "Singapore Dollar",
+				"assetLogo": "https://static.thedecard.com/images/dvault/SGD.png?w=48&q=75",
+				"total": "287.88",
+				"totalUsd": "211.64",
+				"network": "",
+				"fiat": 1
+			}
+		],
+		"topUpStatus": true,
+		"reward": {
+			"totalUsd": "5",
+			"logoUrl": "https://static.sitdcd.com/images/logo/Reward.svg"
+		},
+		"limitOverFlag": false
+	},
+	"success": true
+}
+```
+
+- 失败响应
+
+```json
+  {
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
 
 
 

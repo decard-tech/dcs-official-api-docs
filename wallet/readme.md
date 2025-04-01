@@ -189,3 +189,73 @@
   "success": false
 }
 ```
+
+### 获取FOMO充值地址
+
+**描述**：获取fomo充值地址
+
+- **URL**:`/fiat/v1/fomo/address`
+- **方法**：`POST`
+- **请求参数：**
+
+| 名称             | 类型   | 是否必须 | 描述         |
+| ---------------- | ------ | -------- | ------------ |
+| external_user_id | String | Y        | DeCard用户ID |
+| channel_name     | String | Y        |              |
+| institution_name | String | Y        |              |
+| network          | String | Y        |              |
+
+- **响应**：
+
+| 名称    | 类型   | 描述     |
+| ------- | ------ | -------- |
+| network | String |          |
+| address | String | 充值地址 |
+| fxRate  | String | 费率     |
+
+**成功响应示例：**
+
+```
+
+```
+
+**失败响应示例：**
+
+```
+
+```
+
+### 获取BankTransfer充值地址
+
+**描述**：获取银行转账充值地址
+
+- **URL**:`/fiat/v1/bankTransfer/address`
+- **方法**：`POST`
+- **请求参数：**
+
+| 名称             | 类型   | 是否必须 | 描述         |
+| ---------------- | ------ | -------- | ------------ |
+| external_user_id | String | Y        | DeCard用户ID |
+| channel_name     | String | Y        |              |
+| institution_name | String | Y        |              |
+| network          | String | Y        |              |
+
+- **响应**：
+
+| 名称    | 类型   | 描述 |
+| ------- | ------ | ---- |
+| account | String |      |
+| name    | String |      |
+
+**成功响应示例：**
+
+```
+
+```
+
+**失败响应示例：**
+
+```
+
+```
+

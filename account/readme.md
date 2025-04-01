@@ -218,3 +218,114 @@
   "success": false
 }
 ```
+
+### 6.查询travel rule
+
+**描述**：根据External User ID查询对应travel rule信息
+
+- **URL**：`/account/v1/queryTravelRule`
+
+- **方法**：`GET`
+- **请求参数**：
+
+| 名称             | 类型   | 是否必须 | 描述       |
+| ---------------- | ------ | -------- | ---------- |
+| external_user_id | string | Y        | 外部用户号 |
+
+- **成功响应**：
+
+| 名称             | 类型   | 描述         |
+| ---------------- | ------ | ------------ |
+| external_user_id | String | 外部用户id   |
+| name             | String | 用户名       |
+| type             | String | 证件类型     |
+| value            | String | 证件号       |
+| country_of_issue | String | 证件颁发国家 |
+| city             | String | 城市         |
+| postal_code      | String | 邮编         |
+| address_lines    | String | 详细地址     |
+| date_of_birth    | String | 出生日期     |
+| place_of_birth   | String | 出生国家     |
+
+**成功响应**：
+
+```
+
+```
+
+**失败响应：**
+
+```
+
+```
+
+### 7.更新travel rule
+
+**描述：**根据External User ID更新对应travel rule信息
+
+- **URL**:`/account/v1/updateTravelRule`
+- **方法**：`POST`
+- **请求参数**：
+
+| 名称               | 类型   | 描述         | 是否必须 | 示例值    |
+| ------------------ | ------ | ------------ | -------- | --------- |
+| external_user_id   | String | 外部用户id   | Y        |           |
+| name               | String | 用户名       | Y        |           |
+| type               | String | 证件类型     | Y        |           |
+| value              | String | 证件号       | Y        |           |
+| country_of_issue   | String | 证件颁发国家 | Y        |           |
+| city               | String | 城市         | Y        |           |
+| postal_code        | String | 邮编         | Y        |           |
+| address_lines      | String | 详细地址     | Y        |           |
+| date_of_birth      | String | 出生日期     | Y        |           |
+| place_of_birth     | String | 出生国家     | Y        |           |
+| dependent_locality | String |              |          |           |
+| region             | String |              |          |           |
+| country            | String | 国家         |          |           |
+| channel_name       | String |              | Y        | BG_Wallet |
+| institution_name   | String |              | Y        | FOMO      |
+
+**请求报文示例：**
+
+```
+{
+		"external_user_id":"1111111",
+		"channel_name":"BG_Wallet",
+		"institution_name":"FOMO",
+        "name": "John Tan",
+        "id": {
+            "type": "passport",
+            "value": "S7654321A",
+            "country_of_issue": "SG"
+        },
+        "address": {
+            "city": "Singapore",
+            "country": "SG",
+            "dependent_locality": "string",
+            "postal_code": "068907",
+            "region": "string",
+            "address_lines": "140 Robinson Road"
+        },
+        "date_of_birth": "2000-01-01",
+        "place_of_birth": "Singapore"
+    }
+```
+
+- 成功响应
+
+| 名称 | 类型 | 描述 |
+| ---- | ---- | ---- |
+| data | void | N/A  |
+
+**成功响应：**
+
+```
+
+```
+
+**失败响应：**
+
+```
+
+```
+
