@@ -456,7 +456,7 @@
       "transactionCurrency": "702",
       "merchantName": "TOM",
       "transactionDateTime": "2025-04-01T10:30:00",
-      "postedTransactionId": "SUCCESS"
+      "postedTransactionId": "123455325325353152151"
     }
   ],
   "success": true
