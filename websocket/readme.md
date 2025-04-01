@@ -173,5 +173,29 @@
 }
 ```
 
+#### 订单状态通知 (ORDER_STATUS)
 
+| 名称         | 类型   | 描述              |
+| ------------ | ------ | ----------------- |
+| txHash       | string | 交易hash值 唯一id |
+| transStatus  | string | 交易状态          |
+| fomoStatus   | string | fomo状态          |
+| creditAmount | string | 充值金额          |
+
+**响应示例：**
+
+```
+{
+  "type": "ORDER_STATUS",
+  "timestamp": "1733981368030",
+  "version": "1",
+  "externalUserId": "9f8b5f82-610d-46e5-b006-3db6b2c8a395",
+  "data": {
+    "txHash": "0x0d1c3de69760d09e528284c032d7b31bab4e492c0fee3efd69af74cd7a4fe05f",
+    "transStatus": "PENDING_CREDIT",
+    "fomoStatus": "SUCCESS"
+    "creditAmount": "2.59000000"
+  }
+}
+```
 

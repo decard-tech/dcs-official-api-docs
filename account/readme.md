@@ -219,7 +219,7 @@
 }
 ```
 
-### 6.查询travel rule
+### 6. 查询travel rule
 
 **描述**：根据External User ID查询对应travel rule信息
 
@@ -284,7 +284,7 @@
 }
 ```
 
-### 7.更新travel rule
+### 7. 更新travel rule
 
 **描述：**根据External User ID更新对应travel rule信息
 
