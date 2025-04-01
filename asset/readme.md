@@ -444,13 +444,33 @@
 **成功响应示例：**
 
 ```
-
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": [
+    {
+      "debitCreditIndcator": "D",
+      "postingTransType": "AU007",
+      "transactionAmount": 10.00,
+      "transactionCurrency": "702",
+      "merchantName": "TOM",
+      "transactionDateTime": "2025-04-01T10:30:00",
+      "postedTransactionId": "SUCCESS"
+    }
+  ],
+  "success": true
+}
 ```
 
 **失败响应示例：**
 
 ```
-
+ {
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
 ```
 
 

@@ -216,13 +216,27 @@
 **成功响应示例：**
 
 ```
-
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": {
+    "network": "TRON",
+    "address": "TJX8Xzj3XzL1Bf9XR63TwTn5ynjnD1qwrh",
+    "fxRate": 0.54
+  },
+  "success": true
+}
 ```
 
 **失败响应示例：**
 
 ```
-
+{
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
 ```
 
 ### 获取BankTransfer充值地址
@@ -250,12 +264,25 @@
 **成功响应示例：**
 
 ```
-
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": {
+    "account": "xxx",
+    "name": "tom"
+  },
+  "success": true
+}
 ```
 
 **失败响应示例：**
 
 ```
-
+{
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
 ```
 

@@ -250,13 +250,38 @@
 **成功响应**：
 
 ```
-
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": {
+  		"external_user_id":"1111",
+        "name": "John Tan",
+        "id": {
+            "type": "passport",
+            "value": "S7654321A",
+            "country_of_issue": "SG"
+        },
+        "address": {
+            "city": "Singapore",
+            "postal_code": "068907",
+            "address_lines": "140 Robinson Road"
+        },
+        "date_of_birth": "2000-01-01",
+        "place_of_birth": "Singapore"
+    },
+  "success": true
+}
 ```
 
 **失败响应：**
 
 ```
-
+{
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
 ```
 
 ### 7.更新travel rule
@@ -320,12 +345,22 @@
 **成功响应：**
 
 ```
-
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": null,
+  "success": true
+}
 ```
 
 **失败响应：**
 
 ```
-
+{
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
 ```
 
