@@ -419,7 +419,7 @@
 
 **描述：** 查询用户资产
 
-- **URL:** `/fiat/v1/balance`
+- **URL:** `/user-asset/v2/balance`
 - **方法:** `GET`
 - **请求参数:**
 
