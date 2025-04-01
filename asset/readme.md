@@ -415,67 +415,7 @@
 }
 ```
 
-### 7.查询法币入金记录
-
-**描述：** 查询入账记录
-
-- **URL:** `/fiat/v1/transactions`
-- **方法:** `GET`
-- **请求参数:**
-
-| 名称           | 类型   | 是否必须 | 描述             |
-| -------------- | ------ | -------- | ---------------- |
-| externalUserId | String | Y        | decard用户id     |
-| page           | int    | N        | 页码 默认值 1    |
-| rows           | int    | N        | 每页条数 默认 20 |
-
-- **响应**：
-
-| 名称                | 类型          | 描述                       |
-| ------------------- | ------------- | -------------------------- |
-| debitCreditIndcator | String        | 借贷方向 C：贷记   D：借记 |
-| postingTransType    | String        | 交易类型                   |
-| transactionAmount   | BigDecimal    | 交易金额                   |
-| transactionCurrency | String        | 交易币种                   |
-| merchantName        | String        | 商户名称                   |
-| transactionDateTime | LocalDateTime | 交易时间                   |
-| postedTransactionId | String        | 入账流水id                 |
-
-**成功响应示例：**
-
-```
-{
-  "code": "SYS_SUCCESS",
-  "message": null,
-  "messageDetail": null,
-  "data": [
-    {
-      "debitCreditIndcator": "D",
-      "postingTransType": "AU007",
-      "transactionAmount": 10.00,
-      "transactionCurrency": "702",
-      "merchantName": "TOM",
-      "transactionDateTime": "2025-04-01T10:30:00",
-      "postedTransactionId": "123455325325353152151"
-    }
-  ],
-  "success": true
-}
-```
-
-**失败响应示例：**
-
-```
- {
-  "code": "ERROR-CODE",
-  "message": "simple describe, see error-code list",
-  "success": false
-}
-```
-
-
-
-### 8.用户资产查询
+### 7.用户资产查询
 
 **描述：** 查询用户资产
 

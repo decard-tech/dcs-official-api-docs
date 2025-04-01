@@ -223,7 +223,7 @@
 
 **描述**：根据External User ID查询对应travel rule信息
 
-- **URL**：`/account/v1/queryTravelRule`
+- **URL**：`/account/v1/query-travel-rule`
 
 - **方法**：`GET`
 - **请求参数**：
@@ -288,7 +288,7 @@
 
 **描述：**根据External User ID更新对应travel rule信息
 
-- **URL**:`/account/v1/updateTravelRule`
+- **URL**:`/account/v1/update-travel-rule`
 - **方法**：`POST`
 - **请求参数**：
 

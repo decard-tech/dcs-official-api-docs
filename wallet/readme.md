@@ -192,9 +192,9 @@
 
 ### 获取FOMO充值地址
 
-**描述**：获取fomo充值地址
+**描述**：获取充值地址
 
-- **URL**:`/fiat/v1/fomo/address`
+- **URL**:`/crypto/v2/deposit-address`
 - **方法**：`POST`
 - **请求参数：**
 
@@ -243,7 +243,7 @@
 
 **描述**：获取银行转账充值地址
 
-- **URL**:`/fiat/v1/bankTransfer/address`
+- **URL**:`/crypto/v1/bank-address`
 - **方法**：`POST`
 - **请求参数：**
 
