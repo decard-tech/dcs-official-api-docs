@@ -60,14 +60,12 @@
 
 ## 2025-04-01
 
+**新增接口：**
+
 **account**
 
 - [查询travel rule](account/readme.md#6-查询travel rule)
 - [更新travel rule](account/readme.md#7-更新travel rule)
-
-**asset**
-
-- [用户资产查询](asset/readme.md#7-用户资产查询)
 
 **card**
 
@@ -81,3 +79,9 @@
 **websocket**
 
 - [订单状态通知](websocket/readme.md#订单状态通知-ORDER_STATUS)
+
+**修改接口**：
+
+**asset**
+
+- [资产查询](asset/readme.md#1-资产查询)

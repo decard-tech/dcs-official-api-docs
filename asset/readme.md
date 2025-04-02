@@ -29,6 +29,14 @@
   "message": null,
   "messageDetail": null,
   "data": [
+      {
+      "asset": "SGD",
+      "logo": "https://static-dev.thedecard.com/20240813/1adaec74-05ec-40fc-930c-24932b2ca042.svg",
+      "network": "",
+      "free": "134.18397879",
+      "freeze": "0",
+      "total": "134.18397879"
+    },
     {
       "asset": "USDT",
       "logo": "https://static-dev.thedecard.com/20240813/1adaec74-05ec-40fc-930c-24932b2ca042.svg",
@@ -414,80 +422,4 @@
   "success": false
 }
 ```
-
-### 7. 用户资产查询
-
-**描述：** 查询用户资产
-
-- **URL:** `/user-asset/v2/balance`
-- **方法:** `GET`
-- **请求参数:**
-
-| 名称           | 类型   | 是否必须 | 描述         |
-| -------------- | ------ | -------- | ------------ |
-| externalUserId | string | Y        | DeCard用户ID |
-
-- **响应参数:**
-
-| 名称          | 类型    | 描述     |
-| ------------- | ------- | -------- |
-| asset         | string  | 资产币种 |
-| free          | string  | 可用数量 |
-| freeze        | string  | 冻结数量 |
-| total         | string  | 总数量   |
-| network       | string  | 网络     |
-| logo          | string  | logo url |
-| topUpStatus   | Boolean | 充值开关 |
-| totalUsd      | String  | usd总额  |
-| logoUrl       | String  |          |
-| limitOverFlag | Boolean | 限额标识 |
-
-**响应示例:**
-
-```json
-{
-	"code": "SYS_SUCCESS",
-	"message": null,
-	"messageDetail": null,
-	"data": {
-		"freeUsd": "805.05",
-		"freezeUsd": "0",
-		"totalUsd": "805.05",
-		"userAssets": [
-			{
-				"asset": "SGD",
-				"free": "287.88",
-				"freeze": "0",
-				"freeUsd": "211.64",
-				"freezeUsd": "0",
-				"assetName": "Singapore Dollar",
-				"assetLogo": "https://static.thedecard.com/images/dvault/SGD.png?w=48&q=75",
-				"total": "287.88",
-				"totalUsd": "211.64",
-				"network": "",
-				"fiat": 1
-			}
-		],
-		"topUpStatus": true,
-		"reward": {
-			"totalUsd": "5",
-			"logoUrl": "https://static.sitdcd.com/images/logo/Reward.svg"
-		},
-		"limitOverFlag": false
-	},
-	"success": true
-}
-```
-
-- 失败响应
-
-```json
-  {
-  "code": "ERROR-CODE",
-  "message": "simple describe, see error-code list",
-  "success": false
-}
-```
-
-
 

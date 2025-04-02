@@ -198,12 +198,19 @@
 - **方法**：`POST`
 - **请求参数：**
 
-| 名称             | 类型   | 是否必须 | 描述         |
-| ---------------- | ------ | -------- | ------------ |
-| external_user_id | String | Y        | DeCard用户ID |
-| channel_name     | String | Y        |              |
-| institution_name | String | Y        |              |
-| network          | String | Y        |              |
+| 名称           | 类型   | 是否必须 | 描述         |
+| -------------- | ------ | -------- | ------------ |
+| externalUserId | String | Y        | DeCard用户ID |
+| network        | String | Y        |              |
+
+**请求示例：**
+
+```
+{
+   "externalUserId":"1111111",
+    "network":"TRON"
+  }
+```
 
 - **响应**：
 
@@ -247,12 +254,21 @@
 - **方法**：`POST`
 - **请求参数：**
 
-| 名称             | 类型   | 是否必须 | 描述         |
-| ---------------- | ------ | -------- | ------------ |
-| external_user_id | String | Y        | DeCard用户ID |
-| channel_name     | String | Y        |              |
-| institution_name | String | Y        |              |
-| network          | String | Y        |              |
+| 名称           | 类型   | 是否必须 | 描述         |
+| -------------- | ------ | -------- | ------------ |
+| externalUserId | String | Y        | DeCard用户ID |
+| network        | String | Y        |              |
+
+**请求示例：**
+
+```
+{
+   "externalUserId":"1111111",
+    "network":"TRON"
+  }
+```
+
+- 
 
 - **响应**：
 
