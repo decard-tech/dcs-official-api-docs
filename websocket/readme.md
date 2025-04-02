@@ -175,11 +175,21 @@
 
 #### 订单状态通知 (ORDER_STATUS)
 
-| 名称         | 类型   | 描述                                                         |
-| ------------ | ------ | ------------------------------------------------------------ |
-| txHash       | string | 交易hash值 唯一id                                            |
-| transStatus  | string | 交易状态    <br />**PENDING_NORMAL** – 处理中（系统自动审核）。 <br />**PENDING_CREDIT** – 待入账（等待资金到账）。 <br />**PENDING_AUDIT** – 待审核（需人工确认）。 <br />**SUCCESS** – 成功（已完成）。 <br />**FAILED** – 失败（未完成，可能因错误或拒绝） |
-| creditAmount | string | 充值金额                                                     |
+| 名称               | 类型   | 描述                                                         |
+| ------------------ | ------ | ------------------------------------------------------------ |
+| txHash             | String | 交易hash值 唯一id                                            |
+| transStatus        | String | 交易状态    <br />**PENDING_NORMAL** – 处理中（系统自动审核）。 <br />**PENDING_CREDIT** – 待入账（等待资金到账）。 <br />**PENDING_AUDIT** – 待审核（需人工确认）。 <br />**SUCCESS** – 成功（已完成）。 <br />**FAILED** – 失败（未完成，可能因错误或拒绝） |
+| amount             | String | 充值金额                                                     |
+| asset              | String |                                                              |
+| network            | String |                                                              |
+| creditAmount       | String | 上账金额                                                     |
+| creditCurrency     | String | SGD                                                          |
+| fromAddress        | String |                                                              |
+| toaddress          | String |                                                              |
+| convertAmount      | String | 转换金额                                                     |
+| convertCurrency    | String | 转换金额币种                                                 |
+| convertFeeAmount   | String | 转换费用                                                     |
+| convertFeeCurrency | String | 转换费用币种                                                 |
 
 
 **响应示例：**
@@ -193,8 +203,17 @@
   "data": {
     "txHash": "0x0d1c3de69760d09e528284c032d7b31bab4e492c0fee3efd69af74cd7a4fe05f",
     "transStatus": "PENDING_CREDIT",
-    "fomoStatus": "SUCCESS"
-    "creditAmount": "2.59000000"
+    "amount": "2.59000000",
+    "asset": "ETH",
+    "network": "Ethereum",
+    "creditAmount": "2.59000000",
+    "creditCurrency": "SGD",
+    "fromAddress": "0xed63647a0875ff48673e10ed632bc0cfd8664b89",
+    "toaddress": "0x5caeec3c95d5dd77cfb399f0c73c106ce3b98b60",
+    "convertAmount": "2.59000000",
+    "convertCurrency": "USD",
+    "convertFeeAmount": "2.59000000",
+    "convertFeeCurrency":""
   }
 }
 ```
