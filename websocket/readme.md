@@ -175,11 +175,11 @@
 
 #### 订单状态通知 (ORDER_STATUS)
 
-1. | 名称         | 类型   | 描述                                                         |
-   | ------------ | ------ | ------------------------------------------------------------ |
-   | txHash       | string | 交易hash值 唯一id                                            |
-   | transStatus  | string | 交易状态    <br />**PENDING_NORMAL** – 处理中（系统自动审核）。 <br />**PENDING_CREDIT** – 待入账（等待资金到账）。 <br />**PENDING_AUDIT** – 待审核（需人工确认）。 <br />**SUCCESS** – 成功（已完成）。 <br />**FAILED** – 失败（未完成，可能因错误或拒绝） |
-   | creditAmount | string | 充值金额                                                     |
+| 名称         | 类型   | 描述                                                         |
+| ------------ | ------ | ------------------------------------------------------------ |
+| txHash       | string | 交易hash值 唯一id                                            |
+| transStatus  | string | 交易状态    <br />**PENDING_NORMAL** – 处理中（系统自动审核）。 <br />**PENDING_CREDIT** – 待入账（等待资金到账）。 <br />**PENDING_AUDIT** – 待审核（需人工确认）。 <br />**SUCCESS** – 成功（已完成）。 <br />**FAILED** – 失败（未完成，可能因错误或拒绝） |
+| creditAmount | string | 充值金额                                                     |
 
 
 **响应示例：**
