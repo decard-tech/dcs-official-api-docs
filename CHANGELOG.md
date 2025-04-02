@@ -75,8 +75,8 @@
 
 **wallet**
 
-- [获取FOMO充值地址](wallet/readme.md#fomo-deposit-address)
-- [获取BankTransfer充值地址](wallet/readme.md#获取BankTransfer充值地址)
+- [获取FOMO充值地址](wallet/readme.md#获取fomo充值地址)
+- [获取BankTransfer充值地址](wallet/readme.md#获取banktransfer充值地址)
 
 **websocket**
 
