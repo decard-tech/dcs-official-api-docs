@@ -228,15 +228,15 @@
 - **方法**：`GET`
 - **请求参数**：
 
-| 名称             | 类型   | 是否必须 | 描述       |
-| ---------------- | ------ | -------- | ---------- |
-| external_user_id | string | Y        | 外部用户号 |
+| 名称             | 类型   | 是否必须 | 描述         |
+| ---------------- | ------ | -------- | ------------ |
+| external_user_id | string | Y        | decard用户号 |
 
 - **成功响应**：
 
 | 名称             | 类型   | 描述         |
 | ---------------- | ------ | ------------ |
-| external_user_id | String | 外部用户id   |
+| external_user_id | String | decard用户id |
 | name             | String | 用户名       |
 | type             | String | 证件类型     |
 | value            | String | 证件号       |
@@ -294,7 +294,7 @@
 
 | 名称               | 类型   | 描述         | 是否必须 | 示例值    |
 | ------------------ | ------ | ------------ | -------- | --------- |
-| external_user_id   | String | 外部用户id   | Y        |           |
+| external_user_id   | String | decard用户id | Y        |           |
 | name               | String | 用户名       | Y        |           |
 | type               | String | 证件类型     | Y        |           |
 | value              | String | 证件号       | Y        |           |
@@ -305,7 +305,7 @@
 | date_of_birth      | String | 出生日期     | Y        |           |
 | place_of_birth     | String | 出生国家     | Y        |           |
 | dependent_locality | String |              |          |           |
-| region             | String |              |          |           |
+| region             | String | 区域         |          |           |
 | country            | String | 国家         |          |           |
 | channel_name       | String |              | Y        | BG_Wallet |
 | institution_name   | String |              | Y        | FOMO      |
