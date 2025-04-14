@@ -69,7 +69,7 @@
 
 **card**
 
-- [查询法币入金记录](card/readme.md#7-查询法币入金记录)
+- [查询法币变动记录](card/readme.md#7-查询法币变动记录)
 
 **wallet**
 
