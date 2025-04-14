@@ -214,11 +214,11 @@
 
 - **响应**：
 
-| 名称    | 类型   | 描述     |
-| ------- | ------ | -------- |
-| network | String |          |
-| address | String | 充值地址 |
-| fxRate  | String | 费率     |
+| 名称    | 类型   | 描述                                          |
+| ------- | ------ | --------------------------------------------- |
+| network | String | BSC<br>SOL<br>BASE<br>TRON<br>Ethereum<br>ARB |
+| address | String | 充值地址                                      |
+| fxRate  | String | 费率                                          |
 
 **成功响应示例：**
 
@@ -254,10 +254,10 @@
 - **方法**：`POST`
 - **请求参数：**
 
-| 名称           | 类型   | 是否必须 | 描述         |
-| -------------- | ------ | -------- | ------------ |
-| externalUserId | String | Y        | DeCard用户ID |
-| network        | String | Y        |              |
+| 名称           | 类型   | 是否必须 | 描述                                               |
+| -------------- | ------ | -------- | -------------------------------------------------- |
+| externalUserId | String | Y        | DeCard用户ID                                       |
+| network        | String | Y        | BSC<br/>SOL<br/>BASE<br/>TRON<br/>Ethereum<br/>ARB |
 
 **请求示例：**
 
@@ -267,8 +267,6 @@
     "network":"TRON"
   }
 ```
-
-- 
 
 - **响应**：
 
