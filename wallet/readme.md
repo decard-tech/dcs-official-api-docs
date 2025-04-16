@@ -198,19 +198,10 @@
 - **方法**：`GET`
 - **请求参数：**
 
-| 名称           | 类型   | 是否必须 | 描述         |
-| -------------- | ------ | -------- | ------------ |
-| externalUserId | String | Y        | DeCard用户ID |
-| network        | String | Y        |              |
-
-**请求示例：**
-
-```
-{
-   "externalUserId":"1111111",
-    "network":"TRON"
-  }
-```
+| 名称           | 类型   | 是否必须 | 描述                                               |
+| -------------- | ------ | -------- | -------------------------------------------------- |
+| externalUserId | String | Y        | DeCard用户ID                                       |
+| network        | String | Y        | BSC<br/>SOL<br/>BASE<br/>TRON<br/>Ethereum<br/>ARB |
 
 - **响应**：
 
