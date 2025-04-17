@@ -202,14 +202,17 @@
 | -------------- | ------ | -------- | -------------------------------------------------- |
 | externalUserId | String | Y        | DeCard用户ID                                       |
 | network        | String | Y        | BSC<br/>SOL<br/>BASE<br/>TRON<br/>Ethereum<br/>ARB |
+| coin           | string | Y        | 资产币种                                           |
 
 - **响应**：
 
 | 名称    | 类型   | 描述                                          |
 | ------- | ------ | --------------------------------------------- |
+| coin    | string | Y                                             |
 | network | String | BSC<br>SOL<br>BASE<br>TRON<br>Ethereum<br>ARB |
 | address | String | 充值地址                                      |
 | fxRate  | String | 费率                                          |
+| status  | String | PENDING, SUCCESS, FAILED                      |
 
 **成功响应示例：**
 
@@ -219,6 +222,7 @@
   "message": null,
   "messageDetail": null,
   "data": {
+    "coin": "USDT",
     "network": "TRON",
     "address": "TJX8Xzj3XzL1Bf9XR63TwTn5ynjnD1qwrh",
     "fxRate": 0.54
