@@ -424,22 +424,22 @@
 
 - **响应**：
 
-| 名称                | 类型   | 描述                                   |
-| ------------------- | ------ | -------------------------------------- |
-| debitCreditIndcator | String | 借贷方向 C：贷记   D：借记             |
-| postingTransType    | String | 交易类型                               |
-| transactionAmount   | String | 交易金额                               |
-| transactionCurrency | String | 交易币种                               |
-| merchantName        | String | 商户名称                               |
-| transactionDateTime | String | 交易时间                               |
-| postedTransactionId | String | 入账流水id                             |
-| channelCode         | String | 充值渠道：fomo/icn                     |
-| txnAmt              | String | 充值金额                               |
-| txnCcy              | String | 币种                                   |
-| sender              | String | fomo：代表发送地址  icn 代表发送方姓名 |
-| receiving           | String | fomo:代表接收地址  icn 代表收款方姓名  |
-| timeStamp           | String | 时间                                   |
-| txHash              | String | fomo渠道会有值，表示交易唯一标识       |
+| 名称                | 类型   | 描述                                             |
+| ------------------- | ------ | ------------------------------------------------ |
+| debitCreditIndcator | String | 借贷方向 C：贷记   D：借记                       |
+| postingTransType    | String | 交易类型                                         |
+| transactionAmount   | String | 交易金额                                         |
+| transactionCurrency | String | 交易币种                                         |
+| merchantName        | String | 商户名称                                         |
+| transactionDateTime | String | 交易时间                                         |
+| postedTransactionId | String | 入账流水id                                       |
+| channelCode         | String | 充值渠道：<br>F ：fomo    <br>9 ：icn<br>0 : idn |
+| txnAmt              | String | 充值金额                                         |
+| txnCcy              | String | 币种                                             |
+| sender              | String | fomo：代表发送地址  icn 代表发送方姓名           |
+| receiving           | String | fomo:代表接收地址  icn 代表收款方姓名            |
+| timeStamp           | String | 时间                                             |
+| txHash              | String | fomo渠道会有值，表示交易唯一标识                 |
 
 **成功响应示例：**
 

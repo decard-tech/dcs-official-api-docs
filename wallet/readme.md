@@ -226,6 +226,7 @@
     "network": "TRON",
     "address": "TJX8Xzj3XzL1Bf9XR63TwTn5ynjnD1qwrh",
     "fxRate": 0.54
+    "status": "SUCCESS"
   },
   "success": true
 }
