@@ -424,22 +424,22 @@
 
 - **响应**：
 
-| 名称                | 类型   | 描述                                          |
-| ------------------- | ------ | --------------------------------------------- |
-| debitCreditIndcator | String | 借贷方向 C：贷记   D：借记                    |
-| postingTransType    | String | 交易类型                                      |
-| transactionAmount   | String | 交易金额                                      |
-| transactionCurrency | String | 交易币种                                      |
-| merchantName        | String | 商户名称                                      |
-| transactionDateTime | String | 交易时间                                      |
-| postedTransactionId | String | 入账流水id                                    |
-| channelCode         | String | 充值渠道：<br>F ：fomo  |
-| txnAmt              | String | 充值金额                                      |
-| txnCcy              | String | 币种                                          |
-| sender              | String | 发送地址          |
-| receiving           | String | 接收地址          |
-| timeStamp           | String | 时间                                          |
-| txHash              | String | 表示交易唯一标识              |
+| 名称                | 类型   | 描述               |
+| ------------------- | ------ |------------------|
+| debitCreditIndcator | String | 借贷方向 C：贷记   D：借记 |
+| postingTransType    | String | 交易类型             |
+| transactionAmount   | String | 交易金额             |
+| transactionCurrency | String | 交易币种             |
+| merchantName        | String | 商户名称             |
+| transactionDateTime | String | 充值到账时间           |
+| postedTransactionId | String | 入账流水id           |
+| channelCode         | String | 充值渠道：<br>F ：fomo |
+| txnAmt              | String | 充值金额             |
+| txnCcy              | String | 币种               |
+| sender              | String | 发送地址             |
+| receiving           | String | 接收地址             |
+| timeStamp           | String | 充值发起时间           |
+| txHash              | String | 表示交易唯一标识         |
 
 **成功响应示例：**
 
@@ -455,7 +455,7 @@
       "transactionAmount": "10.00",
       "transactionCurrency": "702",
       "merchantName": "TOM",
-      "transactionDateTime": "2025-04-01T10:30:00",
+      "transactionDateTime": "1747793974890",
       "postedTransactionId": "123455325325353152151"
       "TransferDetails":{
       	"channelCode":"icn",
@@ -463,7 +463,7 @@
       	"txnCcy":"SGD",
       	"sender":"sfsf",
       	"receiving":"sgsff",
-      	"timeStamp":"2025-03-18 08:18:20",
+      	"timeStamp":"1747793974890",
       	"txHash":"0x0d1c3de69760d09e528284c032d7b31bab4e492c0fee3efd69af74cd7a4fe05f"
       }
     }
