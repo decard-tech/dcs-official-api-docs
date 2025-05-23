@@ -266,16 +266,18 @@
 
 - **响应:**
 
-| 名称                   | 类型     | 描述                                               |
-|----------------------|--------|--------------------------------------------------|
-| type                 | string | 账单类型 <br>- `NOT_POSTED`：未出账单 <br>- `POSTED`：已出账单 |
-| statementDateStart   | long   | 账单开始时间                                           |
-| statementDateEnd     | long   | 账单结束时间、出账时间                                      |
-| paymentAmountInSgd   | string | 账单金额(SGD)                                        |
-| paymentAmountInUsd   | string | 账单金额(USD)                                        |
-| nonPostedAmountInSgd | string | 未入账金额(SGD)                                       |
-| nonPostedAmountInUsd | string | 未入账金额(USD)                                       |
-| statementId          | string | 账单id                                             | 
+| 名称                   | 类型     | 描述                                                              |
+|----------------------|--------|-----------------------------------------------------------------|
+| type                 | string | 账单类型 <br>- `NOT_POSTED`：未出账单 <br>- `POSTED`：已出账单                |
+| statementDateStart   | long   | 账单开始时间                                                          |
+| statementDateEnd     | long   | 账单结束时间、出账时间                                                     |
+| paymentAmountInSgd   | string | 账单金额(SGD)                                                       |
+| paymentAmountInUsd   | string | 账单金额(USD)                                                       |
+| nonPostedAmountInSgd | string | 未入账金额(SGD)                                                      |
+| nonPostedAmountInUsd | string | 未入账金额(USD)                                                      |
+| statementId          | string | 账单id                                                            | 
+| cardScheme           | string | 卡组        <br>- `MASTERCARD` <br>- `VISA`     <br>- `UNION_PAY` |
+| cardOrganizationLogo | string | 卡组logo                                                          |
 
 - **响应示例:**
 
@@ -293,7 +295,9 @@
       "paymentAmountInUsd": "0",
       "nonPostedAmountInSgd": "0",
       "nonPostedAmountInUsd": "0",
-      "statementId": "NO_POSTED"
+      "statementId": "NO_POSTED",
+      "cardScheme": "MASTERCARD",
+      "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp"
     },
     {
       "type": "POSTED",
@@ -303,7 +307,9 @@
       "paymentAmountInUsd": "0",
       "nonPostedAmountInSgd": null,
       "nonPostedAmountInUsd": null,
-      "statementId": "172888972041194860325506"
+      "statementId": "172888972041194860325506",
+      "cardScheme": "MASTERCARD",
+      "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp"
     }
   ],
   "success": true
@@ -338,22 +344,23 @@
 
 - **响应:**
 
-| 名称                     | 类型     | 描述                               |
-|------------------------|--------|----------------------------------|
-| merchantName           | string | 商户名称                             |
-| cardOrganizationLogo   | string | 卡组(master card、UnionPay)的logo    |
-| postIndicator          | int    | 入账标识 <br>- `0`：未入账 <br>- `1`：已入账 |
-| transactionDateTime    | string | 交易时间                             |
-| postingAmountInSgd     | string | 入账金额(USD)                        |
-| postingAmountInUsd     | string | 入账金额(SGD)                        |
-| debitCreditIndcator    | string | 借贷记标识 <br>- `C`：退款 <br>- `D`：消费  |
+| 名称                 | 类型     | 描述                               |
+|--------------------|--------|----------------------------------|
+| merchantName       | string | 商户名称                             |
+| cardOrganizationLogo | string | 卡组(master card、UnionPay)的logo    |
+| postIndicator      | int    | 入账标识 <br>- `0`：未入账 <br>- `1`：已入账 |
+| transactionDateTime | string | 交易时间                             |
+| postingAmountInSgd | string | 入账金额(USD)                        |
+| postingAmountInUsd | string | 入账金额(SGD)                        |
+| debitCreditIndcator | string | 借贷记标识 <br>- `C`：退款 <br>- `D`：消费  |
 | transactionDescription | string | 交易描述                             | 
-| cardNumber             | string | 卡号，后四位为未打码数字                     | 
-| postingDate            | string | 入账日期                             | 
-| transactionAmount      | string | 交易金额                             | 
-| transactionCurrency    | string | 交易币种                             | 
-| externalTranId         | string | external tran id                 |
-| postedTransactionId    | string | 已入账交易id                          |
+| cardNumber         | string | 卡号，后四位为未打码数字                     | 
+| postingDate        | string | 入账日期                             | 
+| transactionAmount  | string | 交易金额                             | 
+| transactionCurrency | string | 交易币种                             | 
+| externalTranId     | string | external tran id                 |
+| postedTransactionId | string | 已入账交易id                          |
+| cardScheme         | string |        卡组        <br>- `MASTERCARD` <br>- `VISA`     <br>- `UNION_PAY`                           |
 
 - **响应示例:**
 
@@ -376,7 +383,8 @@
       "postingDate": "1801440000000",
       "transactionAmount": "114.04",
       "transactionCurrency": "SGD",
-      "externalTranId": "1112231221"
+      "externalTranId": "1112231221",
+      "cardScheme": "MASTERCARD"
     },
     {
       "merchantName": null,
@@ -391,7 +399,8 @@
       "postingDate": "1801440000000",
       "transactionAmount": "2.55",
       "transactionCurrency": "SGD",
-      "externalTranId": "1112231221"
+      "externalTranId": "1112231221",
+      "cardScheme": "MASTERCARD"
     }
   ],
   "success": true
