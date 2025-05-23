@@ -29,6 +29,14 @@
   "message": null,
   "messageDetail": null,
   "data": [
+      {
+      "asset": "SGD",
+      "logo": "https://static-dev.thedecard.com/20240813/1adaec74-05ec-40fc-930c-24932b2ca042.svg",
+      "network": "",
+      "free": "134.18397879",
+      "freeze": "0",
+      "total": "134.18397879"
+    },
     {
       "asset": "USDT",
       "logo": "https://static-dev.thedecard.com/20240813/1adaec74-05ec-40fc-930c-24932b2ca042.svg",
@@ -414,8 +422,4 @@
   "success": false
 }
 ```
-
-
-
-
 

@@ -189,3 +189,110 @@
   "success": false
 }
 ```
+
+### 获取fomo充值地址
+
+**描述**：获取充值地址
+
+- **URL**:`/crypto/v2/deposit-address`
+- **方法**：`GET`
+- **请求参数：**
+
+| 名称           | 类型   | 是否必须 | 描述                                               |
+| -------------- | ------ | -------- | -------------------------------------------------- |
+| externalUserId | String | Y        | DeCard用户ID                                       |
+| network        | String | Y        | BSC<br/>SOL<br/>BASE<br/>TRON<br/>Ethereum<br/>ARB |
+| coin           | string | Y        | 资产币种                                           |
+
+- **响应**：
+
+| 名称    | 类型   | 描述                                          |
+| ------- | ------ | --------------------------------------------- |
+| coin    | string | Y                                             |
+| network | String | BSC<br>SOL<br>BASE<br>TRON<br>Ethereum<br>ARB |
+| address | String | 充值地址                                      |
+| fxRate  | String | 费率                                          |
+| status  | String | PENDING, SUCCESS, FAILED                      |
+
+**成功响应示例：**
+
+```
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": {
+    "coin": "USDT",
+    "network": "TRON",
+    "address": "TJX8Xzj3XzL1Bf9XR63TwTn5ynjnD1qwrh",
+    "fxRate": 0.54
+    "status": "SUCCESS"
+  },
+  "success": true
+}
+```
+
+**失败响应示例：**
+
+```
+{
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
+
+### 获取banktransfer充值地址
+
+**描述**：获取银行转账充值地址
+
+- **URL**:`/crypto/v1/bank-address`
+- **方法**：`POST`
+- **请求参数：**
+
+| 名称           | 类型   | 是否必须 | 描述                                               |
+| -------------- | ------ | -------- | -------------------------------------------------- |
+| externalUserId | String | Y        | DeCard用户ID                                       |
+| network        | String | Y        | BSC<br/>SOL<br/>BASE<br/>TRON<br/>Ethereum<br/>ARB |
+
+**请求示例：**
+
+```
+{
+   "externalUserId":"1111111",
+    "network":"TRON"
+  }
+```
+
+- **响应**：
+
+| 名称    | 类型   | 描述 |
+| ------- | ------ | ---- |
+| account | String |      |
+| name    | String |      |
+
+**成功响应示例：**
+
+```
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": {
+    "account": "xxx",
+    "name": "tom"
+  },
+  "success": true
+}
+```
+
+**失败响应示例：**
+
+```
+{
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
+

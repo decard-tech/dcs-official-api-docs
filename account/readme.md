@@ -218,3 +218,149 @@
   "success": false
 }
 ```
+
+### 6. 查询travel rule
+
+**描述**：根据External User ID查询对应travel rule信息
+
+- **URL**：`/account/v1/query-travel-rule`
+
+- **方法**：`GET`
+- **请求参数**：
+
+| 名称           | 类型   | 是否必须 | 描述         |
+| -------------- | ------ | -------- | ------------ |
+| externalUserId | string | Y        | decard用户号 |
+
+- **成功响应**：
+
+| 名称           | 类型   | 描述         |
+| -------------- | ------ | ------------ |
+| externalUserId | String | decard用户id |
+| name           | String | 用户名       |
+| type           | String | 证件类型     |
+| value          | String | 证件号       |
+| countryOfIssue | String | 证件颁发国家 |
+| city           | String | 城市         |
+| postalCode     | String | 邮编         |
+| addressLines   | String | 详细地址     |
+| dateOfBirth    | String | 出生日期     |
+| placeOfBirth   | String | 出生国家     |
+
+**成功响应**：
+
+```
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": {
+  		"externalUserId":"1111",
+        "name": "John Tan",
+        "id": {
+            "type": "passport",
+            "value": "S7654321A",
+            "countryOfIssue": "SG"
+        },
+        "address": {
+            "city": "Singapore",
+            "postalCode": "068907",
+            "addressLines": "140 Robinson Road"
+        },
+        "dateOfBirth": "2000-01-01",
+        "placeOfBirth": "Singapore"
+    },
+  "success": true
+}
+```
+
+**失败响应：**
+
+```
+{
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
+
+### 7. 更新travel rule
+
+**描述：**根据External User ID更新对应travel rule信息
+
+- **URL**:`/account/v1/update-travel-rule`
+- **方法**：`POST`
+- **请求参数**：
+
+| 名称              | 类型   | 描述         | 是否必须 | 示例值    |
+| ----------------- | ------ | ------------ | -------- | --------- |
+| externalUserId    | String | decard用户id | Y        |           |
+| name              | String | 用户名       | Y        |           |
+| type              | String | 证件类型     | Y        |           |
+| value             | String | 证件号       | Y        |           |
+| countryOfIssue    | String | 证件颁发国家 | Y        |           |
+| city              | String | 城市         | Y        |           |
+| postalCode        | String | 邮编         | Y        |           |
+| addressLines      | String | 详细地址     | Y        |           |
+| dateOfBirth       | String | 出生日期     | Y        |           |
+| placeOfBirth      | String | 出生国家     | Y        |           |
+| dependentLocality | String |              |          |           |
+| region            | String | 区域         |          |           |
+| country           | String | 国家         |          |           |
+| channelName       | String |              | Y        | BG_Wallet |
+| institutionName   | String |              | Y        | FOMO      |
+
+**请求报文示例：**
+
+```
+{
+		"externalUserId":"1111111",
+		"channelName":"BG_Wallet",
+		"institutionName":"FOMO",
+        "name": "John Tan",
+        "id": {
+            "type": "passport",
+            "value": "S7654321A",
+            "countryOfIssue": "SG"
+        },
+        "address": {
+            "city": "Singapore",
+            "country": "SG",
+            "dependentLocality": "string",
+            "postalCode": "068907",
+            "region": "string",
+            "addressLines": "140 Robinson Road"
+        },
+        "dateOfBirth": "2000-01-01",
+        "placeOfBirth": "Singapore"
+    }
+```
+
+- 成功响应
+
+| 名称 | 类型 | 描述 |
+| ---- | ---- | ---- |
+| data | void | N/A  |
+
+**成功响应：**
+
+```
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": null,
+  "success": true
+}
+```
+
+**失败响应：**
+
+```
+{
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
+
