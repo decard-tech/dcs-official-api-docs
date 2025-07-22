@@ -433,22 +433,29 @@
 
 - **响应**：
 
+| 名称                | 类型   | 描述                       |
+| ------------------- | ------ | -------------------------- |
+| debitCreditIndcator | String | 借贷方向 C：贷记   D：借记 |
+| postingTransType    | String | 交易类型                   |
+| transactionAmount   | String | 交易金额                   |
+| transactionCurrency | String | 交易币种                   |
+| merchantName        | String | 商户名称                   |
+| transactionDateTime | String | 充值到账时间               |
+| postedTransactionId | String | 入账流水id                 |
+| transferDetails     | Object | 转账明细对象               |
+
+**transferDetails字段表：**
+
 | 名称                | 类型   | 描述               |
 | ------------------- | ------ |------------------|
-| debitCreditIndcator | String | 借贷方向 C：贷记   D：借记 |
-| postingTransType    | String | 交易类型             |
-| transactionAmount   | String | 交易金额             |
-| transactionCurrency | String | 交易币种             |
-| merchantName        | String | 商户名称             |
-| transactionDateTime | String | 充值到账时间           |
-| postedTransactionId | String | 入账流水id           |
-| channelCode         | String | 充值渠道：<br>F ：fomo |
-| txnAmt              | String | 充值金额             |
-| txnCcy              | String | 币种               |
-| sender              | String | 发送地址             |
-| receiving           | String | 接收地址             |
-| timeStamp           | String | 充值发起时间           |
-| txHash              | String | 表示交易唯一标识         |
+| channelCode | String | 充值渠道：<br>F ：fomo  |
+| txnAmt    | String | 充值金额             |
+| txnCcy   | String | 币种               |
+| sender | String | 发送地址             |
+| receiving        | String | 接收地址             |
+| timeStamp | String | 充值发起时间           |
+| txHash | String | 表示交易唯一标识           |
+
 
 **成功响应示例：**
 
@@ -466,7 +473,7 @@
       "merchantName": "TOM",
       "transactionDateTime": "1747793974890",
       "postedTransactionId": "123455325325353152151"
-      "TransferDetails":{
+      "transferDetails":{
       	"channelCode":"icn",
       	"txnAmt":"3.234",
       	"txnCcy":"SGD",
