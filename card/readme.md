@@ -269,8 +269,8 @@
 | 名称                   | 类型     | 描述                                                              |
 |----------------------|--------|-----------------------------------------------------------------|
 | type                 | string | 账单类型 <br>- `NOT_POSTED`：未出账单 <br>- `POSTED`：已出账单                |
-| statementDateStart   | long   | 账单开始时间                                                          |
-| statementDateEnd     | long   | 账单结束时间、出账时间                                                     |
+| statementDateStart   | string | 账单开始时间                                                          |
+| statementDateEnd     | string | 账单结束时间、出账时间                                                     |
 | paymentAmountInSgd   | string | 账单金额(SGD)                                                       |
 | paymentAmountInUsd   | string | 账单金额(USD)                                                       |
 | nonPostedAmountInSgd | string | 未入账金额(SGD)                                                      |
