@@ -56,3 +56,47 @@ public class AES {
     }
 }
 ```
+
+### 生产环境的AKSK安全传输
+为保证生产环境的AKSK不会泄露其他第三方，请按照以下流程获取AKSK。
+1. 请提供一个安全邮箱地址和一个获取AKSK的IP。邮箱是接收AKSK的获取流程，IP会被加入获取AKSK的白名单
+2. 安全邮箱会接收到我们发送的邮件，邮件中会有一个临时安全链接（**仅一次提取有效**）。点击链接会收到以下内容
+
+    | 名称              | 类型   | 描述                 |
+    |-----------------|------|--------------------|
+    | expireTime      | string | extract secret key 有效期 |
+    | extractSecretKey | string | 秘钥提取安全码            |
+    | extractUrl      | string | 秘钥提取URL            |
+    | howToUse        | string | 使用方式               |
+    | notes           | string | 秘钥只能被提取一次          |
+3. 把extractUrl和extractSecretKey拼接到一起，获取AKSK。
+
+- 成功响应
+```
+{
+    "code": "SYS_SUCCESS",
+    "message": null,
+    "messageDetail": null,
+    "data": {
+        "expireTime": "2024-10-21T16:52+08:00[Asia/Shanghai]",
+        "extractSecretKey": "4f72b1e9c49e
+        4ac1bbc2cd12b5e44993",
+        "extractUrl": "https://api-testnet.thedecard.com/internal/open-api/v1/secret-extract/",
+        "howToUse": "Please concatenate the url with the secret-key and execute it on the specified machine.",
+        "notes": "This link is only valid for one AKSK extraction, if the content is not properly accessed, the AKSK may have been compromised, please contact us promptly."
+    },
+    "success": true
+}
+```
+- 失败响应
+```
+{
+    "code": "ERROR-CODE",
+    "message": "simple describe, see error-code list",
+    "success": false
+}
+```
+
+```angular2html
+注意：如果没有成功到AKSK，则说明可能在有效期内已经造成了秘钥丢失。需商务沟通后重新发送邮件
+```
