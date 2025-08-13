@@ -369,8 +369,8 @@
 |--------------|------|----------------|
 | asset        | String | 资产类型（如USDT、USDC等） |
 | amount       | String | 变动金额（负数表示扣款，正数表示退款） |
-| movementTime | String | 变动时间          |
-| movementType | String | 变动类型（如DEBIT、CREDIT等） |
+| movementTime | String | 变动时间（毫秒时间戳） |
+| movementType | String | 变动类型 |
 
 - **响应示例:**
 
