@@ -379,40 +379,47 @@
   "code": "SYS_SUCCESS",
   "message": null,
   "messageDetail": null,
-  "data": [
-    {
-      "merchantName": null,
-      "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp",
-      "postIndicator": 1,
-      "transactionDateTime": "1801526399000",
-      "postingAmountInSgd": "114.04",
-      "postingAmountInUsd": "0",
-      "debitCreditIndcator": "D",
-      "transactionDescription": "Revolving Interest Charge",
-      "cardNumber": "5304 **** ****1759",
-      "postingDate": "1801440000000",
-      "transactionAmount": "114.04",
-      "transactionCurrency": "SGD",
-      "externalTranId": "1112231221",
-      "cardScheme": "MASTERCARD"
-    },
-    {
-      "merchantName": null,
-      "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp",
-      "postIndicator": 1,
-      "transactionDateTime": "1801526399000",
-      "postingAmountInSgd": "2.55",
-      "postingAmountInUsd": "0",
-      "debitCreditIndcator": "D",
-      "transactionDescription": "Revolving Interest Charge",
-      "cardNumber": "5304 **** ****1759",
-      "postingDate": "1801440000000",
-      "transactionAmount": "2.55",
-      "transactionCurrency": "SGD",
-      "externalTranId": "1112231221",
-      "cardScheme": "MASTERCARD"
-    }
-  ],
+  "data":   [
+  {
+    "merchantName": "ACQUIRER NAME            KUALA LUMPUR MY",
+    "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/visa.webp",
+    "postIndicator": 0,
+    "transactionDateTime": "1818096263000",
+    "postingAmountInSgd": "28.85",
+    "postingAmountInUsd": "21.22",
+    "debitCreditIndcator": "D",
+    "transactionDescription": null,
+    "cardNumber": "**** **** **** 0601",
+    "postingDate": null,
+    "transactionAmount": "22",
+    "transactionCurrency": "USD",
+    "externalTranId": "4647911004599997441",
+    "cardOrganization": "VISA",
+    "postedTransactionId": "175499548181925590000009",
+    "cardScheme": "VISA",
+    "systemTraceAuditNumber": "003768",
+    "transactionDateTimeStr": "2027-08-12 18:44:23",
+    "assetMovements": [
+      {
+        "asset": "USDT",
+        "amount": "-21.2220717",
+        "movementTime": "1754995484440",
+        "movementType": "CONVERSION"
+      },
+      {
+        "asset": "USD",
+        "amount": "21.22",
+        "movementTime": "1754995484453",
+        "movementType": "CONVERSION"
+      },
+      {
+        "asset": "USD",
+        "amount": "-21.22",
+        "movementTime": "1754995484460",
+        "movementType": "CONVERSION"
+      }
+    ]
+  }],
   "success": true
 }
 ```
