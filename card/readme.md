@@ -443,18 +443,30 @@
 | transactionDateTime | String | 充值到账时间               |
 | postedTransactionId | String | 入账流水id                 |
 | transferDetails     | Object | 转账明细对象               |
+| paymentInfo         | Object | 支付信息（仅在相关交易时返回） |
 
 **transferDetails字段表：**
 
 | 名称                | 类型   | 描述               |
 | ------------------- | ------ |------------------|
-| channelCode | String | 充值渠道：<br>F ：fomo  |
+| channelCode | String | 充值渠道代码：<br>F - FOMO Pay<br>T - D Token<br>6 - APP<br>8 - PayNow<br>9 - DBS VA<br>R - VA转账<br>O - 境外银行<br>W - 提现<br>Y - TripleA |
 | txnAmt    | String | 充值金额             |
 | txnCcy   | String | 币种               |
 | sender | String | 发送地址             |
 | receiving        | String | 接收地址             |
 | timeStamp | String | 充值发起时间           |
 | txHash | String | 表示交易唯一标识           |
+
+**paymentInfo字段表：**
+
+| 名称                | 类型   | 描述               |
+| ------------------- | ------ |------------------|
+| orderId | String | 订单ID |
+| amount | String | 交易金额 |
+| currency | String | 币种 |
+| exchangeRate | String | 汇率 |
+| fee | String | 手续费 |
+| status | String | 交易状态 |
 
 
 **成功响应示例：**

@@ -1,3 +1,7 @@
+## 2025-08-13
+**card**
+- [查询法币变动记录](card/readme.md#7-查询法币变动记录) - 新增支付信息(paymentInfo)返回字段
+
 ## 2025-08-1
 **flow**
 - [生产环境的AKSK安全传输](flow/readme.md#生产环境的AKSK安全传输)
