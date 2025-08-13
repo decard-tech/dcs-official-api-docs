@@ -1,6 +1,7 @@
 ## 2025-08-13
 **card**
-- [查询法币变动记录](card/readme.md#7-查询法币变动记录) - 新增支付信息(paymentInfo)返回字段
+- [卡账单详情](card/readme.md#6-卡账单详情) - 新增资产变动明细(assetMovements)返回字段
+- [查询法币变动记录](card/readme.md#7-查询法币变动记录) - 完善channelCode字段说明
 
 ## 2025-08-1
 **flow**

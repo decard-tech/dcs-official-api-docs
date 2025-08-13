@@ -350,8 +350,8 @@
 | cardOrganizationLogo | string | 卡组(master card、UnionPay)的logo    |
 | postIndicator      | int    | 入账标识 <br>- `0`：未入账 <br>- `1`：已入账 |
 | transactionDateTime | string | 交易时间                             |
-| postingAmountInSgd | string | 入账金额(USD)                        |
-| postingAmountInUsd | string | 入账金额(SGD)                        |
+| postingAmountInSgd | string | 入账金额(SGD)                        |
+| postingAmountInUsd | string | 入账金额(USD)                        |
 | debitCreditIndcator | string | 借贷记标识 <br>- `C`：退款 <br>- `D`：消费  |
 | transactionDescription | string | 交易描述                             | 
 | cardNumber         | string | 卡号，后四位为未打码数字                     | 
@@ -361,6 +361,16 @@
 | externalTranId     | string | external tran id                 |
 | postedTransactionId | string | 已入账交易id                          |
 | cardScheme         | string |        卡组        <br>- `MASTERCARD` <br>- `VISA`     <br>- `UNION_PAY`                           |
+| assetMovements     | Array  | 资产变动明细（仅在相关交易时返回）            |
+
+**assetMovements字段表：**
+
+| 名称           | 类型   | 描述             |
+|--------------|------|----------------|
+| asset        | String | 资产类型          |
+| amount       | String | 变动金额          |
+| movementTime | String | 变动时间          |
+| movementType | String | 变动类型          |
 
 - **响应示例:**
 
@@ -443,7 +453,6 @@
 | transactionDateTime | String | 充值到账时间               |
 | postedTransactionId | String | 入账流水id                 |
 | transferDetails     | Object | 转账明细对象               |
-| paymentInfo         | Object | 支付信息（仅在相关交易时返回） |
 
 **transferDetails字段表：**
 
@@ -456,17 +465,6 @@
 | receiving        | String | 接收地址             |
 | timeStamp | String | 充值发起时间           |
 | txHash | String | 表示交易唯一标识           |
-
-**paymentInfo字段表：**
-
-| 名称                | 类型   | 描述               |
-| ------------------- | ------ |------------------|
-| orderId | String | 订单ID |
-| amount | String | 交易金额 |
-| currency | String | 币种 |
-| exchangeRate | String | 汇率 |
-| fee | String | 手续费 |
-| status | String | 交易状态 |
 
 
 **成功响应示例：**
