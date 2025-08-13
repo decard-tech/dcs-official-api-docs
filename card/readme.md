@@ -370,7 +370,7 @@
 | asset        | String | 资产类型（如USDT、USDC等） |
 | amount       | String | 变动金额（负数表示扣款，正数表示退款） |
 | movementTime | String | 变动时间（毫秒时间戳） |
-| movementType | String | 变动类型 |
+| movementType | String | 变动类型：<br>- `DEPOSIT` - 充值<br>- `WITHDRAW` - 提现<br>- `CARD_TRANSACTION` - 卡交易<br>- `CARD_TRANSACTION_REFUND` - 卡交易退款<br>- `CONVERSION` - 兑换<br>- `FEE_COLLECT` - 手续费收取<br>等 |
 
 - **响应示例:**
 
