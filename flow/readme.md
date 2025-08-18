@@ -2,6 +2,68 @@
 ![](../images/flow.png)
 ---
 
+### 最佳实践
+```mermaid
+sequenceDiagram
+    participant User
+    participant Institution
+    participant Decard_OPENAPI
+    participant Websocket_S3
+
+    Note over User,Institution: 1. 卡片申请流程
+    User->>Institution: 1.1 Apply for a card
+    activate Institution
+    Institution->>Decard_OPENAPI: 1.1.1 /captcha/v1/send-mobile-code
+    Decard_OPENAPI-->>Institution: 1.1.2 send SMS code
+    Institution-->>User: 1.1.3 SMS code
+    deactivate Institution
+
+    User->>Institution: 1.2 Register /account/v1/register
+    activate Institution
+    Institution->>Decard_OPENAPI: 1.2 (Relay)
+    Decard_OPENAPI-->>Institution: 1.3 Response externaluserid
+    Institution-->>User: 1.3 (Relay)
+    deactivate Institution
+
+    User->>Institution: 1.4 KYC
+    activate Institution
+    Institution->>Decard_OPENAPI: 1.4 /redirect/v1/guidance-link
+    Decard_OPENAPI-->>Institution: 1.5 KYC-URL
+    Institution-->>User: 1.5 Response KYC-URL
+    User->>Websocket_S3: 1.6 KYC application
+    Websocket_S3->>Institution: 1.7.0 KYC Notification
+    Institution->>Decard_OPENAPI: 1.7 /account/v1/kyc-status
+    Decard_OPENAPI-->>Institution: 1.8 Response
+    deactivate Institution
+
+    Note over User,Institution: 2. 查看卡片信息
+    User->>Institution: 2.0 Check Card info
+    activate Institution
+    Institution->>Decard_OPENAPI: 2.1 /redirect/v1/guidance-link
+    Decard_OPENAPI-->>Institution: 2.3 Cardinfo URL
+    Institution-->>User: 2.2 Response Cardinfo URL
+    deactivate Institution
+
+    Note over User,Institution: 3. 卡片管理
+    User->>Institution: 3.1 Freeze card
+    activate Institution
+    Institution->>Decard_OPENAPI: 3.1 /card/v1/block
+    Decard_OPENAPI-->>Institution: 3.2 Response
+    Institution-->>User: 3.2 (Relay)
+    deactivate Institution
+
+    User->>Institution: 3.3 Unfreeze request
+    activate Institution
+    Institution->>Decard_OPENAPI: 3.3.1 /captcha/v1/send-mobile-code
+    Decard_OPENAPI-->>Institution: 3.3.2 send SMS code
+    Institution-->>User: SMS code delivery
+    User->>Institution: 3.4 UnFreeze card (with code)
+    Institution->>Decard_OPENAPI: 3.4 /card/v1/block
+    Decard_OPENAPI-->>Institution: 3.5 Response
+    Institution-->>User: 3.5 (Relay)
+    deactivate Institution
+```
+
 ### 接口交互流程
 
 #### AKSK定义
