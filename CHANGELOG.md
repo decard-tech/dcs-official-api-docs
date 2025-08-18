@@ -2,6 +2,10 @@
 **card**
 - [新增最佳实践](flow/readme.md#最佳实践)
 
+## 2025-08-1
+**flow**
+- [生产环境的AKSK安全传输](flow/readme.md#生产环境的AKSK安全传输)
+
 ## 2025-08-07
 **card**
 - [更新卡账单列表响应格式](card/readme.md#5-卡账单列表)
