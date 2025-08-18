@@ -2,6 +2,87 @@
 ![](../images/flow.png)
 ---
 
+### 最佳实践
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Institution
+    participant Decard_OPENAPI
+    participant Websocket_S3
+
+    Note over User,Institution:  卡片申请流程
+    User->>Institution:  Apply for a card
+    activate Institution
+    Institution->>Decard_OPENAPI:  /captcha/v1/send-mobile-code
+    Decard_OPENAPI-->>Institution: send SMS code
+    Institution-->>User: SMS code
+    deactivate Institution
+
+    User->>Institution: Register /account/v1/register
+    activate Institution
+    Institution->>Decard_OPENAPI: (Relay)
+    Decard_OPENAPI-->>Institution: Response externaluserid
+    Institution-->>User: (Relay)
+    deactivate Institution
+
+    User->>Institution: KYC
+    activate Institution
+    Institution->>Decard_OPENAPI: /redirect/v1/guidance-link
+    Decard_OPENAPI-->>Institution: KYC-URL
+    Institution-->>User: Response KYC-URL
+    User->>Websocket_S3: KYC application
+    Websocket_S3->>Institution: KYC Notification
+    Institution->>Decard_OPENAPI: /account/v1/kyc-status
+    Decard_OPENAPI-->>Institution: Response
+    deactivate Institution
+
+    Note over User,Institution: 查看卡片信息
+    User->>Institution: Check Card info
+    activate Institution
+    Institution->>Decard_OPENAPI: /redirect/v1/guidance-link
+    Decard_OPENAPI-->>Institution: Cardinfo URL
+    Institution-->>User: Response Cardinfo URL
+    deactivate Institution
+
+    Note over User,Institution: 卡片管理
+    User->>Institution: Freeze card
+    activate Institution
+    Institution->>Decard_OPENAPI: /card/v1/block
+    Decard_OPENAPI-->>Institution: Response
+    Institution-->>User: (Relay)
+    deactivate Institution
+
+    User->>Institution: Unfreeze request
+    activate Institution
+    Institution->>Decard_OPENAPI: /captcha/v1/send-mobile-code
+    Decard_OPENAPI-->>Institution: send SMS code
+    Institution-->>User: SMS code delivery
+    User->>Institution: UnFreeze card (with code)
+    Institution->>Decard_OPENAPI: /card/v1/block
+    Decard_OPENAPI-->>Institution: Response
+    Institution-->>User: (Relay)
+    deactivate Institution
+
+
+    Note over User,Institution: DPT模式，fomo充值流程
+    activate Institution
+    User->>Institution: sumbit KYC info
+    Institution->>Decard_OPENAPI: /account/v1/update-travel-rule
+    Decard_OPENAPI-->>Institution: (Relay)    
+    Institution-->>User: (Relay)    
+    User->>Institution: get deposit address
+    Institution->>Decard_OPENAPI: /crypto/v2/deposit-address
+    Decard_OPENAPI-->>Institution: (Relay)    
+    Institution-->>User: (Relay)  
+    User-->>User: deposit by chain
+    User->>Institution: query deposit record
+    Institution->>Decard_OPENAPI:  /card/v1/fiat/transactions
+    Decard_OPENAPI-->>Institution: (Relay)    
+    Institution-->>User: (Relay)    
+    deactivate Institution
+```
+
 ### 接口交互流程
 
 #### AKSK定义
