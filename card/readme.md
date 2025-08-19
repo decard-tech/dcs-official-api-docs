@@ -344,23 +344,23 @@
 
 - **响应:**
 
-| 名称                 | 类型     | 描述                               |
-|--------------------|--------|----------------------------------|
-| merchantName       | string | 商户名称                             |
-| cardOrganizationLogo | string | 卡组(master card、UnionPay)的logo    |
-| postIndicator      | int    | 入账标识 <br>- `0`：未入账 <br>- `1`：已入账 |
-| transactionDateTime | string | 交易时间                             |
-| postingAmountInSgd | string | 入账金额(USD)                        |
-| postingAmountInUsd | string | 入账金额(SGD)                        |
-| debitCreditIndcator | string | 借贷记标识 <br>- `C`：退款 <br>- `D`：消费  |
-| transactionDescription | string | 交易描述                             | 
-| cardNumber         | string | 卡号，后四位为未打码数字                     | 
-| postingDate        | string | 入账日期                             | 
-| transactionAmount  | string | 交易金额                             | 
-| transactionCurrency | string | 交易币种                             | 
-| externalTranId     | string | external tran id                 |
-| postedTransactionId | string | 已入账交易id                          |
-| cardScheme         | string |        卡组        <br>- `MASTERCARD` <br>- `VISA`     <br>- `UNION_PAY`                           |
+| 名称                     | 类型     | 描述                                                              |
+|------------------------|--------|-----------------------------------------------------------------|
+| merchantName           | string | 商户名称                                                            |
+| cardOrganizationLogo   | string | 卡组(master card、UnionPay)的logo                                   |
+| postIndicator          | int    | 入账标识 <br>- `0`：未入账 <br>- `1`：已入账                                |
+| transactionDateTime    | string | 交易时间                                                            |
+| postingAmountInSgd     | string | 入账金额(USD)                                                       |
+| postingAmountInUsd     | string | 入账金额(SGD)                                                       |
+| debitCreditIndcator    | string | 借贷记标识 <br>- `C`：退款 <br>- `D`：消费                                 |
+| transactionDescription | string | 交易描述                                                            | 
+| cardNumber             | string | 卡号，后四位为未打码数字                                                    | 
+| postingDate            | string | 入账日期                                                            | 
+| transactionAmount      | string | 交易金额                                                            | 
+| transactionCurrency    | string | 交易币种                                                            | 
+| externalTranId         | string | external tran id                                                |
+| postedTransactionId    | string | 已入账交易id                                                         |
+| cardScheme             | string | 卡组        <br>- `MASTERCARD` <br>- `VISA`     <br>- `UNION_PAY` |
 
 - **响应示例:**
 
@@ -425,37 +425,36 @@
 - **方法:** `GET`
 - **请求参数:**
 
-| 名称           | 类型   | 是否必须 | 描述             |
-| -------------- | ------ | -------- | ---------------- |
-| externalUserId | String | Y        | decard用户id     |
-| page           | int    | N        | 页码 默认值 1    |
-| rows           | int    | N        | 每页条数 默认 20 |
+| 名称             | 类型     | 是否必须 | 描述         |
+|----------------|--------|------|------------|
+| externalUserId | String | Y    | decard用户id |
+| page           | int    | N    | 页码 默认值 1   |
+| rows           | int    | N    | 每页条数 默认 20 |
 
 - **响应**：
 
-| 名称                | 类型   | 描述                       |
-| ------------------- | ------ | -------------------------- |
+| 名称                  | 类型     | 描述               |
+|---------------------|--------|------------------|
 | debitCreditIndcator | String | 借贷方向 C：贷记   D：借记 |
-| postingTransType    | String | 交易类型                   |
-| transactionAmount   | String | 交易金额                   |
-| transactionCurrency | String | 交易币种                   |
-| merchantName        | String | 商户名称                   |
-| transactionDateTime | String | 充值到账时间               |
-| postedTransactionId | String | 入账流水id                 |
-| transferDetails     | Object | 转账明细对象               |
+| postingTransType    | String | 交易类型             |
+| transactionAmount   | String | 交易金额             |
+| transactionCurrency | String | 交易币种             |
+| merchantName        | String | 商户名称             |
+| transactionDateTime | String | 充值到账时间           |
+| postedTransactionId | String | 入账流水id           |
+| transferDetails     | Object | 转账明细对象           |
 
 **transferDetails字段表：**
 
-| 名称                | 类型   | 描述               |
-| ------------------- | ------ |------------------|
-| channelCode | String | 充值渠道：<br>F ：fomo  |
-| txnAmt    | String | 充值金额             |
-| txnCcy   | String | 币种               |
-| sender | String | 发送地址             |
-| receiving        | String | 接收地址             |
-| timeStamp | String | 充值发起时间           |
-| txHash | String | 表示交易唯一标识           |
-
+| 名称          | 类型     | 描述               |
+|-------------|--------|------------------|
+| channelCode | String | 充值渠道：<br>F ：fomo |
+| txnAmt      | String | 充值金额             |
+| txnCcy      | String | 币种               |
+| sender      | String | 发送地址             |
+| receiving   | String | 接收地址             |
+| timeStamp   | String | 充值发起时间           |
+| txHash      | String | 表示交易唯一标识         |
 
 **成功响应示例：**
 
@@ -498,5 +497,139 @@
 }
 ```
 
+### 8. 申请虚拟卡
 
+**描述：** 申请虚拟卡
 
+- **URL:** `/card/v1/virtual-card/apply`
+- **方法:** `POST`
+- **请求参数:**
+
+| 名称             |                       | 类型       | 是否必须 | 描述                                                   |
+|----------------|-----------------------|----------|------|------------------------------------------------------|
+| externalUserId |                       | String   | Y    | decard用户id                                           |
+| categoryId     |                       | String   | Y    | 卡类别ID，联系DCS团队获取                                      |
+| applyRef       |                       | String   | Y    | 幂等号                                                  |
+| kycInfo        |                       | Object   | Y    | KYC信息                                                |
+|                | sumsubShareToken      | String   | Y    | sumsub 令牌                                            |
+|                | email                 | String   | Y    | 邮箱                                                   |
+|                | poaDocType            | String   | Y    | [文件类型](/card/dictionary.md#地址证明文件类型-poaDocType)      |
+|                | poaDocUrlList         | String[] | Y    | 文件URL                                                |
+|                | poaDocDate            | String   | Y    | 文件日期  eg:2025-01-01                                  |
+|                | addressLine1          | String   | Y    | 地址1                                                  |
+|                | addressLine2          | String   | Y    | 地址2                                                  |
+|                | state                 | String   | Y    | 州                                                    |
+|                | city                  | String   | Y    | 城市                                                   |
+|                | postalCode            | String   | Y    | 邮政编码                                                 |
+|                | country               | String   | Y    | 国家（ 国家码，2位ISO，eg：CN/US/SG ）                          |
+|                | employmentStatus      | String   | Y    | [工作状态](/card/dictionary.md#就业状态-employmentStatus)    |
+|                | employerName          | String   | Y    | 就业公司名字,当 employmentStatus 为 "EMPLOYED" 为必填           |
+|                | employmentJobIndustry | String   | Y    | [行业](/card/dictionary.md#行业分类-employmentJobIndustry) |
+|                | occupation            | String   | Y    | [职业](/card/dictionary.md#职业-occupation)              |
+|                | jobSeniority          | String   | Y    | [就业资历](/card/dictionary.md#就业资历-jobSeniority)        |
+|                | purposeOfAccount      | String   | Y    | [开户目的](/card/dictionary.md#开户目的-purposeOfAccount)    |
+|                | sourceOfFunds         | String   | Y    | [资金来源](/card/dictionary.md#资金来源-sourceOfFunds)       |
+|                | sourceOfFundsCountry  | String   | Y    | 资金来源的国家（国家码，2位ISO，eg：CN/US/SG）                       |
+|                | sourceOfWealth        | String   | Y    | [财富来源](/card/dictionary.md#财富来源-sourceOfWealth)      |
+
+- **响应**：
+
+| 名称          | 类型      | 描述     |
+|-------------|---------|--------|
+| applyId     | String  | 申请id   |
+| categoryId  | Long    | 卡类别ID  |
+| applyRef    | String  | 外部申请编号 |
+| status      | String  | 状态     |
+| errorCode   | String  | 错误码    |
+| errorReason | String  | 错误原因   |
+| needEddFile | Boolean | 需要edd  |
+| remark      | String  | 备注     |
+
+**成功响应示例：**
+
+```
+{
+    "code": "SYS_SUCCESS",
+    "message": null,
+    "messageDetail": null,
+    "data": {
+        "applyId": "1154469232939896833",
+        "categoryId": "10102000",
+        "applyRef": "2",
+        "status": "PENDING",
+        "errorCode": "",
+        "errorReason": "",
+        "needEddFile": false,
+        "remark": ""
+    },
+    "success": true
+}
+```
+
+**失败响应示例：**
+
+```
+ {
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
+
+### 9. 查询进度---申请虚拟卡
+
+**描述：** 查询进度---申请虚拟卡
+
+- **URL:** `/card/v1/virtual-card/detail`
+- **方法:** `GET`
+- **请求参数:**
+
+| 名称             | 类型     | 是否必须 | 描述         |
+|----------------|--------|------|------------|
+| externalUserId | String | Y    | decard用户id |
+| applyId        | String | Y    | 申请id       |
+| applyRef       | String | Y    | 幂等号        |
+
+- **响应**：
+
+| 名称          | 类型      | 描述     |
+|-------------|---------|--------|
+| applyId     | String  | 申请id   |
+| categoryId  | Long    | 卡类别ID  |
+| applyRef    | String  | 外部申请编号 |
+| status      | String  | 状态     |
+| errorCode   | String  | 错误码    |
+| errorReason | String  | 错误原因   |
+| needEddFile | Boolean | 需要edd  |
+| remark      | String  | 备注     |
+
+**成功响应示例：**
+
+```
+{
+    "code": "SYS_SUCCESS",
+    "message": null,
+    "messageDetail": null,
+    "data": {
+        "applyId": "1154469232939896833",
+        "categoryId": "10102000",
+        "applyRef": "2",
+        "status": "PENDING",
+        "errorCode": "",
+        "errorReason": "",
+        "needEddFile": false,
+        "remark": ""
+    },
+    "success": true
+}
+```
+
+**失败响应示例：**
+
+```
+ {
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```

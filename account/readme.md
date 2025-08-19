@@ -364,3 +364,58 @@
 }
 ```
 
+### 8. 生成文件预上传地址
+
+**描述：** 生成文件预上传地址
+
+- **URL:** `/account/v1/generate-file-upload-prepare`
+- **方法:** `POST`
+- **请求参数:**
+
+| 名称        | 类型       | 是否必须 | 描述  |
+|-----------|----------|------|-----|
+| fileNames | String[] | Y    | 文件名 |
+
+- **响应**：
+
+| 名称          | 类型      | 描述     |
+|-------------|---------|--------|
+| applyId     | String  | 申请id   |
+| categoryId  | Long    | 卡类别ID  |
+| applyRef    | String  | 外部申请编号 |
+| status      | String  | 状态     |
+| errorCode   | String  | 错误码    |
+| errorReason | String  | 错误原因   |
+| needEddFile | Boolean | 需要edd  |
+| remark      | String  | 备注     |
+
+**成功响应示例：**
+
+```
+{
+    "code": "SYS_SUCCESS",
+    "message": null,
+    "messageDetail": null,
+    "data": {
+        "applyId": "1154469232939896833",
+        "categoryId": "10102000",
+        "applyRef": "2",
+        "status": "PENDING",
+        "errorCode": "",
+        "errorReason": "",
+        "needEddFile": false,
+        "remark": ""
+    },
+    "success": true
+}
+```
+
+**失败响应示例：**
+
+```
+ {
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
