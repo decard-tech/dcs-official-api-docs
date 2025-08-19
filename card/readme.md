@@ -515,139 +515,255 @@
 }
 ```
 
-### 8. 申请虚拟卡
+[//]: # (### 8. 申请虚拟卡)
 
-**描述：** 申请虚拟卡
+[//]: # ()
+[//]: # (**描述：** 申请虚拟卡)
 
-- **URL:** `/card/v1/virtual-card/apply`
-- **方法:** `POST`
-- **请求参数:**
+[//]: # ()
+[//]: # (- **URL:** `/card/v1/virtual-card/apply`)
 
-| 名称             |                       | 类型       | 是否必须 | 描述                                                   |
-|----------------|-----------------------|----------|------|------------------------------------------------------|
-| externalUserId |                       | String   | Y    | decard用户id                                           |
-| categoryId     |                       | String   | Y    | 卡类别ID，联系DCS团队获取                                      |
-| applyRef       |                       | String   | Y    | 幂等号                                                  |
-| kycInfo        |                       | Object   | Y    | KYC信息                                                |
-|                | sumsubShareToken      | String   | Y    | sumsub 令牌                                            |
-|                | email                 | String   | Y    | 邮箱                                                   |
-|                | poaDocType            | String   | Y    | [文件类型](/card/dictionary.md#地址证明文件类型-poaDocType)      |
-|                | poaDocUrlList         | String[] | Y    | 文件URL                                                |
-|                | poaDocDate            | String   | Y    | 文件日期  eg:2025-01-01                                  |
-|                | addressLine1          | String   | Y    | 地址1                                                  |
-|                | addressLine2          | String   | Y    | 地址2                                                  |
-|                | state                 | String   | Y    | 州                                                    |
-|                | city                  | String   | Y    | 城市                                                   |
-|                | postalCode            | String   | Y    | 邮政编码                                                 |
-|                | country               | String   | Y    | 国家（ 国家码，2位ISO，eg：CN/US/SG ）                          |
-|                | employmentStatus      | String   | Y    | [工作状态](/card/dictionary.md#就业状态-employmentStatus)    |
-|                | employerName          | String   | Y    | 就业公司名字,当 employmentStatus 为 "EMPLOYED" 为必填           |
-|                | employmentJobIndustry | String   | Y    | [行业](/card/dictionary.md#行业分类-employmentJobIndustry) |
-|                | occupation            | String   | Y    | [职业](/card/dictionary.md#职业-occupation)              |
-|                | jobSeniority          | String   | Y    | [就业资历](/card/dictionary.md#就业资历-jobSeniority)        |
-|                | purposeOfAccount      | String   | Y    | [开户目的](/card/dictionary.md#开户目的-purposeOfAccount)    |
-|                | sourceOfFunds         | String   | Y    | [资金来源](/card/dictionary.md#资金来源-sourceOfFunds)       |
-|                | sourceOfFundsCountry  | String   | Y    | 资金来源的国家（国家码，2位ISO，eg：CN/US/SG）                       |
-|                | sourceOfWealth        | String   | Y    | [财富来源](/card/dictionary.md#财富来源-sourceOfWealth)      |
+[//]: # (- **方法:** `POST`)
 
-- **响应**：
+[//]: # (- **请求参数:**)
 
-| 名称          | 类型      | 描述     |
-|-------------|---------|--------|
-| applyId     | String  | 申请id   |
-| categoryId  | Long    | 卡类别ID  |
-| applyRef    | String  | 外部申请编号 |
-| status      | String  | 状态     |
-| errorCode   | String  | 错误码    |
-| errorReason | String  | 错误原因   |
-| needEddFile | Boolean | 需要edd  |
-| remark      | String  | 备注     |
+[//]: # ()
+[//]: # (| 名称             |                       | 类型       | 是否必须 | 描述                                                   |)
 
-**成功响应示例：**
+[//]: # (|----------------|-----------------------|----------|------|------------------------------------------------------|)
 
-```
-{
-    "code": "SYS_SUCCESS",
-    "message": null,
-    "messageDetail": null,
-    "data": {
-        "applyId": "1154469232939896833",
-        "categoryId": "10102000",
-        "applyRef": "2",
-        "status": "PENDING",
-        "errorCode": "",
-        "errorReason": "",
-        "needEddFile": false,
-        "remark": ""
-    },
-    "success": true
-}
-```
+[//]: # (| externalUserId |                       | String   | Y    | decard用户id                                           |)
 
-**失败响应示例：**
+[//]: # (| categoryId     |                       | String   | Y    | 卡类别ID，联系DCS团队获取                                      |)
 
-```
- {
-  "code": "ERROR-CODE",
-  "message": "simple describe, see error-code list",
-  "success": false
-}
-```
+[//]: # (| applyRef       |                       | String   | Y    | 幂等号                                                  |)
 
-### 9. 查询进度---申请虚拟卡
+[//]: # (| kycInfo        |                       | Object   | Y    | KYC信息                                                |)
 
-**描述：** 查询进度---申请虚拟卡
+[//]: # (|                | sumsubShareToken      | String   | Y    | sumsub 令牌                                            |)
 
-- **URL:** `/card/v1/virtual-card/detail`
-- **方法:** `GET`
-- **请求参数:**
+[//]: # (|                | email                 | String   | Y    | 邮箱                                                   |)
 
-| 名称             | 类型     | 是否必须 | 描述         |
-|----------------|--------|------|------------|
-| externalUserId | String | Y    | decard用户id |
-| applyId        | String | Y    | 申请id       |
-| applyRef       | String | Y    | 幂等号        |
+[//]: # (|                | poaDocType            | String   | Y    | [文件类型]&#40;/card/dictionary.md#地址证明文件类型-poaDocType&#41;      |)
 
-- **响应**：
+[//]: # (|                | poaDocUrlList         | String[] | Y    | 文件URL                                                |)
 
-| 名称          | 类型      | 描述     |
-|-------------|---------|--------|
-| applyId     | String  | 申请id   |
-| categoryId  | Long    | 卡类别ID  |
-| applyRef    | String  | 外部申请编号 |
-| status      | String  | 状态     |
-| errorCode   | String  | 错误码    |
-| errorReason | String  | 错误原因   |
-| needEddFile | Boolean | 需要edd  |
-| remark      | String  | 备注     |
+[//]: # (|                | poaDocDate            | String   | Y    | 文件日期  eg:2025-01-01                                  |)
 
-**成功响应示例：**
+[//]: # (|                | addressLine1          | String   | Y    | 地址1                                                  |)
 
-```
-{
-    "code": "SYS_SUCCESS",
-    "message": null,
-    "messageDetail": null,
-    "data": {
-        "applyId": "1154469232939896833",
-        "categoryId": "10102000",
-        "applyRef": "2",
-        "status": "PENDING",
-        "errorCode": "",
-        "errorReason": "",
-        "needEddFile": false,
-        "remark": ""
-    },
-    "success": true
-}
-```
+[//]: # (|                | addressLine2          | String   | Y    | 地址2                                                  |)
 
-**失败响应示例：**
+[//]: # (|                | state                 | String   | Y    | 州                                                    |)
 
-```
- {
-  "code": "ERROR-CODE",
-  "message": "simple describe, see error-code list",
-  "success": false
-}
-```
+[//]: # (|                | city                  | String   | Y    | 城市                                                   |)
+
+[//]: # (|                | postalCode            | String   | Y    | 邮政编码                                                 |)
+
+[//]: # (|                | country               | String   | Y    | 国家（ 国家码，2位ISO，eg：CN/US/SG ）                          |)
+
+[//]: # (|                | employmentStatus      | String   | Y    | [工作状态]&#40;/card/dictionary.md#就业状态-employmentStatus&#41;    |)
+
+[//]: # (|                | employerName          | String   | Y    | 就业公司名字,当 employmentStatus 为 "EMPLOYED" 为必填           |)
+
+[//]: # (|                | employmentJobIndustry | String   | Y    | [行业]&#40;/card/dictionary.md#行业分类-employmentJobIndustry&#41; |)
+
+[//]: # (|                | occupation            | String   | Y    | [职业]&#40;/card/dictionary.md#职业-occupation&#41;              |)
+
+[//]: # (|                | jobSeniority          | String   | Y    | [就业资历]&#40;/card/dictionary.md#就业资历-jobSeniority&#41;        |)
+
+[//]: # (|                | purposeOfAccount      | String   | Y    | [开户目的]&#40;/card/dictionary.md#开户目的-purposeOfAccount&#41;    |)
+
+[//]: # (|                | sourceOfFunds         | String   | Y    | [资金来源]&#40;/card/dictionary.md#资金来源-sourceOfFunds&#41;       |)
+
+[//]: # (|                | sourceOfFundsCountry  | String   | Y    | 资金来源的国家（国家码，2位ISO，eg：CN/US/SG）                       |)
+
+[//]: # (|                | sourceOfWealth        | String   | Y    | [财富来源]&#40;/card/dictionary.md#财富来源-sourceOfWealth&#41;      |)
+
+[//]: # ()
+[//]: # (- **响应**：)
+
+[//]: # ()
+[//]: # (| 名称          | 类型      | 描述     |)
+
+[//]: # (|-------------|---------|--------|)
+
+[//]: # (| applyId     | String  | 申请id   |)
+
+[//]: # (| categoryId  | Long    | 卡类别ID  |)
+
+[//]: # (| applyRef    | String  | 外部申请编号 |)
+
+[//]: # (| status      | String  | 状态     |)
+
+[//]: # (| errorCode   | String  | 错误码    |)
+
+[//]: # (| errorReason | String  | 错误原因   |)
+
+[//]: # (| needEddFile | Boolean | 需要edd  |)
+
+[//]: # (| remark      | String  | 备注     |)
+
+[//]: # ()
+[//]: # (**成功响应示例：**)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # ({)
+
+[//]: # (    "code": "SYS_SUCCESS",)
+
+[//]: # (    "message": null,)
+
+[//]: # (    "messageDetail": null,)
+
+[//]: # (    "data": {)
+
+[//]: # (        "applyId": "1154469232939896833",)
+
+[//]: # (        "categoryId": "10102000",)
+
+[//]: # (        "applyRef": "2",)
+
+[//]: # (        "status": "PENDING",)
+
+[//]: # (        "errorCode": "",)
+
+[//]: # (        "errorReason": "",)
+
+[//]: # (        "needEddFile": false,)
+
+[//]: # (        "remark": "")
+
+[//]: # (    },)
+
+[//]: # (    "success": true)
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (**失败响应示例：**)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # ( {)
+
+[//]: # (  "code": "ERROR-CODE",)
+
+[//]: # (  "message": "simple describe, see error-code list",)
+
+[//]: # (  "success": false)
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### 9. 查询进度---申请虚拟卡)
+
+[//]: # ()
+[//]: # (**描述：** 查询进度---申请虚拟卡)
+
+[//]: # ()
+[//]: # (- **URL:** `/card/v1/virtual-card/detail`)
+
+[//]: # (- **方法:** `GET`)
+
+[//]: # (- **请求参数:**)
+
+[//]: # ()
+[//]: # (| 名称             | 类型     | 是否必须 | 描述         |)
+
+[//]: # (|----------------|--------|------|------------|)
+
+[//]: # (| externalUserId | String | Y    | decard用户id |)
+
+[//]: # (| applyId        | String | Y    | 申请id       |)
+
+[//]: # (| applyRef       | String | Y    | 幂等号        |)
+
+[//]: # ()
+[//]: # (- **响应**：)
+
+[//]: # ()
+[//]: # (| 名称          | 类型      | 描述     |)
+
+[//]: # (|-------------|---------|--------|)
+
+[//]: # (| applyId     | String  | 申请id   |)
+
+[//]: # (| categoryId  | Long    | 卡类别ID  |)
+
+[//]: # (| applyRef    | String  | 外部申请编号 |)
+
+[//]: # (| status      | String  | 状态     |)
+
+[//]: # (| errorCode   | String  | 错误码    |)
+
+[//]: # (| errorReason | String  | 错误原因   |)
+
+[//]: # (| needEddFile | Boolean | 需要edd  |)
+
+[//]: # (| remark      | String  | 备注     |)
+
+[//]: # ()
+[//]: # (**成功响应示例：**)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # ({)
+
+[//]: # (    "code": "SYS_SUCCESS",)
+
+[//]: # (    "message": null,)
+
+[//]: # (    "messageDetail": null,)
+
+[//]: # (    "data": {)
+
+[//]: # (        "applyId": "1154469232939896833",)
+
+[//]: # (        "categoryId": "10102000",)
+
+[//]: # (        "applyRef": "2",)
+
+[//]: # (        "status": "PENDING",)
+
+[//]: # (        "errorCode": "",)
+
+[//]: # (        "errorReason": "",)
+
+[//]: # (        "needEddFile": false,)
+
+[//]: # (        "remark": "")
+
+[//]: # (    },)
+
+[//]: # (    "success": true)
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (**失败响应示例：**)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # ( {)
+
+[//]: # (  "code": "ERROR-CODE",)
+
+[//]: # (  "message": "simple describe, see error-code list",)
+
+[//]: # (  "success": false)
+
+[//]: # (})
+
+[//]: # (```)
