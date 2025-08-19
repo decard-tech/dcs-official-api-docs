@@ -1,15 +1,24 @@
+## 2025-08-19
+**新增接口：**
+**card**
+- [申请虚拟卡](card/readme.md#8-申请虚拟卡)
+- [查询进度---申请虚拟卡](card/readme.md#9-查询进度---申请虚拟卡)
+**account**
+- [生成文件预上传地址](account/readme.md#8-生成文件预上传地址)
+- [上传EDD文件](account/readme.md#9-上传edd文件)
+
 ## 2025-08-18
 **card**
 - [新增最佳实践](flow/readme.md#最佳实践)
 
-## 2025-08-1
-**flow**
-- [生产环境的AKSK安全传输](flow/readme.md#生产环境的AKSK安全传输)
 
 ## 2025-08-07
 **card**
 - [更新卡账单列表响应格式](card/readme.md#5-卡账单列表)
 
+## 2025-08-1
+**flow**
+- [生产环境的AKSK安全传输](flow/readme.md#生产环境的AKSK安全传输)
 
 ## 2025-04-01
 
