@@ -1,7 +1,12 @@
+## 2025-08-18
+**card**
+- [新增最佳实践](flow/readme.md#最佳实践)
+
 ## 2025-08-13
 **card**
 - [卡账单详情](card/readme.md#6-卡账单详情) - 新增资产变动明细(assetMovements)返回字段
 - [查询法币变动记录](card/readme.md#7-查询法币变动记录) - 完善channelCode字段说明
+
 
 ## 2025-08-1
 **flow**
