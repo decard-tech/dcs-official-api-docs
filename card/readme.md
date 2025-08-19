@@ -350,8 +350,8 @@
 | cardOrganizationLogo | string | 卡组(master card、UnionPay)的logo    |
 | postIndicator      | int    | 入账标识 <br>- `0`：未入账 <br>- `1`：已入账 |
 | transactionDateTime | string | 交易时间                             |
-| postingAmountInSgd | string | 入账金额(USD)                        |
-| postingAmountInUsd | string | 入账金额(SGD)                        |
+| postingAmountInSgd | string | 入账金额(SGD)                        |
+| postingAmountInUsd | string | 入账金额(USD)                        |
 | debitCreditIndcator | string | 借贷记标识 <br>- `C`：退款 <br>- `D`：消费  |
 | transactionDescription | string | 交易描述                             | 
 | cardNumber         | string | 卡号，后四位为未打码数字                     | 
@@ -361,6 +361,16 @@
 | externalTranId     | string | external tran id                 |
 | postedTransactionId | string | 已入账交易id                          |
 | cardScheme         | string |        卡组        <br>- `MASTERCARD` <br>- `VISA`     <br>- `UNION_PAY`                           |
+| assetMovements     | Array  | 资产变动明细（仅在相关交易时返回）            |
+
+**assetMovements字段表：**
+
+| 名称           | 类型   | 描述             |
+|--------------|------|----------------|
+| asset        | String | 资产类型（如USDT、USDC等） |
+| amount       | String | 变动金额（负数表示扣款，正数表示退款） |
+| movementTime | String | 变动时间（毫秒时间戳） |
+| movementType | String | 变动类型：<br>- `DEPOSIT` - 充值<br>- `WITHDRAW` - 提现<br>- `CARD_TRANSACTION` - 卡交易<br>- `CARD_TRANSACTION_REFUND` - 卡交易退款<br>- `CONVERSION` - 兑换<br>- `FEE_COLLECT` - 手续费收取<br>等 |
 
 - **响应示例:**
 
@@ -369,40 +379,47 @@
   "code": "SYS_SUCCESS",
   "message": null,
   "messageDetail": null,
-  "data": [
-    {
-      "merchantName": null,
-      "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp",
-      "postIndicator": 1,
-      "transactionDateTime": "1801526399000",
-      "postingAmountInSgd": "114.04",
-      "postingAmountInUsd": "0",
-      "debitCreditIndcator": "D",
-      "transactionDescription": "Revolving Interest Charge",
-      "cardNumber": "5304 **** ****1759",
-      "postingDate": "1801440000000",
-      "transactionAmount": "114.04",
-      "transactionCurrency": "SGD",
-      "externalTranId": "1112231221",
-      "cardScheme": "MASTERCARD"
-    },
-    {
-      "merchantName": null,
-      "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp",
-      "postIndicator": 1,
-      "transactionDateTime": "1801526399000",
-      "postingAmountInSgd": "2.55",
-      "postingAmountInUsd": "0",
-      "debitCreditIndcator": "D",
-      "transactionDescription": "Revolving Interest Charge",
-      "cardNumber": "5304 **** ****1759",
-      "postingDate": "1801440000000",
-      "transactionAmount": "2.55",
-      "transactionCurrency": "SGD",
-      "externalTranId": "1112231221",
-      "cardScheme": "MASTERCARD"
-    }
-  ],
+  "data":   [
+  {
+    "merchantName": "ACQUIRER NAME            KUALA LUMPUR MY",
+    "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/visa.webp",
+    "postIndicator": 0,
+    "transactionDateTime": "1818096263000",
+    "postingAmountInSgd": "28.85",
+    "postingAmountInUsd": "21.22",
+    "debitCreditIndcator": "D",
+    "transactionDescription": null,
+    "cardNumber": "**** **** **** 0601",
+    "postingDate": null,
+    "transactionAmount": "22",
+    "transactionCurrency": "USD",
+    "externalTranId": "4647911004599997441",
+    "cardOrganization": "VISA",
+    "postedTransactionId": "175499548181925590000009",
+    "cardScheme": "VISA",
+    "systemTraceAuditNumber": "003768",
+    "transactionDateTimeStr": "2027-08-12 18:44:23",
+    "assetMovements": [
+      {
+        "asset": "USDT",
+        "amount": "-21.2220717",
+        "movementTime": "1754995484440",
+        "movementType": "CONVERSION"
+      },
+      {
+        "asset": "USD",
+        "amount": "21.22",
+        "movementTime": "1754995484453",
+        "movementType": "CONVERSION"
+      },
+      {
+        "asset": "USD",
+        "amount": "-21.22",
+        "movementTime": "1754995484460",
+        "movementType": "CONVERSION"
+      }
+    ]
+  }],
   "success": true
 }
 ```
@@ -448,7 +465,7 @@
 
 | 名称                | 类型   | 描述               |
 | ------------------- | ------ |------------------|
-| channelCode | String | 充值渠道：<br>F ：fomo  |
+| channelCode | String | 充值渠道代码：<br>F - FOMO Pay<br>T - D Token<br>6 - APP<br>8 - PayNow<br>9 - DBS VA<br>R - VA转账<br>O - 境外银行<br>W - 提现<br>Y - TripleA |
 | txnAmt    | String | 充值金额             |
 | txnCcy   | String | 币种               |
 | sender | String | 发送地址             |
@@ -498,5 +515,139 @@
 }
 ```
 
+### 8. 申请虚拟卡
 
+**描述：** 申请虚拟卡
 
+- **URL:** `/card/v1/virtual-card/apply`
+- **方法:** `POST`
+- **请求参数:**
+
+| 名称             |                       | 类型       | 是否必须 | 描述                                                   |
+|----------------|-----------------------|----------|------|------------------------------------------------------|
+| externalUserId |                       | String   | Y    | decard用户id                                           |
+| categoryId     |                       | String   | Y    | 卡类别ID，联系DCS团队获取                                      |
+| applyRef       |                       | String   | Y    | 幂等号                                                  |
+| kycInfo        |                       | Object   | Y    | KYC信息                                                |
+|                | sumsubShareToken      | String   | Y    | sumsub 令牌                                            |
+|                | email                 | String   | Y    | 邮箱                                                   |
+|                | poaDocType            | String   | Y    | [文件类型](/card/dictionary.md#地址证明文件类型-poaDocType)      |
+|                | poaDocUrlList         | String[] | Y    | 文件URL                                                |
+|                | poaDocDate            | String   | Y    | 文件日期  eg:2025-01-01                                  |
+|                | addressLine1          | String   | Y    | 地址1                                                  |
+|                | addressLine2          | String   | Y    | 地址2                                                  |
+|                | state                 | String   | Y    | 州                                                    |
+|                | city                  | String   | Y    | 城市                                                   |
+|                | postalCode            | String   | Y    | 邮政编码                                                 |
+|                | country               | String   | Y    | 国家（ 国家码，2位ISO，eg：CN/US/SG ）                          |
+|                | employmentStatus      | String   | Y    | [工作状态](/card/dictionary.md#就业状态-employmentStatus)    |
+|                | employerName          | String   | Y    | 就业公司名字,当 employmentStatus 为 "EMPLOYED" 为必填           |
+|                | employmentJobIndustry | String   | Y    | [行业](/card/dictionary.md#行业分类-employmentJobIndustry) |
+|                | occupation            | String   | Y    | [职业](/card/dictionary.md#职业-occupation)              |
+|                | jobSeniority          | String   | Y    | [就业资历](/card/dictionary.md#就业资历-jobSeniority)        |
+|                | purposeOfAccount      | String   | Y    | [开户目的](/card/dictionary.md#开户目的-purposeOfAccount)    |
+|                | sourceOfFunds         | String   | Y    | [资金来源](/card/dictionary.md#资金来源-sourceOfFunds)       |
+|                | sourceOfFundsCountry  | String   | Y    | 资金来源的国家（国家码，2位ISO，eg：CN/US/SG）                       |
+|                | sourceOfWealth        | String   | Y    | [财富来源](/card/dictionary.md#财富来源-sourceOfWealth)      |
+
+- **响应**：
+
+| 名称          | 类型      | 描述     |
+|-------------|---------|--------|
+| applyId     | String  | 申请id   |
+| categoryId  | Long    | 卡类别ID  |
+| applyRef    | String  | 外部申请编号 |
+| status      | String  | 状态     |
+| errorCode   | String  | 错误码    |
+| errorReason | String  | 错误原因   |
+| needEddFile | Boolean | 需要edd  |
+| remark      | String  | 备注     |
+
+**成功响应示例：**
+
+```
+{
+    "code": "SYS_SUCCESS",
+    "message": null,
+    "messageDetail": null,
+    "data": {
+        "applyId": "1154469232939896833",
+        "categoryId": "10102000",
+        "applyRef": "2",
+        "status": "PENDING",
+        "errorCode": "",
+        "errorReason": "",
+        "needEddFile": false,
+        "remark": ""
+    },
+    "success": true
+}
+```
+
+**失败响应示例：**
+
+```
+ {
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
+
+### 9. 查询进度---申请虚拟卡
+
+**描述：** 查询进度---申请虚拟卡
+
+- **URL:** `/card/v1/virtual-card/detail`
+- **方法:** `GET`
+- **请求参数:**
+
+| 名称             | 类型     | 是否必须 | 描述         |
+|----------------|--------|------|------------|
+| externalUserId | String | Y    | decard用户id |
+| applyId        | String | Y    | 申请id       |
+| applyRef       | String | Y    | 幂等号        |
+
+- **响应**：
+
+| 名称          | 类型      | 描述     |
+|-------------|---------|--------|
+| applyId     | String  | 申请id   |
+| categoryId  | Long    | 卡类别ID  |
+| applyRef    | String  | 外部申请编号 |
+| status      | String  | 状态     |
+| errorCode   | String  | 错误码    |
+| errorReason | String  | 错误原因   |
+| needEddFile | Boolean | 需要edd  |
+| remark      | String  | 备注     |
+
+**成功响应示例：**
+
+```
+{
+    "code": "SYS_SUCCESS",
+    "message": null,
+    "messageDetail": null,
+    "data": {
+        "applyId": "1154469232939896833",
+        "categoryId": "10102000",
+        "applyRef": "2",
+        "status": "PENDING",
+        "errorCode": "",
+        "errorReason": "",
+        "needEddFile": false,
+        "remark": ""
+    },
+    "success": true
+}
+```
+
+**失败响应示例：**
+
+```
+ {
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```

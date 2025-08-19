@@ -364,3 +364,206 @@
 }
 ```
 
+
+### 8. 生成文件预上传地址
+
+**描述：** 生成文件预上传地址，用于获取文件上传的临时URL
+
+- **URL:** `/account/v1/generate-file-upload-prepare`
+- **方法:** `POST`
+- **请求参数:**
+
+| 名称        | 类型           | 是否必须 | 描述       |
+|-----------|--------------|------|----------|
+| fileNames | List<String> | Y    | 文件名列表    |
+
+**请求报文示例：**
+
+```json
+{
+  "fileNames": [
+    "document1.pdf",
+    "document2.jpg",
+    "document3.png"
+  ]
+}
+```
+
+- **成功响应:**
+
+| 名称        | 类型     | 描述      |
+|-----------|--------|---------|
+| fileName  | String | 源文件名    |
+| url       | String | 上传地址    |
+| objectKey | String | 重命名后文件名 |
+
+**成功响应：**
+
+```json
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": [
+    {
+      "fileName": "document1.pdf",
+      "url": "https://s3.amazonaws.com/bucket/upload-url-1",
+      "objectKey": "uploads/20240819/abc123-document1.pdf"
+    },
+    {
+      "fileName": "document2.jpg", 
+      "url": "https://s3.amazonaws.com/bucket/upload-url-2",
+      "objectKey": "uploads/20240819/def456-document2.jpg"
+    },
+    {
+      "fileName": "document3.png",
+      "url": "https://s3.amazonaws.com/bucket/upload-url-3", 
+      "objectKey": "uploads/20240819/ghi789-document3.png"
+    }
+  ],
+  "success": true
+}
+```
+
+**失败响应：**
+
+```json
+{
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
+
+
+
+***
+
+### 9. 上传EDD文件
+
+**描述：** 上传增强尽职调查(EDD)文件，用于提交财富来源和资金来源相关文档
+
+- **URL:** `/account/v1/upload-edd-file`
+- **方法:** `POST`
+- **请求参数:**
+
+| 名称                | 类型                | 是否必须 | 描述                    |
+|-------------------|-------------------|------|-----------------------|
+| externalUserId    | String            | Y    | DeCard用户ID            |
+| requestRef        | String            | Y    | 唯一幂等ID                |
+| applyId           | String            | Y    | 虚拟卡申请ID               |
+| eddSowSalary      | EddSowSalary      | N    | 财富来源-薪水              |
+| eddSowBizRevenue  | EddSowBizRevenue  | N    | 财富来源-经营              |
+| eddSowGift        | EddSowGift        | N    | 财富来源-礼物              |
+| eddSowInheritance | EddSowInheritance | N    | 财富来源-继承              |
+| eddSowInvest      | EddSowInvest      | N    | 财富来源-投资              |
+| eddSowOther       | EddSowOther       | N    | 财富来源-其他              |
+| eddSofSaving      | EddSofSaving      | N    | 资金来源-储蓄收入            |
+| eddSofSale        | EddSofSale        | N    | 资金来源-出售收入            |
+| eddSofBizRevenue  | EddSofBizRevenue  | N    | 资金来源-经营收入            |
+| eddSofCrypto      | EddSofCrypto      | N    | 资金来源-数字货币收入          |
+| eddSofInvest      | EddSofInvest      | N    | 资金来源-投资收入            |
+| eddSofOther       | EddSofOther       | N    | 资金来源-其他              |
+
+**备注：** 至少需要提供一个财富来源字段(eddSow*)
+
+**EddSowSalary 对象结构:**
+
+| 名称           | 类型                           | 是否必须 | 描述     |
+|--------------|------------------------------|------|--------|
+| employerName | String                       | Y    | 雇员名称   |
+| jobTitle     | String                       | Y    | 工作头衔   |
+| annualIncome | String                       | Y    | 年收入    |
+| docUrls      | List<APIIntentTicketFileRequest> | Y    | 文件地址列表 |
+
+**EddSowBizRevenue 对象结构:**
+
+| 名称               | 类型                           | 是否必须 | 描述     |
+|------------------|------------------------------|------|--------|
+| businessName     | String                       | Y    | 业务名称   |
+| natureOfBusiness | String                       | Y    | 业务性质   |
+| annualRevenue    | String                       | Y    | 年营收    |
+| docUrls          | List<APIIntentTicketFileRequest> | Y    | 文件地址列表 |
+
+**EddSowGift 对象结构:**
+
+| 名称                        | 类型                           | 是否必须 | 描述       |
+|---------------------------|------------------------------|------|----------|
+| contributorName           | String                       | Y    | 贡献者的名字   |
+| relationshipToYou         | String                       | Y    | 关系       |
+| contributorSourceOfWealth | String                       | Y    | 贡献者的财富来源 |
+| estimatedNetWorth         | String                       | Y    | 财富净值     |
+| typeOfAssets              | String                       | Y    | 资产类型     |
+| yearAssetsReceived        | String                       | N    | 年接受资产    |
+| recurringGifts            | RecurringGiftsDetail         | N    | 经常性礼物    |
+| docUrls                   | List<APIIntentTicketFileRequest> | Y    | 文件地址列表   |
+
+**APIIntentTicketFileRequest 对象结构:**
+
+| 名称       | 类型     | 是否必须 | 描述   |
+|----------|--------|------|------|
+| fileName | String | Y    | 文件名  |
+| filePath | String | Y    | 文件路径 |
+
+**请求报文示例：**
+
+```json
+{
+  "externalUserId": "298fe06f-0066-4565-ae20-3697cd9d664e",
+  "requestRef": "REQ_20240819_001",
+  "applyId": "APPLY_20240819_001",
+  "eddSowSalary": {
+    "employerName": "ABC Company Ltd",
+    "jobTitle": "Software Engineer",
+    "annualIncome": "100000",
+    "docUrls": [
+      {
+        "fileName": "salary_certificate.pdf",
+        "filePath": "uploads/20240819/abc123-salary_certificate.pdf"
+      },
+      {
+        "fileName": "employment_contract.pdf", 
+        "filePath": "uploads/20240819/def456-employment_contract.pdf"
+      }
+    ]
+  },
+  "eddSofCrypto": {
+    "platform": "Binance",
+    "holdingType": "CUSTODIAN",
+    "docUrls": [
+      {
+        "fileName": "crypto_statement.pdf",
+        "filePath": "uploads/20240819/ghi789-crypto_statement.pdf"
+      }
+    ]
+  }
+}
+```
+
+- **成功响应:**
+
+| 名称   | 类型   | 描述  |
+|------|------|-----|
+| data | void | N/A |
+
+**成功响应：**
+
+```json
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": null,
+  "success": true
+}
+```
+
+**失败响应：**
+
+```json
+{
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
