@@ -463,15 +463,17 @@
 
 **transferDetails字段表：**
 
-| 名称                | 类型   | 描述               |
-| ------------------- | ------ |------------------|
+| 名称                | 类型   | 描述                                                                                                                             |
+| ------------------- | ------ |--------------------------------------------------------------------------------------------------------------------------------|
 | channelCode | String | 充值渠道代码：<br>F - FOMO Pay<br>T - D Token<br>6 - APP<br>8 - PayNow<br>9 - DBS VA<br>R - VA转账<br>O - 境外银行<br>W - 提现<br>Y - TripleA |
-| txnAmt    | String | 充值金额             |
-| txnCcy   | String | 币种               |
-| sender | String | 发送地址             |
-| receiving        | String | 接收地址             |
-| timeStamp | String | 充值发起时间           |
-| txHash | String | 表示交易唯一标识           |
+| txnAmt    | String | 充值金额                                                                                                                           |
+| txnCcy   | String | 币种                                                                                                                             |
+| sender | String | 发送地址                                                                                                                           |
+| receiving        | String | 接收地址                                                                                                                           |
+| timeStamp | String | 充值发起时间                                                                                                                         |
+| txHash | String | 表示交易唯一标识                                                                                                                       |
+| network | String | 网络                                                                                                                             |
+| asset | String | 币种                                                                                                                             |
 
 
 **成功响应示例：**
@@ -497,7 +499,9 @@
       	"sender":"sfsf",
       	"receiving":"sgsff",
       	"timeStamp":"1747793974890",
-      	"txHash":"0x0d1c3de69760d09e528284c032d7b31bab4e492c0fee3efd69af74cd7a4fe05f"
+      	"txHash":"0x0d1c3de69760d09e528284c032d7b31bab4e492c0fee3efd69af74cd7a4fe05f",
+      	"network":"Ethereum",
+      	"asset":"USDT"
       }
     }
   ],
