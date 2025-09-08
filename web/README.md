@@ -9,6 +9,7 @@ DCS pages support the following access methods:
 | Native Browser | Yes       | None                                                                         |
 | IFrame         | Yes       | CSP domain whitelist, channel whitelist                                      |
 | WebView        | Yes       | User-Agent whitelist                                                         |
+| APP SDK     | Yes       | [APP SDK](https://github.com/decard-tech/open-kyc-ios)   |
 
 > The access party must inform the platform of the access type, and the platform will handle the corresponding configuration.
 

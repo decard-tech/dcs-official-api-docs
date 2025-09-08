@@ -8,7 +8,8 @@ DCS 页面支持以下访问方式：
 |-----------------|-----------|-------------------------------------------------------------------------------|
 | 原生浏览器  | 是       | 无                                                                          |
 | IFrame          | 是       | CSP 域名白名单，渠道白名单 |
-| WebView         | 是       | user-Agent 白名单   |
+| WebView     | 是       | user-Agent 白名单   |
+| APP SDK     | 是       | [移动端接入方案](https://github.com/decard-tech/open-kyc-ios)   |
 
 > 接入方需告知访问类型，平台需进行相关配置。
 
@@ -41,11 +42,11 @@ AppleWebKit/537.36 (KHTML, like Gecko) Decard/0.0.1 Mobile Safari/537.36
 ### 平台内通信
 为提升用户体验，在 IFrame 与 WebView 中，特定交互场景下采用 `postMessage` 机制通知父容器，实现更好的用户体验，因此 Webview 和 Iframe 容器可以监听这些事件作出处理
 
-| 名称     | 描述 | 数据类型                                                                     |
+| 事件名称     | 描述 | 数据类型                                                                     |
 |-----------------|-----------|-------------------------------------------------------------------------------|
-| `DECARD_OPENAPI_CLOSE`  | 关闭页面       | { "name": "DECARD_OPENAPI_CLOSE", "payload": null }                                                                          |
-| `DECARD_OPENAPI_MFA_OPENED`          | 卡详情 OTP 验证弹窗激活时触发       | { "name": "DECARD_OPENAPI_MFA_OPENED", "payload": null }      |
-| `DECARD_OPENAPI_CARD_DETAIL_OPENED`         | 卡面信息激活时触发       | { "name": "DECARD_OPENAPI_CARD_DETAIL_OPENED", "payload": null }   |
+| `DECARD_OPENAPI_CLOSE`  | 关闭页面       | `{ "name": "DECARD_OPENAPI_CLOSE", "payload": null ｜ { "type": "INTERNAL_ERROR_PAGE" } } `                                                                         |
+| `DECARD_OPENAPI_MFA_OPENED`          | 卡详情 OTP 验证弹窗激活时触发       | `{ "name": "DECARD_OPENAPI_MFA_OPENED", "payload": null }`      |
+| `DECARD_OPENAPI_CARD_DETAIL_OPENED`         | 卡面信息激活时触发       | `{ "name": "DECARD_OPENAPI_CARD_DETAIL_OPENED", "payload": null } `  |
 
 ### 错误处理与跳转
 DCS 中的所有错误情况都由内部自动处理。
