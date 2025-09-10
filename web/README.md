@@ -1,77 +1,132 @@
-## Frontend Access Specification
+# Frontend Integration Guide
 
-### Supported Platforms
+## Supported Integration Methods
 
-DCS pages support the following access methods:
+DCS pages support multiple integration methods to meet different scenario requirements:
 
-| Access Type    | Supported | Configuration                                                                 |
-|-----------------|-----------|-------------------------------------------------------------------------------|
-| Native Browser | Yes       | None                                                                         |
-| IFrame         | Yes       | CSP domain whitelist, channel whitelist                                      |
-| WebView        | Yes       | User-Agent whitelist                                                         |
+| Integration Method | Support Status | Configuration Requirements |
+|-------------------|----------------|---------------------------|
+| Native Browser | ✅ Supported | No configuration required |
+| IFrame Embedding | ✅ Supported | CSP domain whitelist and channel whitelist required |
+| WebView Container | ✅ Supported | User-Agent whitelist required |
+| Mobile SDK | ✅ Supported | Refer to [APP SDK Integration Guide](https://github.com/decard-tech/open-kyc-ios) |
 
-> The access party must inform the platform of the access type, and the platform will handle the corresponding configuration.
+> **Important Note**: Please inform us of your access type before integration, and we will configure the platform accordingly.
 
----
+## Security Verification Mechanism
 
-### Notes on Link Generation
+To ensure user security, DCS implements strict security verification for all access links. Access that fails verification will be rejected (displaying Page Not Found).
 
-To ensure user safety, all initial links accessing DCS will undergo security validation. Access will be restricted (Page Not Found) if validation fails. Access will be granted if any of the following conditions are met:
+### Verification Methods
 
-#### 1. Validating keywords in the `user-Agent` header (applicable only in WebView scenarios)
+Any of the following verification methods can be used for normal access:
 
-```code
+#### Method 1: User-Agent Keyword Verification
+
+**Applicable Scenario**: App WebView environment
+
+**Example Configuration**:
+```
 AppleWebKit/537.36 (KHTML, like Gecko) Decard/0.0.1 Mobile Safari/537.36
 ```
-If the `user-Agent` string matches the keyword `Decard`, access will be granted.
 
-**Responsibility:**
-- **Access Party**:
-  - Provide a customized `user-Agent` keyword.
-- **Platform (DCS)**:
-  - Add the keyword to the whitelist on the DCS platform.
+**Configuration Requirements**:
+- **Integrator**: Provide custom User-Agent keywords
+- **Platform**: Add keywords to whitelist (e.g., "Decard" in the example above)
 
-#### 2. Full validation of the `user-Agent` in the browser header against the `user-Agent` provided in the access party's API request
+#### Method 2: User-Agent Exact Match Verification
 
-**Responsibility:**
-- **Access Party**:
-  - Ensure the `user-Agent` in the API request and the browser's `user-Agent` are identical.
+**Configuration Requirements**:
+- Integrator must ensure the User-Agent in API requests matches exactly with the User-Agent in browser access
+- Uses strict string matching (===)
 
-#### 3. Validating the `referer` in the browser header against the `referer` provided in the access party's API request (include check)
+#### Method 3: Referer Inclusion Match Verification
 
-**Responsibility:**
-- **Access Party**:
-  - Ensure the `referer` in the API request and the `referer` when accessing the DCS page are consistent.
+**Configuration Requirements**:
+- Integrator must ensure the Referer in API requests is consistent with the Referer during page access
+- Uses inclusion matching (include) for verification
 
----
+## Container Communication Mechanism
 
-### Platform Communication
+To enhance user experience, DCS uses the `postMessage` mechanism to communicate with parent containers in IFrame and WebView environments.
 
-To enhance user experience in IFrame and WebView scenarios, specific interactions use the `postMessage` mechanism to notify the parent container. WebView and IFrame containers can listen to these events and respond accordingly.
+### Communication Protocol
 
-| Event Name                   | Description                                     | Data Format                                                                     |
-|------------------------------|-------------------------------------------------|---------------------------------------------------------------------------------|
-| `DECARD_OPENAPI_CLOSE`       | Close the page                                 | `{ "name": "DECARD_OPENAPI_CLOSE", "payload": null }`                       |
-| `DECARD_OPENAPI_MFA_OPENED`  | Triggered when the OTP verification popup is activated | `{ "name": "DECARD_OPENAPI_MFA_OPENED", "payload": null }`                |
-| `DECARD_OPENAPI_CARD_DETAIL_OPENED` | Triggered when card details are activated      | `{ "name": "DECARD_OPENAPI_CARD_DETAIL_OPENED", "payload": null }`          |
+All event data is passed as JSON strings, containing the following fields:
+- `name`: Event name
+- `payload`: Event parameters
 
----
+### Event List
 
-### Error Handling and Redirection
+#### DECARD_OPENAPI_CLOSE
 
-All error scenarios in DCS are handled automatically.
+**Function**: Notify container to close DCS page
 
-| Code  | Description                                |
-|-------|--------------------------------------------|
-| 10000 | General error                              |
-| 10001 | Login state lost                           |
-| 10002 | Access to non-process pages is prohibited  |
-| 10003 | Not in the `user-Agent` whitelist          |
-| 10004 | Secret is unavailable                      |
+**Parameters**:
+- `null`: Normal closure
+- `{ "type": "INTERNAL_ERROR_PAGE" }`: Error page closure
 
----
+**Trigger Scenarios**:
+- Clicking Complete button after KYC process completion
+- Closing MFA popup in card details flow
+- Closing card face popup in card details flow
 
-### ⚠️ Notes
+**Example Code**:
+```javascript
+window.addEventListener('message', (event) => {
+  const data = JSON.parse(event.data);
+  if (data.name === 'DECARD_OPENAPI_CLOSE') {
+    // Handle page closure logic
+    closeWebView(); // or closeIframe()
+  }
+});
+```
 
-- Due to Safari's security policy limitations, cookies with the `sameSite` attribute cannot be passed even if set. It is recommended not to use IFrame solutions in Safari.
-- Similarly, asynchronous `window.open` will be blocked. It is recommended to open new links based on the current page.
+#### DECARD_OPENAPI_MFA_OPENED
+
+**Function**: Notify container that MFA verification popup has opened
+
+**Parameters**: `null`
+
+**Trigger Scenario**: When MFA popup opens in card details page
+
+#### DECARD_OPENAPI_CARD_DETAIL_OPENED
+
+**Function**: Notify container that card face details popup has opened
+
+**Parameters**: `null`
+
+**Trigger Scenario**: When card face information popup opens in card details page
+
+## Error Handling
+
+DCS system has built-in comprehensive error handling mechanisms. All exceptions are automatically handled by the system and display appropriate prompts.
+
+### Error Code Description
+
+| Error Code | Description | Solution |
+|------------|-------------|----------|
+| 10000 | System general error | Please retry later or contact technical support |
+| 10001 | User login status expired | Please log in again |
+| 10002 | Access to unauthorized page | Please access through the correct process entry |
+| 10003 | User-Agent not in whitelist | Please contact technical support to configure whitelist |
+| 10004 | API Secret invalid or expired | Please check Secret configuration or contact technical support |
+
+## Important Considerations
+
+### Safari Browser Limitations
+
+⚠️ **Cookie Transfer Limitations**
+- Safari's security policy restricts cross-domain Cookie transfer
+- Setting `sameSite` attribute cannot resolve this issue
+- **Recommendation**: Avoid using IFrame solution in Safari environment, recommend using new window or current page navigation
+
+⚠️ **Popup Blocking Mechanism**
+- Safari blocks asynchronously called `window.open()`
+- **Recommendation**: Use current page navigation instead of popup solutions
+
+### Best Practices
+
+1. **Environment Detection**: Recommend detecting browser environment before integration and adopting the most suitable integration solution for different browsers
+2. **Fallback Solutions**: Prepare fallback solutions for browsers with more restrictions like Safari
+3. **User Experience**: Prioritize user experience and choose the smoothest integration method
