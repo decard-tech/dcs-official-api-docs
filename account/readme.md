@@ -60,7 +60,7 @@
 | errorRedirectUrl   | string | Y    | 失败后的跳转地址                                                |
 | referer            | string | N    | 引用来源 (添加该参数后，打开返回的链接时会校验请求的引用来源)                        |
 | userAgent          | string | Y    | 用户代理 (添加该参数后，打开返回的链接时会校验请求的用户代理),不填可能导致页面访问失败           |
-| language           | string | N    | 语言(默认英文)                                                |
+| language           | string | N    | 语言(默认英文) <br>- `cn`：中文  <br>- `en`：英文                   |
 | cardMantissa       | string | Y    | 卡号后四位                                                   |
 
 - **响应:**
