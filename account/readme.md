@@ -307,8 +307,6 @@
 | dependentLocality | String |            |      |                      |
 | region            | String | 区域         |      |                      |
 | country           | String | 国家         |      | ISO 2位国家代码           |
-| channelName       | String | 渠道名称       | Y    |                      |
-| institutionName   | String |            | Y    | FOMO                 |
 
 **请求报文示例：**
 
