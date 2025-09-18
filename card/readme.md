@@ -266,18 +266,19 @@
 
 - **响应:**
 
-| 名称                   | 类型     | 描述                                                              |
-|----------------------|--------|-----------------------------------------------------------------|
-| type                 | string | 账单类型 <br>- `NOT_POSTED`：未出账单 <br>- `POSTED`：已出账单                |
-| statementDateStart   | string | 账单开始时间                                                          |
-| statementDateEnd     | string | 账单结束时间、出账时间                                                     |
-| paymentAmountInSgd   | string | 账单金额(SGD)                                                       |
-| paymentAmountInUsd   | string | 账单金额(USD)                                                       |
-| nonPostedAmountInSgd | string | 未入账金额(SGD)                                                      |
-| nonPostedAmountInUsd | string | 未入账金额(USD)                                                      |
-| statementId          | string | 账单id                                                            | 
-| cardScheme           | string | 卡组        <br>- `MASTERCARD` <br>- `VISA`     <br>- `UNION_PAY` |
-| cardOrganizationLogo | string | 卡组logo                                                          |
+| 名称                        | 类型     | 描述                                                              |
+|---------------------------|--------|-----------------------------------------------------------------|
+| type                      | string | 账单类型 <br>- `NOT_POSTED`：未出账单 <br>- `POSTED`：已出账单                |
+| statementDateStart        | string | 账单开始时间                                                          |
+| statementDateEnd          | string | 账单结束时间、出账时间                                                     |
+| paymentAmountInSgd        | string | 账单金额(SGD)                                                       |
+| paymentAmountInUsd        | string | 账单金额(USD)                                                       |
+| nonPostedAmountInSgd      | string | 未入账金额(SGD)                                                      |
+| nonPostedAmountInUsd      | string | 未入账金额(USD)                                                      |
+| statementId               | string | 账单id                                                            | 
+| cardScheme                | string | 卡组        <br>- `MASTERCARD` <br>- `VISA`     <br>- `UNION_PAY` |
+| cardOrganizationLogo      | string | 卡组logo                                                          |
+| debitAmountExcludePayment | string | 历史账单实际消费金额                                                      |
 
 - **响应示例:**
 
@@ -297,7 +298,8 @@
       "nonPostedAmountInUsd": "0",
       "statementId": "NO_POSTED",
       "cardScheme": "MASTERCARD",
-      "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp"
+      "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp",
+      "debitAmountExcludePayment": null
     },
     {
       "type": "POSTED",
@@ -309,7 +311,8 @@
       "nonPostedAmountInUsd": null,
       "statementId": "172888972041194860325506",
       "cardScheme": "MASTERCARD",
-      "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp"
+      "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp",
+      "debitAmountExcludePayment": "11302.23"
     }
   ],
   "success": true
