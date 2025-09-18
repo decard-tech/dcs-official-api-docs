@@ -278,7 +278,7 @@
 | statementId               | string | 账单id                                                            | 
 | cardScheme                | string | 卡组        <br>- `MASTERCARD` <br>- `VISA`     <br>- `UNION_PAY` |
 | cardOrganizationLogo      | string | 卡组logo                                                          |
-| debitAmountExcludePayment | string | 账单实际消费金额                                                        |
+| debitAmountExcludePayment | string | 历史账单实际消费金额                                                      |
 
 - **响应示例:**
 
@@ -299,7 +299,7 @@
       "statementId": "NO_POSTED",
       "cardScheme": "MASTERCARD",
       "cardOrganizationLogo": "https://static.thedecard.com/images/card/schemes/master.webp",
-      "debitAmountExcludePayment": "0"
+      "debitAmountExcludePayment": null
     },
     {
       "type": "POSTED",
