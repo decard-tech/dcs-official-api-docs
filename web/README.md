@@ -98,6 +98,14 @@ window.addEventListener('message', (event) => {
 
 **Trigger Scenario**: When card face information popup opens in card details page
 
+#### DECARD_OPENAPI_APPLY_PHYSICAL_CARD_TOP_UP
+
+**Function**: Physical card application top-up event
+
+**Parameters**: `null`
+
+**Trigger Scenario**: Physical card application
+
 ## Error Handling
 
 DCS system has built-in comprehensive error handling mechanisms. All exceptions are automatically handled by the system and display appropriate prompts.
