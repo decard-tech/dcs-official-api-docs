@@ -2,7 +2,7 @@
 **新增接口：**
 
 **account**
-- [查看用户KYC状态+状态描述](account/readme.md#8-查看用户KYC状态+状态描述) 
+- [查看用户KYC状态+状态描述](account/readme.md#8-查看用户KYC状态) 
 
 
 ## 2025-08-19
