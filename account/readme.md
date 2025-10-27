@@ -364,6 +364,53 @@
 ```
 
 
+
+### 8. 查看用户KYC状态+状态描述
+
+**描述：** 查看用户KYC状态&状态描述
+
+- **URL:** `/account/v2/kyc-status`
+- **方法:** `GET`
+- **请求参数:**
+
+| 名称             | 类型     | 是否必须 | 描述         |
+|----------------|--------|------|------------|
+| externalUserId | string | Y    | DeCard用户ID |
+
+- **成功响应:**
+
+| 名称                | 类型     | 描述                                                                                                                                                                                                                                                                                                                  |
+|-------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| status            | string | KYC状态 <br>- `UNDO`：未做KYC <br>- `INIT`：初始状态 <br>- `PENDING`：申请已经成功提交完成，正在审核中。<br />该状态有几种可能：<br />1）等待自动审核： 一般 3 分钟内通过，如果没有则进入人工审核。<br />2）等待人工审核： 人工审核包括 Operation team 通过邮件联系用户提供更多资料。 <br>- `PASS`：审核通过 <br>- `REFUSE`：拒绝                                                                                         |
+| statusDescription | string | KYC状态描述<br> status 为INIT时，有以下返回值 <br>- `PENDING_DOC_VERIFICATION`：待资料审核 <br>- `DOC_VERIFICATION_PASS`：资料审核通过 <br>- `PENDING_POA_DOC`：居住证明待审核<br>- `POA_REJECTED`：居住证明审核不通过<br>- `POI_REJECTED`：身份证明审核不通过<br>- `OTHERS`：其他类型<br> status 为PENDING时，有以下返回值<br>- `PENDING_MANUAL_REVIEW`：等待人工审核<br>- `PENDING_DOC`：等待文档 |
+
+**成功响应:**
+
+```json
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": {
+    "status": "INIT",
+    "statusDescription": "DOC_VERIFICATION_PASS"
+  },
+  "success": true
+}
+```
+
+- 失败响应
+
+```json
+  {
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
+
+
+
 [//]: # (### 8. 生成文件预上传地址)
 
 [//]: # ()
