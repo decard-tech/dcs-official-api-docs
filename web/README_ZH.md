@@ -98,14 +98,6 @@ window.addEventListener('message', (event) => {
 
 **触发场景**：卡片详情页卡面信息弹窗打开时
 
-#### DECARD_OPENAPI_CARD_DETAIL_OPENED
-
-**功能**：通知容器卡面详情弹窗已打开
-
-**参数**：`null`
-
-**触发场景**：卡片详情页卡面信息弹窗打开时
-
 #### DECARD_OPENAPI_APPLY_PHYSICAL_CARD_TOP_UP
 
 **功能**：实体卡申请充值提示
