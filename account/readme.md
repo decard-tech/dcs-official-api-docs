@@ -52,17 +52,17 @@
 - **方法:** `POST`
 - **请求参数:**
 
-| 名称                 | 类型     | 是否必须 | 描述                                                                                                                                                     |                
-|--------------------|--------|------|--------------------------------------------------------------------------------------------------------------------------------------------------------| 
-| action             | string | Y    | 引导页类型  <br>- `KYC_GUIDE`：KYC引导页  <br>- `CARD_INFO`：卡信息页 <br>- `CREATE_PHYSICAL_CARD`：申请实体卡 <br>- `ACTIVE_PHYSICAL_CARD`：激活实体卡 <br>- `UPDATE_PIN`：更新PIN |                                                                                          |
-| externalUserId     | string | Y    | DeCard用户ID                                                                                                                                             |    
-| successRedirectUrl | string | Y    | 成功后的跳转地址                                                                                                                                               | 
-| errorRedirectUrl   | string | Y    | 失败后的跳转地址                                                                                                                                               |
-| referer            | string | N    | 引用来源 (添加该参数后，打开返回的链接时会校验请求的引用来源)                                                                                                                       |
-| userAgent          | string | Y    | 用户代理 (添加该参数后，打开返回的链接时会校验请求的用户代理),不填可能导致页面访问失败                                                                                                          |
-| language           | string | N    | 语言(默认英文) <br>- `cn`：中文  <br>- `en`：英文                                                                                                                  |
-| cardMantissa       | string | Y    | 卡号后四位                                                                                                                                                  |
-| selectCardPageShow | string | Y    | 当action=`KYC_GUIDE`时生效。只有一张卡时，是否展示选卡页面, 0:不跳过；1:跳过                                                                                                     |
+| 名称                 | 类型     | 是否必须 |   | 描述                                                                                                                                                     |                
+|--------------------|--------|------|:--|--------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| action             | string | Y    |   | 引导页类型  <br>- `KYC_GUIDE`：KYC引导页  <br>- `CARD_INFO`：卡信息页 <br>- `CREATE_PHYSICAL_CARD`：申请实体卡 <br>- `ACTIVE_PHYSICAL_CARD`：激活实体卡 <br>- `UPDATE_PIN`：更新PIN |                                                                                          |
+| externalUserId     | string | Y    |   | DeCard用户ID                                                                                                                                             |    
+| successRedirectUrl | string | Y    |   | 成功后的跳转地址                                                                                                                                               | 
+| errorRedirectUrl   | string | Y    |   | 失败后的跳转地址                                                                                                                                               |
+| referer            | string | N    |   | 引用来源 (添加该参数后，打开返回的链接时会校验请求的引用来源)                                                                                                                       |
+| userAgent          | string | Y    |   | 用户代理 (添加该参数后，打开返回的链接时会校验请求的用户代理),不填可能导致页面访问失败                                                                                                          |
+| language           | string | N    |   | 语言(默认英文) <br>- `cn`：中文  <br>- `en`：英文 <br>- `ko`：韩文    <br>- `ja`：日文                                                                                   |
+| cardMantissa       | string | Y    |   | 卡号后四位                                                                                                                                                  |
+| selectCardPageShow | string | Y    |   | 当action=`KYC_GUIDE`时生效。只有一张卡时，是否展示选卡页面, 0:不跳过；1:跳过                                                                                                     |
 
 - **响应:**
 
