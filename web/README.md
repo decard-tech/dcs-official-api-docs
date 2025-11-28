@@ -7,9 +7,9 @@ DCS pages support multiple integration methods to meet different scenario requir
 | Integration Method | Support Status | Configuration Requirements |
 |-------------------|----------------|---------------------------|
 | Native Browser | ✅ Supported | No configuration required |
-| IFrame Embedding | ✅ Supported | CSP domain whitelist and channel whitelist required |
 | WebView Container | ✅ Supported | User-Agent whitelist required |
 | Mobile SDK | ✅ Supported | Refer to [APP SDK Integration Guide](https://github.com/decard-tech/open-kyc-ios) |
+| IFrame Embedding | ✖️ Not recommended | Requires CSP domain allowlist and channel allowlist; Safari imposes additional security restrictions |
 
 > **Important Note**: Please inform us of your access type before integration, and we will configure the platform accordingly.
 
@@ -97,6 +97,14 @@ window.addEventListener('message', (event) => {
 **Parameters**: `null`
 
 **Trigger Scenario**: When card face information popup opens in card details page
+
+#### DECARD_OPENAPI_APPLY_PHYSICAL_CARD_TOP_UP
+
+**Function**: Physical card application top-up event
+
+**Parameters**: `null`
+
+**Trigger Scenario**: Physical card application
 
 ## Error Handling
 
