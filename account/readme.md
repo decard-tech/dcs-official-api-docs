@@ -60,8 +60,9 @@
 | errorRedirectUrl   | string | Y    | 失败后的跳转地址                                                |
 | referer            | string | N    | 引用来源 (添加该参数后，打开返回的链接时会校验请求的引用来源)                        |
 | userAgent          | string | Y    | 用户代理 (添加该参数后，打开返回的链接时会校验请求的用户代理),不填可能导致页面访问失败           |
-| language           | string | N    | 语言(默认英文)                                                |
+| language           | string | N    | 语言(默认英文) <br>- `cn`：中文  <br>- `en`：英文                   |
 | cardMantissa       | string | Y    | 卡号后四位                                                   |
+| selectCardPageShow | string | Y    | 当action=`KYC_GUIDE`时生效。只有一张卡时，是否展示选卡页面, 0:不跳过；1:跳过      |
 
 - **响应:**
 
@@ -307,8 +308,6 @@
 | dependentLocality | String |            |      |                      |
 | region            | String | 区域         |      |                      |
 | country           | String | 国家         |      | ISO 2位国家代码           |
-| channelName       | String | 渠道名称       | Y    |                      |
-| institutionName   | String |            | Y    | FOMO                 |
 
 **请求报文示例：**
 
