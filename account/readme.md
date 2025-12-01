@@ -52,17 +52,17 @@
 - **方法:** `POST`
 - **请求参数:**
 
-| 名称                 | 类型     | 是否必须 | 描述                                                      |                
-|--------------------|--------|------|---------------------------------------------------------| 
-| action             | string | Y    | 引导页类型  <br>- `KYC_GUIDE`：KYC引导页  <br>- `CARD_INFO`：卡信息页 |                                                                                          |
-| externalUserId     | string | Y    | DeCard用户ID                                              |    
-| successRedirectUrl | string | Y    | 成功后的跳转地址                                                | 
-| errorRedirectUrl   | string | Y    | 失败后的跳转地址                                                |
-| referer            | string | N    | 引用来源 (添加该参数后，打开返回的链接时会校验请求的引用来源)                        |
-| userAgent          | string | Y    | 用户代理 (添加该参数后，打开返回的链接时会校验请求的用户代理),不填可能导致页面访问失败           |
-| language           | string | N    | 语言(默认英文) <br>- `cn`：中文  <br>- `en`：英文                   |
-| cardMantissa       | string | Y    | 卡号后四位                                                   |
-| selectCardPageShow | string | Y    | 当action=`KYC_GUIDE`时生效。只有一张卡时，是否展示选卡页面, 0:不跳过；1:跳过      |
+| 名称                 | 类型     | 是否必须 |   | 描述                                                                                                                                                     |                
+|--------------------|--------|------|:--|--------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| action             | string | Y    |   | 引导页类型  <br>- `KYC_GUIDE`：KYC引导页  <br>- `CARD_INFO`：卡信息页 <br>- `CREATE_PHYSICAL_CARD`：申请实体卡 <br>- `ACTIVE_PHYSICAL_CARD`：激活实体卡 <br>- `UPDATE_PIN`：更新PIN |                                                                                          |
+| externalUserId     | string | Y    |   | DeCard用户ID                                                                                                                                             |    
+| successRedirectUrl | string | Y    |   | 成功后的跳转地址                                                                                                                                               | 
+| errorRedirectUrl   | string | Y    |   | 失败后的跳转地址                                                                                                                                               |
+| referer            | string | N    |   | 引用来源 (添加该参数后，打开返回的链接时会校验请求的引用来源)                                                                                                                       |
+| userAgent          | string | Y    |   | 用户代理 (添加该参数后，打开返回的链接时会校验请求的用户代理),不填可能导致页面访问失败                                                                                                          |
+| language           | string | N    |   | 语言(默认英文) <br>- `cn`：中文  <br>- `en`：英文 <br>- `ko`：韩文    <br>- `ja`：日文                                                                                   |
+| cardMantissa       | string | Y    |   | 卡号后四位                                                                                                                                                  |
+| selectCardPageShow | string | Y    |   | 当action=`KYC_GUIDE`时生效。只有一张卡时，是否展示选卡页面, 0:不跳过；1:跳过                                                                                                     |
 
 - **响应:**
 
@@ -362,6 +362,53 @@
   "success": false
 }
 ```
+
+
+
+### 8. 查看用户KYC状态
+
+**描述：** 查看用户KYC状态&状态描述
+
+- **URL:** `/account/v2/kyc-status`
+- **方法:** `GET`
+- **请求参数:**
+
+| 名称             | 类型     | 是否必须 | 描述         |
+|----------------|--------|------|------------|
+| externalUserId | string | Y    | DeCard用户ID |
+
+- **成功响应:**
+
+| 名称                | 类型     | 描述                                                                                                                                                                                                                                                                                                                  |
+|-------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| status            | string | KYC状态 <br>- `UNDO`：未做KYC <br>- `INIT`：初始状态 <br>- `PENDING`：申请已经成功提交完成，正在审核中。<br />该状态有几种可能：<br />1）等待自动审核： 一般 3 分钟内通过，如果没有则进入人工审核。<br />2）等待人工审核： 人工审核包括 Operation team 通过邮件联系用户提供更多资料。 <br>- `PASS`：审核通过 <br>- `REFUSE`：拒绝                                                                                         |
+| statusDescription | string | KYC状态描述<br> status 为INIT时，有以下返回值 <br>- `PENDING_DOC_VERIFICATION`：待资料审核 <br>- `DOC_VERIFICATION_PASS`：资料审核通过 <br>- `PENDING_POA_DOC`：居住证明待审核<br>- `POA_REJECTED`：居住证明审核不通过<br>- `POI_REJECTED`：身份证明审核不通过<br>- `OTHERS`：其他类型<br> status 为PENDING时，有以下返回值<br>- `PENDING_MANUAL_REVIEW`：等待人工审核<br>- `PENDING_DOC`：等待文档 |
+
+**成功响应:**
+
+```json
+{
+  "code": "SYS_SUCCESS",
+  "message": null,
+  "messageDetail": null,
+  "data": {
+    "status": "INIT",
+    "statusDescription": "DOC_VERIFICATION_PASS"
+  },
+  "success": true
+}
+```
+
+- 失败响应
+
+```json
+  {
+  "code": "ERROR-CODE",
+  "message": "simple describe, see error-code list",
+  "success": false
+}
+```
+
 
 
 [//]: # (### 8. 生成文件预上传地址)
