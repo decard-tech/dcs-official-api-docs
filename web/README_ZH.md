@@ -27,12 +27,12 @@ DCS 页面支持多种接入方式，满足不同场景的集成需求：
 
 **示例配置**：
 ```
-AppleWebKit/537.36 (KHTML, like Gecko) Decard/0.0.1 Mobile Safari/537.36
+AppleWebKit/537.36 (KHTML, like Gecko) Test/0.0.1 Mobile Safari/537.36
 ```
 
 **配置要求**：
-- **接入方**：提供自定义的 User-Agent 关键词
-- **平台方**：将关键词添加到白名单（如上例中的 "Decard"）
+- **接入方**：提供自定义的 User-Agent 关键词, (Test 表示接入方来源)
+- **平台方**：将关键词添加到白名单（如上例中的 "Test"）
 
 #### 方式二：User-Agent 完全匹配验证
 

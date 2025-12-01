@@ -27,12 +27,12 @@ Any of the following verification methods can be used for normal access:
 
 **Example Configuration**:
 ```
-AppleWebKit/537.36 (KHTML, like Gecko) Decard/0.0.1 Mobile Safari/537.36
+AppleWebKit/537.36 (KHTML, like Gecko) Test/0.0.1 Mobile Safari/537.36
 ```
 
 **Configuration Requirements**:
-- **Integrator**: Provide custom User-Agent keywords
-- **Platform**: Add keywords to whitelist (e.g., "Decard" in the example above)
+- **Integrator**: Integrator: Provides a custom keyword in the User-Agent (e.g., Test indicates the source of the integrator).
+- **Platform**: Adds this keyword to the whitelist (such as "Test" in the example above).
 
 #### Method 2: User-Agent Exact Match Verification
 
